@@ -125,3 +125,13 @@ footer a { color: var(--sub); }
 .toy .count { margin: 12px 0 0; font-size: 15px; color: var(--sub); min-height: 1.4em; }
 @media (max-width: 720px) { .toys { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .pod { animation: none; } }
+
+/* Clips: the app, moving */
+.clips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding: 48px 0 8px; }
+.clip { text-align: center; }
+.clip p { font: 19px/1.25 var(--serif); color: var(--ink); margin: 0 0 12px; min-height: 2.5em; display: flex; align-items: end; justify-content: center; }
+.clip video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 26px; border: 6px solid var(--ink); background: #F7ECEE; display: block; }
+@media (max-width: 860px) {
+  .clips { grid-template-columns: repeat(5, 62%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 16px; }
+  .clip { scroll-snap-align: center; }
+}
