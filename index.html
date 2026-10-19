@@ -19,7 +19,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Gentleskin: Skin Picking", "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "url": "https://gentleskin.app/", "installUrl": "https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web&mt=8", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "7-day free trial, then a yearly or monthly membership"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Gentleskin cost?", "acceptedAnswer": {"@type": "Answer", "text": "The first 7 days are free. After that it's $29.99 a year or $5.99 a month in the US, and prices vary by region. The app reminds you two days before the trial ends. The urge screen works without a subscription."}}, {"@type": "Question", "name": "Is it only for skin picking?", "acceptedAnswer": {"@type": "Answer", "text": "It was made for skin picking: face, scalp, lips, cuticles, scabs, and any spot you add."}}, {"@type": "Question", "name": "Is there an Android version?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet."}}, {"@type": "Question", "name": "Is Gentleskin a treatment?", "acceptedAnswer": {"@type": "Answer", "text": "No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report."}}]}]</script>
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag identify alias people.set people.set_once set_config".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY", {api_host: "https://us.i.posthog.com", cookieless_mode: "always", capture_pageview: true, capture_pageleave: true, enable_heatmaps: true, autocapture: true});
+posthog.register({site: "gentleskin.app"});
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest("a[href*='apps.apple.com']");
+  if (!a) return;
+  var place = a.closest(".hero") ? "hero" : a.closest("nav") ? "nav" : a.closest(".cta-line") ? "guide_end" : "other";
+  posthog.capture("web_store_click", {place: place, page: location.pathname});
+});
+</script>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Gentleskin: Skin Picking", "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "url": "https://gentleskin.app/", "installUrl": "https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web&mt=8", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "7-day free trial, then a yearly or monthly membership"}}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does Gentleskin cost?", "acceptedAnswer": {"@type": "Answer", "text": "The first 7 days are free. After that it's $29.99 a year or $5.99 a month in the US, and prices vary by region. The app reminds you two days before the trial ends. The urge screen works without a subscription."}}, {"@type": "Question", "name": "Is it only for skin picking?", "acceptedAnswer": {"@type": "Answer", "text": "It was made for skin picking, but you can use it for other body-focused repetitive behaviors too, like nail biting, cheek biting or hair pulling. You add your own spots and log them the same way."}}, {"@type": "Question", "name": "Is there an Android version?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet."}}, {"@type": "Question", "name": "Is Gentleskin a treatment?", "acceptedAnswer": {"@type": "Answer", "text": "No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report."}}]}]</script>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -34,11 +45,28 @@
   <a class="cta" href="https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web&mt=8">Download on the App Store</a>
   <p class="fine">iPhone. 7-day free trial.</p>
 </div>
-<div class="water" role="presentation"></div>
 </section>
 
 <div class="wrap">
-  <div class="screens">
+  <h2>Try it</h2>
+  <p>Two of the things the app gives you when the urge to pick comes.</p>
+  <div class="toys">
+    <div class="toy">
+      <h3>Ride the wave</h3>
+      <p class="hint" id="wave-label">Press and hold on the water.</p>
+      <canvas id="wave" tabindex="0" aria-label="A starfish floating on waves. Press and hold until the waves calm down."></canvas>
+      <p class="count">In the app it's thirty seconds. Here it's ten.</p>
+    </div>
+    <div class="toy">
+      <h3>Pop the kelp</h3>
+      <p class="hint">Tap the pods until the urge passes.</p>
+      <div id="pods"></div>
+      <p class="count" id="pods-count"></p>
+    </div>
+  </div>
+
+  <h2>In the app</h2>
+  <div class="screens" style="padding-top:8px">
     <img src="img/01-today.jpg" alt="Today screen: time since your last pick and today's count" loading="lazy">
     <img src="img/02-entry.jpg" alt="Logging a pick: where, and how many" loading="lazy">
     <img src="img/03-patterns.jpg" alt="Patterns: a chart of the week and month" loading="lazy">
@@ -71,13 +99,14 @@
   <details><summary>How much does Gentleskin cost?</summary>
   <p>The first 7 days are free. After that it's $29.99 a year or $5.99 a month in the US, and prices vary by region. The app reminds you two days before the trial ends. The urge screen works without a subscription.</p></details>
   <details><summary>Is it only for skin picking?</summary>
-  <p>It was made for skin picking: face, scalp, lips, cuticles, scabs, and any spot you add.</p></details>
+  <p>It was made for skin picking, but you can use it for other body-focused repetitive behaviors too, like nail biting, cheek biting or hair pulling. You add your own spots and log them the same way.</p></details>
   <details><summary>Is there an Android version?</summary>
   <p>Not yet.</p></details>
   <details><summary>Is Gentleskin a treatment?</summary>
   <p>No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report.</p></details>
 </div>
 </main>
+<script src="games.js" defer></script>
 
 <footer><div class="wrap">
   <span>Gentleskin is a self-tracking tool, not a medical device. It doesn't diagnose or treat any condition.</span>

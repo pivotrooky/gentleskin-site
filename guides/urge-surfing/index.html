@@ -19,6 +19,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../style.css">
+<script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag identify alias people.set people.set_once set_config".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init("phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY", {api_host: "https://us.i.posthog.com", cookieless_mode: "always", capture_pageview: true, capture_pageleave: true, enable_heatmaps: true, autocapture: true});
+posthog.register({site: "gentleskin.app"});
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest("a[href*='apps.apple.com']");
+  if (!a) return;
+  var place = a.closest(".hero") ? "hero" : a.closest("nav") ? "nav" : a.closest(".cta-line") ? "guide_end" : "other";
+  posthog.capture("web_store_click", {place: place, page: location.pathname});
+});
+</script>
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "MobileApplication", "name": "Gentleskin: Skin Picking", "operatingSystem": "iOS", "applicationCategory": "HealthApplication", "url": "https://gentleskin.app/", "installUrl": "https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web&mt=8", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "7-day free trial, then a yearly or monthly membership"}}, {"@context": "https://schema.org", "@type": "Article", "headline": "Urge surfing for skin picking | Gentleskin", "description": "Urge surfing is a way to wait out the urge to pick your skin by watching it rise and fall instead of acting on it. How to do it.", "dateModified": "2026-10-19", "mainEntityOfPage": "https://gentleskin.app/guides/urge-surfing/", "author": {"@type": "Organization", "name": "Gentleskin"}}]</script>
 </head>
 <body>

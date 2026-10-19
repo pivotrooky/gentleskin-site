@@ -10,11 +10,28 @@ path: /
   <a class="cta" href="{{store}}">Download on the App Store</a>
   <p class="fine">iPhone. 7-day free trial.</p>
 </div>
-<div class="water" role="presentation"></div>
 </section>
 
 <div class="wrap">
-  <div class="screens">
+  <h2>Try it</h2>
+  <p>Two of the things the app gives you when the urge to pick comes.</p>
+  <div class="toys">
+    <div class="toy">
+      <h3>Ride the wave</h3>
+      <p class="hint" id="wave-label">Press and hold on the water.</p>
+      <canvas id="wave" tabindex="0" aria-label="A starfish floating on waves. Press and hold until the waves calm down."></canvas>
+      <p class="count">In the app it's thirty seconds. Here it's ten.</p>
+    </div>
+    <div class="toy">
+      <h3>Pop the kelp</h3>
+      <p class="hint">Tap the pods until the urge passes.</p>
+      <div id="pods"></div>
+      <p class="count" id="pods-count"></p>
+    </div>
+  </div>
+
+  <h2>In the app</h2>
+  <div class="screens" style="padding-top:8px">
     <img src="img/01-today.jpg" alt="Today screen: time since your last pick and today's count" loading="lazy">
     <img src="img/02-entry.jpg" alt="Logging a pick: where, and how many" loading="lazy">
     <img src="img/03-patterns.jpg" alt="Patterns: a chart of the week and month" loading="lazy">
@@ -47,10 +64,11 @@ path: /
   <details><summary>How much does Gentleskin cost?</summary>
   <p>The first 7 days are free. After that it's $29.99 a year or $5.99 a month in the US, and prices vary by region. The app reminds you two days before the trial ends. The urge screen works without a subscription.</p></details>
   <details><summary>Is it only for skin picking?</summary>
-  <p>It was made for skin picking: face, scalp, lips, cuticles, scabs, and any spot you add.</p></details>
+  <p>It was made for skin picking, but you can use it for other body-focused repetitive behaviors too, like nail biting, cheek biting or hair pulling. You add your own spots and log them the same way.</p></details>
   <details><summary>Is there an Android version?</summary>
   <p>Not yet.</p></details>
   <details><summary>Is Gentleskin a treatment?</summary>
   <p>No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report.</p></details>
 </div>
 </main>
+<script src="games.js" defer></script>
