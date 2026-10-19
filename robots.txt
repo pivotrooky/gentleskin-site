@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gentleskin.app/sitemap.xml
+Sitemap: https://pivotrooky.github.io/gentleskin-site/sitemap.xml

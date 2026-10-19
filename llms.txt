@@ -1,14 +1,14 @@
 # Gentleskin
 
-> A gentle iPhone app for tracking skin picking (dermatillomania, excoriation disorder) and other body-focused repetitive behaviors (BFRBs). Log a pick in two taps, see patterns, ride out urges, and make a PDF report for a therapist. No streaks.
+> A gentle iPhone app for tracking skin picking (dermatillomania, excoriation disorder) and other body-focused repetitive behaviors (BFRBs). Log a pick in two taps, see patterns, ride out urges, and make a PDF report for a therapist.
 
 - App Store: https://apps.apple.com/app/id6789245158
 - Price: 7-day free trial, then $29.99/year or $5.99/month (US; varies by region)
 
 ## Guides
 
-- [What is dermatillomania (skin picking disorder)? | Gentleskin](https://gentleskin.app/guides/what-is-dermatillomania/): Dermatillomania, or excoriation disorder, is repeated skin picking that's hard to stop. What it looks like, why it happens, and where to get help.
-- [How to stop picking your skin: what actually helps | Gentleskin](https://gentleskin.app/guides/how-to-stop-picking-skin/): A practical, shame-free guide to stopping skin picking: noticing your triggers, giving your hands something else to do, changing your surroundings, and riding out urges.
-- [Urge surfing for skin picking: how to ride out the urge | Gentleskin](https://gentleskin.app/guides/urge-surfing/): Urge surfing is a mindfulness skill for riding out the urge to pick your skin instead of fighting it. How it works and how to practice it in under a minute.
-- [Scalp picking: why it happens and how to stop | Gentleskin](https://gentleskin.app/guides/scalp-picking/): Scalp picking is a common form of skin picking. Why your fingers end up in your hair, what keeps it going, and practical ways to cut down.
-- [Why track your skin picking (and what to bring to therapy) | Gentleskin](https://gentleskin.app/guides/tracking-skin-picking/): Tracking skin picking shows you when, where and why it happens, which is the first step of habit reversal. What to log, how to keep it shame-free, and what to share with a therapist.
+- [What is dermatillomania (skin picking disorder)? | Gentleskin](https://pivotrooky.github.io/gentleskin-site/guides/what-is-dermatillomania/): Dermatillomania, also called excoriation disorder, is repeated skin picking that a person can't stop and that damages the skin. How it's diagnosed and where to find help.
+- [How to stop picking your skin | Gentleskin](https://pivotrooky.github.io/gentleskin-site/guides/how-to-stop-picking-skin/): How habit reversal training works for skin picking: noticing when you pick, changing your surroundings, giving your hands something else to do, and waiting out urges.
+- [Urge surfing for skin picking | Gentleskin](https://pivotrooky.github.io/gentleskin-site/guides/urge-surfing/): Urge surfing is a way to wait out the urge to pick your skin by watching it rise and fall instead of acting on it. How to do it.
+- [Scalp picking: why it happens and how to cut down | Gentleskin](https://pivotrooky.github.io/gentleskin-site/guides/scalp-picking/): Scalp picking is a common form of skin picking. Why people pick at the scalp, and what helps them cut down.
+- [Tracking skin picking, and what to bring to therapy | Gentleskin](https://pivotrooky.github.io/gentleskin-site/guides/tracking-skin-picking/): Why tracking skin picking helps, what to write down, and what to show a therapist.

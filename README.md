@@ -10,4 +10,4 @@ Castoro + Albert Sans).
   (`ct=web` home, `ct=web_guide` guides, `ct=web_nav` the top bar), so App
   Store Connect shows installs from the site.
 - Preview: `python3 -m http.server 8765`.
-- Hosting: GitHub Pages from this repo, custom domain `gentleskin.app` (`CNAME`).
+- Hosting: GitHub Pages from this repo (pivotrooky.github.io/gentleskin-site). For gentleskin.app: set SITE in build.py, add a `CNAME` file, rebuild.

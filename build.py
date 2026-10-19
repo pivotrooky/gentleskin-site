@@ -14,7 +14,8 @@ Each content file starts with a header block, then the body HTML:
 import html, json, os, re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SITE = "https://gentleskin.app"
+# Switch to "https://gentleskin.app" (and add a CNAME file) once the domain is bought.
+SITE = "https://pivotrooky.github.io/gentleskin-site"
 APP_ID = "6789245158"
 UPDATED = "2026-10-19"
 
@@ -113,7 +114,7 @@ def main():
     lines = ["# Gentleskin", "",
              "> A gentle iPhone app for tracking skin picking (dermatillomania, excoriation disorder) "
              "and other body-focused repetitive behaviors (BFRBs). Log a pick in two taps, see patterns, "
-             "ride out urges, and make a PDF report for a therapist. No streaks.", "",
+             "ride out urges, and make a PDF report for a therapist.", "",
              f"- App Store: https://apps.apple.com/app/id{APP_ID}",
              "- Price: 7-day free trial, then $29.99/year or $5.99/month (US; varies by region)", "",
              "## Guides", ""]
