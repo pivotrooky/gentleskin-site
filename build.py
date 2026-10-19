@@ -19,6 +19,8 @@ APP_ID = "6789245158"
 # PostHog: the app's project, public client key (it ships in the app too). Site events have $lib = web.
 POSTHOG_KEY = "phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY"
 UPDATED = "2026-10-19"
+# Changes with style.css, so browsers never keep an old copy.
+CSS_V = __import__("hashlib").md5(open(os.path.join(ROOT, "style.css"), "rb").read()).hexdigest()[:8]
 
 
 def store(ct):
@@ -70,7 +72,7 @@ def shell(title, description, path, body, depth, kind):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{up}style.css">
+<link rel="stylesheet" href="{up}style.css?v={CSS_V}">
 <script>
 !function(t,e){{var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){{function g(t,e){{var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){{t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){{var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}},u.people.toString=function(){{return u.toString(1)+".people (stub)"}},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag identify alias people.set people.set_once set_config".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])}},e.__SV=1)}}(document,window.posthog||[]);
 posthog.init("{POSTHOG_KEY}", {{api_host: "https://us.i.posthog.com", cookieless_mode: "always", capture_pageview: true, capture_pageleave: true, enable_heatmaps: true, autocapture: true}});
