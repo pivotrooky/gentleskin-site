@@ -113,7 +113,7 @@ def main():
     lines = ["# Gentleskin", "",
              "> A gentle iPhone app for tracking skin picking (dermatillomania, excoriation disorder) "
              "and other body-focused repetitive behaviors (BFRBs). Log a pick in two taps, see patterns, "
-             "ride out urges, and make a PDF report for a therapist. No account, no streaks.", "",
+             "ride out urges, and make a PDF report for a therapist. No streaks.", "",
              f"- App Store: https://apps.apple.com/app/id{APP_ID}",
              "- Price: 7-day free trial, then $29.99/year or $5.99/month (US; varies by region)", "",
              "## Guides", ""]
