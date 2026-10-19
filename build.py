@@ -14,8 +14,7 @@ Each content file starts with a header block, then the body HTML:
 import html, json, os, re
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-# Switch to "https://gentleskin.app" (and add a CNAME file) once the domain is bought.
-SITE = "https://pivotrooky.github.io/gentleskin-site"
+SITE = "https://gentleskin.app"
 APP_ID = "6789245158"
 UPDATED = "2026-10-19"
 
