@@ -67,7 +67,9 @@ def shell(title, description, path, body, depth, kind):
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF1F3">
-<link rel="icon" href="{up}img/favicon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="{up}img/icon-192.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{up}img/icon-96.png">
 <link rel="apple-touch-icon" href="{up}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
