@@ -11,15 +11,25 @@ ct: web_next
 .nx-lede { text-align: center; margin: 0 auto 24px; max-width: 30em; }
 .nx-hero video { width: 100%; max-width: 380px; display: block; margin: 0 auto; border-radius: 22px; box-shadow: 0 10px 30px rgba(62,43,41,.12); }
 .nx-over { font: 800 11px var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
-.nx-demo { background: var(--card); border: 1px solid var(--hair); border-radius: 24px; padding: 22px; margin-top: 26px; display: grid; gap: 16px; }
+.nx-demo { position: relative; background: var(--card); border: 1px solid var(--hair); border-radius: 24px; padding: 22px; margin-top: 22px; display: grid; gap: 14px; scroll-margin-top: 16px; transition: border-color .3s, background .3s, box-shadow .3s; }
+.nx-demo.picked { border: 2px solid var(--sage); background: #F3F7F2; box-shadow: 0 8px 24px rgba(86,122,98,.14); }
+.nx-badge { position: absolute; top: -13px; right: 18px; background: var(--sage); color: #fff; font: 800 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; display: none; }
+.nx-demo.picked .nx-badge { display: block; }
+.nx-demo.picked .nx-num { background: var(--sage); }
+.nx-foot-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--hair); padding-top: 14px; }
+.nx-menu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 28px 0 4px; }
+.nx-menu a { display: grid; gap: 4px; justify-items: center; text-align: center; padding: 12px 6px; border: 1px solid var(--hair); border-radius: 16px; background: var(--card); color: var(--ink); text-decoration: none; font: 600 13px/1.25 var(--sans); }
+.nx-menu a .nx-num { width: 26px; height: 26px; font-size: 15px; }
+.nx-menu a.picked { border-color: var(--sage); background: #F3F7F2; }
+.nx-menu a.picked .nx-num { background: var(--sage); }
 .nx-head { display: flex; gap: 12px; align-items: center; }
 .nx-num { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--rose); color: var(--on-rose); display: grid; place-items: center; font: 20px var(--serif); }
 .nx-demo h2 { font-size: 26px; margin: 0; }
 .nx-demo p { margin: 0; }
 .nx-try { font: 600 14px var(--sans); color: var(--sub); }
-.nx-vote { justify-self: start; border: 1.5px solid var(--rose); background: transparent; color: var(--rose); font: 600 16px var(--sans); padding: 11px 22px; border-radius: 999px; cursor: pointer; }
+.nx-vote { border: 1.5px solid var(--rose); background: transparent; color: var(--rose); font: 600 16px var(--sans); padding: 11px 22px; border-radius: 999px; cursor: pointer; }
 .nx-vote:hover { background: #f6e3e7; }
-.nx-vote[aria-pressed="true"] { background: var(--rose); color: var(--on-rose); }
+.nx-vote[aria-pressed="true"] { background: var(--sage); border-color: var(--sage); color: #fff; }
 .nx button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 .nx-lock { border-radius: 20px; padding: 18px 18px 20px; color: #fff; background: radial-gradient(120% 90% at 20% 0%, #6a8fd8 0, transparent 55%), linear-gradient(160deg, var(--night1), var(--night2) 60%, #8bb3a3); }
 .nx-date { text-align: center; font: 600 14px var(--sans); opacity: .9; }
@@ -64,7 +74,14 @@ ct: web_next
   <video src="{{up}}media/next.mp4" poster="{{up}}media/next.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The three features in the app"></video>
 </section>
 
-<section class="nx-demo">
+<nav class="nx-menu" aria-label="The three features">
+  <a href="#lockscreen" data-f="lockscreen"><span class="nx-num">1</span>Lock Screen</a>
+  <a href="#checkins" data-f="checkins"><span class="nx-num">2</span>Check-ins</a>
+  <a href="#context" data-f="context"><span class="nx-num">3</span>What was going on</a>
+</nav>
+
+<section class="nx-demo" id="lockscreen">
+  <span class="nx-badge">Your pick</span>
   <div class="nx-head"><span class="nx-num">1</span><h2>Log from the <em>Lock Screen</em></h2></div>
   <p>A widget with your spots. One tap logs a pick, without unlocking or opening the app.</p>
   <div class="nx-lock">
@@ -76,11 +93,12 @@ ct: web_next
         <div class="nx-spots"><button>Face</button><button>Arms</button><button>Chest</button></div></div>
     </div>
   </div>
-  <div class="nx-try">Tap a spot on the widget.</div>
-  <button class="nx-vote" data-f="lockscreen" aria-pressed="false">Build this first</button>
+  <div class="nx-foot-row"><span class="nx-try">Tap a spot on the widget.</span>
+    <button class="nx-vote" data-f="lockscreen" aria-pressed="false">Build this first</button></div>
 </section>
 
-<section class="nx-demo">
+<section class="nx-demo" id="checkins">
+  <span class="nx-badge">Your pick</span>
   <div class="nx-head"><span class="nx-num">2</span><h2>Check-ins at <em>your</em> time</h2></div>
   <p>Pick the hour and the days. The star checks in then, and only then.</p>
   <div class="nx-row">Check in with me at
@@ -89,18 +107,20 @@ ct: web_next
   <div class="nx-days" id="nx-days"></div>
   <div class="nx-phone"><div class="nx-pclock" id="nx-pclock">10:30</div>
     <div class="nx-notif" id="nx-notif"><img src="{{up}}img/icon-96.png" alt=""><span><b>Gentleskin</b>How are the hands tonight?</span></div></div>
-  <button class="nx-link" id="nx-preview">Show the check-in</button>
-  <button class="nx-vote" data-f="checkins" aria-pressed="false">Build this first</button>
+  <div class="nx-foot-row"><button class="nx-link" id="nx-preview">Show the check-in</button>
+    <button class="nx-vote" data-f="checkins" aria-pressed="false">Build this first</button></div>
 </section>
 
-<section class="nx-demo">
+<section class="nx-demo" id="context">
+  <span class="nx-badge">Your pick</span>
   <div class="nx-head"><span class="nx-num">3</span><h2>Note what was <em>going on</em></h2></div>
   <p>One optional tap when you log. Over a month, Patterns shows what comes before a pick.</p>
   <div class="nx-over">What was going on?</div>
   <div class="nx-ctx" id="nx-ctx"></div>
   <div class="nx-bars" id="nx-bars"></div>
   <div class="nx-foot" id="nx-cfoot"></div>
-  <button class="nx-vote" data-f="context" aria-pressed="false">Build this first</button>
+  <div class="nx-foot-row"><span class="nx-try">Tap what was going on.</span>
+    <button class="nx-vote" data-f="context" aria-pressed="false">Build this first</button></div>
 </section>
 
 <p class="nx-thanks" id="nx-thanks" hidden>Thanks. I'll post which one wins.<br>
@@ -167,7 +187,12 @@ ct: web_next
   var votes = document.querySelectorAll(".nx-vote"), mine = null;
   try { mine = localStorage.getItem("gs_next_vote"); } catch (e) {}
   var mark = function () {
-    votes.forEach(function (v) { v.setAttribute("aria-pressed", v.dataset.f === mine); v.textContent = v.dataset.f === mine ? "Your pick" : "Build this first"; });
+    votes.forEach(function (v) {
+      var on = v.dataset.f === mine;
+      v.setAttribute("aria-pressed", on); v.textContent = on ? "✓ Your pick" : "Build this first";
+      v.closest(".nx-demo").classList.toggle("picked", on);
+    });
+    document.querySelectorAll(".nx-menu a").forEach(function (a) { a.classList.toggle("picked", a.dataset.f === mine); });
     $("nx-thanks").hidden = !mine;
   };
   votes.forEach(function (v) {
