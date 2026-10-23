@@ -28,7 +28,7 @@ def store(ct):
     return f"https://apps.apple.com/app/apple-store/id{APP_ID}?pt=668857691&ct={ct}&mt=8"
 
 
-def shell(title, description, path, body, depth, kind):
+def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None):
     up = "../" * depth
     url = SITE + "/" + path
     ld = [{
@@ -51,7 +51,7 @@ def shell(title, description, path, body, depth, kind):
             {"@type": "Question", "name": re.sub("<.*?>", "", q),
              "acceptedAnswer": {"@type": "Answer", "text": re.sub("<.*?>", "", a).strip()}}
             for q, a in faq]})
-    body = body.replace("{{store}}", store("web" if kind == "home" else "web_guide")).replace("{{up}}", up)
+    body = body.replace("{{store}}", store(ct or ("web" if kind == "home" else "web_guide"))).replace("{{up}}", up)
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -63,7 +63,7 @@ def shell(title, description, path, body, depth, kind):
 <meta name="apple-itunes-app" content="app-id={APP_ID}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(description)}">
-<meta property="og:image" content="{SITE}/img/header.jpg">
+<meta property="og:image" content="{SITE}/{image}">
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF1F3">
@@ -116,7 +116,8 @@ def main():
         kind = "home" if not path else ("article" if path.startswith("guides/") and path != "guides/" else "list")
         out_dir = os.path.join(ROOT, path)
         os.makedirs(out_dir, exist_ok=True)
-        page = shell(meta["title"], meta["description"], path, body, path.count("/"), kind)
+        page = shell(meta["title"], meta["description"], path, body, path.count("/"), kind,
+                     meta.get("image", "img/header.jpg"), meta.get("ct"))
         open(os.path.join(out_dir, "index.html"), "w").write(page)
         pages.append((path, meta))
         print("wrote", path or "/")
