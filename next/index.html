@@ -102,13 +102,24 @@ document.addEventListener("click", function (e) {
 .nx-fill { display: block; height: 100%; border-radius: 99px; background: var(--rose); opacity: .78; transition: width .6s ease; }
 .nx-thanks { text-align: center; margin: 30px 0 0; color: var(--ink); font: 21px/1.4 var(--serif); }
 .nx-thanks .cta { margin-top: 10px; font-family: var(--sans); }
+.nx-say { max-width: 720px; margin: 22px auto 0; background: var(--card); border: 1px solid var(--hair); border-radius: 22px; padding: 18px; display: grid; gap: 10px; }
+.nx-say h2 { font-size: 23px; margin: 0; }
+.nx-say p { margin: 0; font-size: 15px; }
+.nx-say textarea { width: 100%; min-height: 110px; resize: vertical; border: 1px solid var(--hair); border-radius: 14px; padding: 12px 14px; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); }
+.nx-say textarea:focus { outline: 2px solid var(--rose); outline-offset: 1px; }
+.nx-say-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.nx-say-row small { color: var(--sub); font-size: 13px; }
+.nx-send { border: 0; background: var(--rose); color: var(--on-rose); font: 600 15px var(--sans); padding: 10px 22px; border-radius: 999px; cursor: pointer; }
+.nx-send:disabled { opacity: .45; cursor: default; }
+.nx-link { justify-self: start; border: 0; background: none; color: var(--rose); font: 600 15px var(--sans); padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.nx-sent { color: var(--ink); font: 19px var(--serif); margin: 0; }
 @media (prefers-reduced-motion: reduce) { .nx * { transition: none !important; } }
 </style>
 <main class="wrap nx">
 <section class="nx-intro">
   <h1>What should I build <em>next?</em></h1>
   <p>Three new things for Gentleskin. They work right here, so you can see how each would feel.</p>
-  <div class="nx-steps"><span><i>1</i>Try the three</span><span><i>2</i>Vote for the one you'd use</span></div>
+  <div class="nx-steps"><span><i>1</i>Try the three</span><span><i>2</i>Vote for the one you'd use</span><span><i>3</i>Tell me anything</span></div>
 </section>
 
 <div class="nx-grid">
@@ -155,6 +166,14 @@ document.addEventListener("click", function (e) {
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote">Vote</button></div>
   </article>
 </div>
+
+<form class="nx-say" id="nx-say">
+  <h2>Anything else?</h2>
+  <p>What would make Gentleskin more useful to you? Something missing, something that bugs you, an idea of your own. I read every one.</p>
+  <label for="nx-text" class="nx-n">Your message</label>
+  <textarea id="nx-text" maxlength="2000" placeholder="Write anything"></textarea>
+  <div class="nx-say-row"><small>Anonymous. No name or email needed.</small><button class="nx-send" id="nx-send" disabled>Send</button></div>
+</form>
 
 <p class="nx-thanks" id="nx-thanks" hidden>Thanks for voting. I'll post which one wins.<br>
   <a class="cta" href="https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web_next&mt=8">Get Gentleskin</a></p>
@@ -233,6 +252,17 @@ document.addEventListener("click", function (e) {
     };
   });
   mark();
+
+  // Open feedback, anonymous, goes to PostHog as next_feedback
+  var say = $("nx-say"), text = $("nx-text"), send = $("nx-send");
+  text.oninput = function () { send.disabled = !text.value.trim(); };
+  say.onsubmit = function (e) {
+    e.preventDefault();
+    var t = text.value.trim(); if (!t) return;
+    if (window.posthog) posthog.capture("next_feedback", { text: t, vote: mine });
+    say.innerHTML = '<p class="nx-sent">Got it. Thank you.</p><button type="button" class="nx-link" id="nx-more">Write another</button>';
+    $("nx-more").onclick = function () { location.reload(); };
+  };
 })();
 </script>
 
