@@ -28,6 +28,44 @@ def store(ct):
     return f"https://apps.apple.com/app/apple-store/id{APP_ID}?pt=668857691&ct={ct}&mt=8"
 
 
+# Short links for bios, creators and DMs: gentleskin.app/go/<name>/ counts the
+# click in PostHog (go_click {ct}), then goes to the App Store with that ct.
+# App Store Connect hides a campaign until 5 Apple Accounts installed from it;
+# PostHog sees every click. Add a creator here, rebuild, push.
+GO = {
+    "tiktok": "tiktok_bio",
+    "ig": "ig_bio",
+    "yt": "yt",
+    "kim": "creator_kimonskin",
+    "bfrbpodcast": "creator_bfrbpodcast",
+    "pickingme": "creator_pickingme",
+    "sps": "creator_skinpickingsupport",
+    "therapist": "therapist",
+}
+
+
+def go_page(name, ct):
+    url = store(ct)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Gentleskin</title>
+<meta http-equiv="refresh" content="2;url={url}">
+<script>
+try {{
+  navigator.sendBeacon("https://us.i.posthog.com/i/v0/e/", JSON.stringify({{
+    api_key: "{POSTHOG_KEY}", event: "go_click",
+    distinct_id: "go_" + Math.random().toString(36).slice(2),
+    properties: {{ct: "{ct}", link: "{name}", site: "gentleskin.app", $referrer: document.referrer, $process_person_profile: false}}
+  }}));
+}} catch (e) {{}}
+location.replace("{url}");
+</script>
+</head><body><a href="{url}">Open Gentleskin on the App Store</a></body></html>
+"""
+
+
 def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None):
     up = "../" * depth
     url = SITE + "/" + path
@@ -121,6 +159,12 @@ def main():
         open(os.path.join(out_dir, "index.html"), "w").write(page)
         pages.append((path, meta))
         print("wrote", path or "/")
+
+    for name, ct in GO.items():
+        out_dir = os.path.join(ROOT, "go", name)
+        os.makedirs(out_dir, exist_ok=True)
+        open(os.path.join(out_dir, "index.html"), "w").write(go_page(name, ct))
+        print("wrote", f"go/{name}/")
 
     urls = "".join(f"  <url><loc>{SITE}/{p}</loc><lastmod>{UPDATED}</lastmod></url>\n" for p, _ in pages)
     open(os.path.join(ROOT, "sitemap.xml"), "w").write(
