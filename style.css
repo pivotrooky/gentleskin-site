@@ -74,6 +74,17 @@ em { font-family: var(--serif); font-style: italic; }
 .feature p { margin: 0; }
 @media (max-width: 720px) { .features { grid-template-columns: 1fr; } }
 
+/* Web waitlist */
+.waitlist { background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 24px 26px; margin-top: 56px; }
+.waitlist h2 { margin: 0 0 8px; font-size: clamp(24px, 3vw, 30px); }
+.waitlist p { margin: 0; }
+.waitlist-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.waitlist input { flex: 1 1 220px; min-width: 0; border: 1px solid var(--hair); border-radius: 999px; padding: 11px 18px; background: var(--paper); color: var(--ink); font: 16px var(--sans); }
+.waitlist input:focus { outline: 2px solid var(--rose); outline-offset: 1px; }
+.waitlist button { border: 0; background: var(--rose); color: var(--on-rose); font: 600 16px var(--sans); padding: 11px 24px; border-radius: 999px; cursor: pointer; }
+.waitlist button:hover { background: var(--rose-deep); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 /* Guides */
 .guides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
 .guide-card { display: block; background: var(--card); border: 1px solid var(--hair); border-radius: 18px; padding: 20px 22px; text-decoration: none; color: var(--body); }

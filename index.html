@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6cbfa557">
+<link rel="stylesheet" href="style.css?v=78707272">
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag identify alias people.set people.set_once set_config".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init("phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY", {api_host: "https://us.i.posthog.com", cookieless_mode: "always", capture_pageview: true, capture_pageleave: true, enable_heatmaps: true, autocapture: true});
@@ -78,6 +78,16 @@ document.addEventListener("click", function (e) {
     <a class="guide-card" href="guides/tracking-skin-picking/"><strong>Tracking skin picking</strong>What to write down, and what to show a therapist.</a>
   </div>
 
+  <form class="waitlist" id="waitlist">
+    <h2>Want Gentleskin on the web?</h2>
+    <p>It's only on iPhone for now. Leave your email and I'll write to you if a web version happens.</p>
+    <div class="waitlist-row">
+      <label for="waitlist-email" class="sr-only">Your email</label>
+      <input type="email" id="waitlist-email" required autocomplete="email" placeholder="you@example.com">
+      <button type="submit">Let me know</button>
+    </div>
+  </form>
+
   <h2>Questions</h2>
   <details><summary>How much does Gentleskin cost?</summary>
   <p>The first 7 days are free. After that it's $29.99 a year or $5.99 a month in the US, and prices vary by region. The app reminds you two days before the trial ends. The urge screen works without a subscription.</p></details>
@@ -89,6 +99,19 @@ document.addEventListener("click", function (e) {
   <p>No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report.</p></details>
 </div>
 </main>
+<script>
+// Web waitlist: the email goes to PostHog as web_waitlist
+(function () {
+  var f = document.getElementById("waitlist");
+  f.onsubmit = function (e) {
+    e.preventDefault();
+    var email = document.getElementById("waitlist-email").value.trim();
+    if (!email) return;
+    if (window.posthog) posthog.capture("web_waitlist", { email: email });
+    f.innerHTML = '<h2>Thank you.</h2><p>I\'ll write to you if Gentleskin comes to the web.</p>';
+  };
+})();
+</script>
 
 <footer><div class="wrap">
   <span>Gentleskin is a self-tracking tool, not a medical device. It doesn't diagnose or treat any condition.</span>
