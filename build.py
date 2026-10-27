@@ -18,7 +18,7 @@ SITE = "https://gentleskin.app"
 APP_ID = "6789245158"
 # PostHog: the app's project, public client key (it ships in the app too). Site events have $lib = web.
 POSTHOG_KEY = "phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY"
-UPDATED = "2026-10-19"
+UPDATED = "2026-10-27"
 # Changes with style.css, so browsers never keep an old copy.
 CSS_V = __import__("hashlib").md5(open(os.path.join(ROOT, "style.css"), "rb").read()).hexdigest()[:8]
 
