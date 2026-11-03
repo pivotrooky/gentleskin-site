@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What should Gentleskin build next? | Gentleskin</title>
-<meta name="description" content="Three features for the Gentleskin app, working in your browser. Try each one, then vote for the one you&#x27;d use.">
+<meta name="description" content="Three new ideas for the Gentleskin app, working in your browser: a mirror timer, a skin care log and sounds for the wave. Try each one, then vote for the one you&#x27;d use.">
 <link rel="canonical" href="https://gentleskin.app/next/">
 <meta name="apple-itunes-app" content="app-id=6789245158">
 <meta property="og:title" content="What should Gentleskin build next? | Gentleskin">
-<meta property="og:description" content="Three features for the Gentleskin app, working in your browser. Try each one, then vote for the one you&#x27;d use.">
+<meta property="og:description" content="Three new ideas for the Gentleskin app, working in your browser: a mirror timer, a skin care log and sounds for the wave. Try each one, then vote for the one you&#x27;d use.">
 <meta property="og:image" content="https://gentleskin.app/img/next-og.jpg">
 <meta property="og:url" content="https://gentleskin.app/next/">
 <meta name="twitter:card" content="summary_large_image">
@@ -40,7 +40,7 @@ document.addEventListener("click", function (e) {
   <nav><a href="../guides/">Guides</a><a href="https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web_nav&mt=8">Get the app</a></nav>
 </div></header>
 <style>
-/* /next: three columns, each a feature. Top half is a demo to play with, bottom bar is the vote. */
+/* /next, round two (2026-11): three columns, each a feature. Top half is a demo to play with, bottom bar is the vote. */
 .nx { --track: #F0D9E0; --mute: #BC8F9C; --night1: #1d3b45; --night2: #3c6f6a; --sage-tint: #EEF4EF; }
 .nx-intro { text-align: center; padding: 8px 0 28px; }
 .nx-intro h1 { margin: 0 0 8px; text-wrap: balance; }
@@ -69,37 +69,42 @@ document.addEventListener("click", function (e) {
 .nx button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
 /* demos, styled like the app (rose), so they read as the thing itself */
-.nx-lock { border-radius: 18px; padding: 14px 12px 14px; color: #fff; background: radial-gradient(120% 90% at 20% 0%, #6a8fd8 0, transparent 55%), linear-gradient(160deg, var(--night1), var(--night2) 60%, #8bb3a3); }
-.nx-clock { text-align: center; font: 600 44px/1 var(--sans); opacity: .92; margin: 0 0 14px; }
-.nx-widget { display: grid; gap: 8px; background: rgba(255,255,255,.15); border-radius: 14px; padding: 10px 12px; }
-.nx-wtop { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.nx-wo { font: 800 9px var(--sans); letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.8); }
-.nx-since { font: 26px/1 var(--serif); font-variant-numeric: tabular-nums; }
-.nx-spots { display: flex; gap: 6px; }
-.nx-spots button { flex: 1; border: 0; border-radius: 999px; padding: 8px 0; font: 600 13px var(--sans); background: rgba(255,255,255,.3); color: #fff; cursor: pointer; transition: transform .15s, background .2s; }
-.nx-spots button:active { transform: scale(.94); }
-.nx-spots button.hit { background: rgba(255,255,255,.65); color: #1d3b45; }
-.nx-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--ink); font-size: 15px; }
-.nx-time { display: inline-flex; align-items: center; gap: 4px; }
-.nx-time button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--hair); background: var(--paper); color: var(--rose); font: 600 17px var(--sans); cursor: pointer; }
-.nx-time output { font: 23px var(--serif); text-decoration: underline; text-underline-offset: 5px; min-width: 4.3em; text-align: center; font-variant-numeric: tabular-nums; }
-.nx-days { display: flex; gap: 5px; }
-.nx-days button { flex: 1; max-width: 36px; aspect-ratio: 1; border-radius: 50%; border: 1px solid var(--hair); background: var(--paper); color: var(--sub); font: 600 12px var(--sans); cursor: pointer; padding: 0; }
-.nx-days button[aria-pressed="true"] { background: var(--rose); border-color: var(--rose); color: var(--on-rose); }
-.nx-phone { position: relative; height: 104px; border-radius: 16px; overflow: hidden; background: linear-gradient(160deg, var(--night1), var(--night2)); cursor: pointer; border: 0; width: 100%; padding: 0; }
-.nx-pclock { position: absolute; inset: 12px 0 auto; text-align: center; color: rgba(255,255,255,.9); font: 600 32px/1 var(--sans); }
-.nx-notif { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; gap: 9px; align-items: center; padding: 8px 10px; border-radius: 12px; background: rgba(255,255,255,.88); color: #222; font: 12.5px/1.3 var(--sans); text-align: left; transform: translateY(150%); transition: transform .5s ease; }
-.nx-notif.on { transform: none; }
-.nx-notif img { width: 26px; height: 26px; border-radius: 6px; }
-.nx-notif b { display: block; font-weight: 600; }
-.nx-ctx { display: flex; flex-wrap: wrap; gap: 6px; }
-.nx-ctx button { border: 1px solid var(--hair); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 6px 11px; font: 600 13px var(--sans); cursor: pointer; }
-.nx-ctx button.hit { background: var(--rose); color: var(--on-rose); border-color: var(--rose); }
-.nx-bars { display: grid; gap: 6px; }
-.nx-bar { display: grid; grid-template-columns: 88px 1fr 34px; gap: 8px; align-items: center; font-size: 13px; color: var(--ink); }
-.nx-bar span:last-child { text-align: right; color: var(--sub); font-variant-numeric: tabular-nums; }
-.nx-track { height: 7px; border-radius: 99px; background: var(--track); overflow: hidden; }
-.nx-fill { display: block; height: 100%; border-radius: 99px; background: var(--rose); opacity: .78; transition: width .6s ease; }
+.nx-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.nx-chips button { border: 1px solid var(--hair); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 6px 12px; font: 600 13px var(--sans); cursor: pointer; }
+.nx-chips button[aria-pressed="true"] { background: var(--rose); color: var(--on-rose); border-color: var(--rose); }
+.nx-chips button.hit { background: var(--sage); color: #fff; border-color: var(--sage); }
+.nx-mirror { position: relative; border-radius: 18px; padding: 18px 14px; text-align: center; color: #fff; background: radial-gradient(90% 60% at 50% 0%, #fff3d6 0, transparent 60%), linear-gradient(170deg, #b9c8c4, #7f9a95 70%); overflow: hidden; }
+.nx-mirror.done { background: linear-gradient(170deg, #2b3b3f, #1d2a2d); }
+.nx-mirror .nx-mline { color: #24363a; }
+.nx-mirror.done .nx-mline, .nx-mirror.done .nx-mclock { color: #fff; }
+.nx-mclock { font: 44px/1 var(--serif); font-variant-numeric: tabular-nums; text-shadow: 0 1px 8px rgba(0,0,0,.18); }
+.nx-mline { font: 600 14px/1.4 var(--sans); margin: 8px 0 0; min-height: 2.8em; }
+.nx-mring { height: 6px; border-radius: 99px; background: rgba(255,255,255,.35); overflow: hidden; margin-top: 12px; }
+.nx-mring span { display: block; height: 100%; width: 100%; background: #fff; transition: width .25s linear; }
+.nx-btn { justify-self: start; border: 0; background: var(--rose); color: var(--on-rose); font: 600 14px var(--sans); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.nx-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
+.nx-day { display: grid; gap: 3px; justify-items: center; font: 600 11px var(--sans); color: var(--sub); }
+.nx-col { width: 100%; max-width: 30px; height: 64px; display: flex; flex-direction: column-reverse; gap: 2px; }
+.nx-col i { display: block; height: 8px; border-radius: 3px; }
+.nx-col i.c { background: var(--sage); }
+.nx-col i.p { background: var(--rose); opacity: .7; }
+.nx-day.today { color: var(--ink); }
+.nx-legend { display: flex; gap: 14px; font-size: 13px; color: var(--sub); }
+.nx-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; background: var(--sage); }
+.nx-legend span.p::before { background: var(--rose); opacity: .7; }
+.nx-sea { position: relative; height: 112px; border-radius: 18px; overflow: hidden; background: linear-gradient(#f6e6ea, #f1dde3); }
+.nx-sea canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.nx-sounds button { min-width: 74px; }
+.nx-sounds button.on { background: var(--rose); color: var(--on-rose); border-color: var(--rose); }
+.nx-shipped { max-width: 960px; margin: 34px auto 0; display: grid; gap: 12px; }
+.nx-shipped h2 { font-size: 23px; margin: 0; text-align: center; }
+.nx-shipped > p { margin: 0 auto; text-align: center; max-width: 36em; font-size: 15px; }
+.nx-done { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .nx-done { grid-template-columns: minmax(0, 1fr); max-width: 460px; margin: 0 auto; } }
+.nx-done div { background: var(--card); border: 1px solid var(--hair); border-radius: 18px; padding: 14px 16px; display: grid; gap: 4px; }
+.nx-done b { font: 19px var(--serif); font-weight: 400; color: var(--ink); }
+.nx-done span { font-size: 14px; color: var(--sub); }
+.nx-done .nx-n { color: var(--sage); }
 .nx-thanks { text-align: center; margin: 30px 0 0; color: var(--ink); font: 21px/1.4 var(--serif); }
 .nx-thanks .cta { margin-top: 10px; font-family: var(--sans); }
 .nx-say { max-width: 720px; margin: 22px auto 0; background: var(--card); border: 1px solid var(--hair); border-radius: 22px; padding: 18px; display: grid; gap: 10px; }
@@ -118,50 +123,47 @@ document.addEventListener("click", function (e) {
 <main class="wrap nx">
 <section class="nx-intro">
   <h1>What should I build <em>next?</em></h1>
-  <p>Three new things for Gentleskin. They work right here, so you can see how each would feel.</p>
+  <p>Round two. You picked the first three and they're in the app now. Here are three new ones, working right here, so you can see how each would feel.</p>
   <div class="nx-steps"><span><i>1</i>Try the three</span><span><i>2</i>Vote for the one you'd use</span><span><i>3</i>Tell me anything</span></div>
 </section>
 
 <div class="nx-grid">
-  <article class="nx-card" data-f="lockscreen">
-    <div class="nx-top"><span class="nx-n">Idea 1</span><h2>Log from the <em>Lock Screen</em></h2>
-      <p>One tap on a widget logs it, without unlocking the phone.</p></div>
+  <article class="nx-card" data-f="mirror">
+    <div class="nx-top"><span class="nx-n">Idea 1</span><h2>A <em>mirror</em> timer</h2>
+      <p>Going to the mirror anyway? Give it a few minutes, not the whole night. When time's up, the star tells you to step away.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
-      <div class="nx-lock">
-        <div class="nx-clock">1:45</div>
-        <div class="nx-widget">
-          <div class="nx-wtop"><span class="nx-wo" id="nx-wlabel">Since the last pick</span><span class="nx-since" id="nx-since">8:16</span></div>
-          <div class="nx-spots"><button>Face</button><button>Arms</button><button>Chest</button></div>
-        </div>
-      </div>
-      <p class="nx-hint">Tap Face, Arms or Chest. The clock starts over.</p>
+      <div class="nx-chips" id="nx-mins"></div>
+      <div class="nx-mirror" id="nx-mirror"><div class="nx-mclock" id="nx-mclock">5:00</div>
+        <p class="nx-mline" id="nx-mline">Set the time, then start.</p>
+        <div class="nx-mring"><span id="nx-mbar"></span></div></div>
+      <button class="nx-btn" id="nx-mstart" type="button">Start</button>
+      <p class="nx-hint">Sped up for the demo: a minute goes by in a few seconds.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote">Vote</button></div>
   </article>
 
-  <article class="nx-card" data-f="checkins">
-    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>Check-ins at <em>your</em> time</h2>
-      <p>Choose the hour and the days. The star checks in only then.</p></div>
+  <article class="nx-card" data-f="care">
+    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>Log the <em>care</em>, too</h2>
+      <p>Not only the picks. Log what you did for your skin, and see the care add up next to them.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
-      <div class="nx-row">At <span class="nx-time"><button id="nx-tminus" aria-label="Earlier">−</button><output id="nx-tout">10:30 PM</output><button id="nx-tplus" aria-label="Later">+</button></span></div>
-      <div class="nx-days" id="nx-days"></div>
-      <button class="nx-phone" id="nx-preview" aria-label="Show the check-in"><span class="nx-pclock" id="nx-pclock">10:30</span>
-        <span class="nx-notif" id="nx-notif"><img src="../img/icon-96.png" alt=""><span><b>Gentleskin</b>How are the hands tonight?</span></span></button>
-      <p class="nx-hint">Change the time and days, then tap the phone.</p>
+      <div class="nx-chips" id="nx-care"></div>
+      <div class="nx-week" id="nx-week"></div>
+      <div class="nx-legend"><span>Care</span><span class="p">Picks</span></div>
+      <p class="nx-hint" id="nx-cfoot">Tap what you did today. Sample week.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote">Vote</button></div>
   </article>
 
-  <article class="nx-card" data-f="context">
-    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Note what was <em>going on</em></h2>
-      <p>One optional tap when you log. Over a month you see what comes before it.</p></div>
+  <article class="nx-card" data-f="sounds">
+    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Sounds for <em>the wave</em></h2>
+      <p>When the urge comes and you ride it out, choose something to listen to while it passes.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
-      <div class="nx-ctx" id="nx-ctx"></div>
-      <div class="nx-bars" id="nx-bars"></div>
-      <p class="nx-hint" id="nx-cfoot"></p>
+      <span class="nx-tag">Try it · sound on</span>
+      <div class="nx-sea"><canvas id="nx-sea" width="360" height="112"></canvas></div>
+      <div class="nx-chips nx-sounds" id="nx-sounds"></div>
+      <p class="nx-hint" id="nx-sfoot">Tap one to listen, tap it again to stop.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote">Vote</button></div>
   </article>
@@ -177,62 +179,139 @@ document.addEventListener("click", function (e) {
 
 <p class="nx-thanks" id="nx-thanks" hidden>Thanks for voting. I'll post which one wins.<br>
   <a class="cta" href="https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web_next&mt=8">Get Gentleskin</a></p>
+
+<section class="nx-shipped">
+  <h2>Round one: <em>now in the app</em></h2>
+  <p>You voted on these in October. All three are in Gentleskin today.</p>
+  <div class="nx-done">
+    <div><span class="nx-n">Shipped</span><b>Log from the Lock Screen</b><span>One tap on the widget logs it, without unlocking the phone.</span></div>
+    <div><span class="nx-n">Shipped</span><b>Check-ins at your time</b><span>Choose the hour and the days. The star checks in only then.</span></div>
+    <div><span class="nx-n">Shipped</span><b>Note what was going on</b><span>One optional tap when you log. Over a month you see what comes before it.</span></div>
+  </div>
+</section>
 </main>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var tried = function (f) { if (window.posthog) posthog.capture("next_tried", { feature: f }); };
-
-  // 1 · Lock Screen widget
-  var sec = 8 * 60 + 16, since = $("nx-since"), wlabel = $("nx-wlabel");
-  var fmt = function (s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
-  setInterval(function () { sec++; since.textContent = fmt(sec); }, 1000);
-  document.querySelectorAll(".nx-spots button").forEach(function (b) {
-    b.onclick = function () {
-      sec = 0; since.textContent = fmt(0); wlabel.textContent = "Logged · " + b.textContent;
-      b.classList.add("hit"); setTimeout(function () { b.classList.remove("hit"); }, 400);
-      clearTimeout(b._t); b._t = setTimeout(function () { wlabel.textContent = "Since the last pick"; }, 3500);
-      tried("lockscreen");
-    };
-  });
-
-  // 2 · check-ins
-  var mins = 22 * 60 + 30, notif = $("nx-notif");
-  var show = function () {
-    var h = Math.floor(mins / 60), m = String(mins % 60).padStart(2, "0"), h12 = (h % 12) || 12;
-    $("nx-tout").textContent = h12 + ":" + m + " " + (h < 12 ? "AM" : "PM");
-    $("nx-pclock").textContent = h12 + ":" + m;
-    notif.classList.remove("on");
+  var ROUND = "2026-11";
+  var tried = function (f) { if (window.posthog) posthog.capture("next_tried", { feature: f, round: ROUND }); };
+  var chip = function (box, label, onclick) {
+    var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
   };
-  $("nx-tminus").onclick = function () { mins = (mins + 1410) % 1440; show(); };
-  $("nx-tplus").onclick = function () { mins = (mins + 30) % 1440; show(); };
-  ["S", "M", "T", "W", "T", "F", "S"].forEach(function (d, i) {
-    var b = document.createElement("button"); b.textContent = d;
-    b.setAttribute("aria-pressed", [0, 1, 3, 5].indexOf(i) >= 0);
-    b.onclick = function () { b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") !== "true"); notif.classList.remove("on"); };
-    $("nx-days").append(b);
-  });
-  $("nx-preview").onclick = function () { notif.classList.remove("on"); setTimeout(function () { notif.classList.add("on"); }, 80); tried("checkins"); };
 
-  // 3 · what was going on (a sample month)
-  var counts = { "Stressed": 9, "Bored": 8, "At the mirror": 6, "In bed": 3, "On my phone": 2, "Tired": 2 }, noted = 30;
-  var draw = function () {
-    $("nx-bars").innerHTML = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 4).map(function (k) {
-      var p = Math.round(100 * counts[k] / noted);
-      return '<div class="nx-bar"><span>' + k + '</span><span class="nx-track"><span class="nx-fill" style="width:' + p + '%"></span></span><span>' + p + '%</span></div>';
+  // 1 · mirror timer (a minute runs in 3 s)
+  var total = 300, left = 300, timer = null, SPEED = 20;
+  var mclock = $("nx-mclock"), mline = $("nx-mline"), mbar = $("nx-mbar"), mirror = $("nx-mirror"), mstart = $("nx-mstart");
+  var fmt = function (s) { return Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0"); };
+  var lines = function (k) {
+    if (k > 0.66) return "Checking is fine. Gentle hands.";
+    if (k > 0.33) return "Halfway. Notice your shoulders.";
+    if (k > 0) return "Nearly time. Start to wrap up.";
+    return "Time. Lights off, step out. You did it.";
+  };
+  var paint = function () {
+    mclock.textContent = fmt(left); mbar.style.width = (100 * left / total) + "%";
+  };
+  var stop = function () { clearInterval(timer); timer = null; mstart.textContent = "Start"; };
+  var mins = $("nx-mins"), minBtns = [];
+  [3, 5, 10].forEach(function (m) {
+    var b = chip(mins, m + " min", function () {
+      stop(); total = left = m * 60; mirror.classList.remove("done"); mline.textContent = "Set the time, then start.";
+      minBtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); paint();
+    });
+    b.setAttribute("aria-pressed", m === 5); minBtns.push(b);
+  });
+  mstart.onclick = function () {
+    if (timer) { stop(); return; }
+    if (left <= 0) { left = total; mirror.classList.remove("done"); }
+    tried("mirror"); mstart.textContent = "Stop";
+    mline.textContent = lines(left / total);
+    timer = setInterval(function () {
+      left = Math.max(0, left - SPEED * 0.25); paint(); mline.textContent = lines(left / total);
+      if (left <= 0) { stop(); mirror.classList.add("done"); mstart.textContent = "Again"; }
+    }, 250);
+  };
+  paint();
+
+  // 2 · care log: a sample week, today fills as you tap
+  var week = [["M", 2, 3], ["T", 1, 4], ["W", 3, 1], ["T", 2, 2], ["F", 1, 3], ["S", 3, 1], ["S", 0, 2]];
+  var drawWeek = function () {
+    $("nx-week").innerHTML = week.map(function (d, i) {
+      var cells = ""; for (var c = 0; c < Math.min(d[1], 6); c++) cells += '<i class="c"></i>';
+      for (var p = 0; p < d[2]; p++) cells += '<i class="p"></i>';
+      return '<div class="nx-day' + (i === 6 ? " today" : "") + '"><span class="nx-col">' + cells + "</span>" + (i === 6 ? "Today" : d[0]) + "</div>";
     }).join("");
-    $("nx-cfoot").textContent = "Tap one and watch the month change. Sample data.";
+    var care = week.reduce(function (a, d) { return a + d[1]; }, 0), picks = week.reduce(function (a, d) { return a + d[2]; }, 0);
+    $("nx-cfoot").textContent = "This week: " + care + " times you cared for your skin, " + picks + " picks. Sample week.";
   };
-  Object.keys(counts).forEach(function (k) {
-    var b = document.createElement("button"); b.textContent = k;
-    b.onclick = function () { counts[k] += 2; noted += 2; draw(); b.classList.add("hit"); setTimeout(function () { b.classList.remove("hit"); }, 500); tried("context"); };
-    $("nx-ctx").append(b);
+  ["Moisturiser", "Plaster on", "Washed my face", "Ice", "Left it alone"].forEach(function (k) {
+    chip($("nx-care"), k, function (b) {
+      if (week[6][1] < 6) week[6][1]++; drawWeek(); tried("care");
+      b.classList.add("hit"); setTimeout(function () { b.classList.remove("hit"); }, 450);
+    });
   });
-  draw();
+  drawWeek();
 
-  // Votes: one per visitor, can be moved
+  // 3 · sounds, made in the browser (no files)
+  var ctx = null, playing = null, nodes = [], level = 0;
+  var noise = function (kind) {
+    var n = ctx.sampleRate * 4, buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0), last = 0;
+    for (var i = 0; i < n; i++) {
+      var w = Math.random() * 2 - 1;
+      if (kind === "brown") { last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; } else d[i] = w;
+    }
+    var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true; return src;
+  };
+  var start = function (kind) {
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state === "suspended") ctx.resume();
+    var out = ctx.createGain(); out.gain.value = 0; out.connect(ctx.destination);
+    out.gain.linearRampToValueAtTime(kind === "rain" ? 0.22 : 0.5, ctx.currentTime + 0.8);
+    var src = noise(kind), f = ctx.createBiquadFilter();
+    if (kind === "sea") {
+      f.type = "lowpass"; f.frequency.value = 520;
+      var swell = ctx.createGain(); swell.gain.value = 0.55;
+      var lfo = ctx.createOscillator(), depth = ctx.createGain(); lfo.frequency.value = 0.11; depth.gain.value = 0.45;
+      lfo.connect(depth); depth.connect(swell.gain); lfo.start();
+      src.connect(f); f.connect(swell); swell.connect(out); nodes.push(lfo);
+    } else if (kind === "rain") {
+      f.type = "highpass"; f.frequency.value = 1400; src.connect(f); f.connect(out);
+    } else {
+      f.type = "lowpass"; f.frequency.value = 900; src.connect(f); f.connect(out);
+    }
+    src.start(); nodes.push(src); nodes.out = out;
+  };
+  var stopSound = function () {
+    if (nodes.out) { var o = nodes.out, ns = nodes.slice(); o.gain.cancelScheduledValues(ctx.currentTime); o.gain.setValueAtTime(o.gain.value, ctx.currentTime); o.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+      setTimeout(function () { ns.forEach(function (x) { try { x.stop(); } catch (e) {} }); o.disconnect(); }, 500); }
+    nodes = []; playing = null;
+  };
+  var sbtns = [];
+  [["sea", "The sea"], ["rain", "Rain"], ["brown", "Brown noise"]].forEach(function (s) {
+    var b = chip($("nx-sounds"), s[1], function () {
+      var was = playing; stopSound(); sbtns.forEach(function (x) { x.classList.remove("on"); });
+      if (was !== s[0]) { start(s[0]); playing = s[0]; b.classList.add("on"); tried("sounds"); }
+    });
+    sbtns.push(b);
+  });
+  // the sea, drawn: calm when quiet, a slow swell while a sound plays
+  var cv = $("nx-sea"), g = cv.getContext("2d"), still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var draw = function (t) {
+    level += ((playing ? 1 : 0.35) - level) * 0.02;
+    var W = cv.width, H = cv.height; g.clearRect(0, 0, W, H);
+    [["rgba(134,170,152,.45)", 52, 1.0], ["rgba(116,158,138,.9)", 64, 1.4]].forEach(function (l) {
+      g.beginPath(); g.moveTo(0, H);
+      for (var x = 0; x <= W; x += 6) g.lineTo(x, l[1] + Math.sin(x / 38 + t / 900 * l[2]) * 7 * level + Math.sin(x / 17 + t / 600) * 2);
+      g.lineTo(W, H); g.closePath(); g.fillStyle = l[0]; g.fill();
+    });
+    if (!still) requestAnimationFrame(draw);
+  };
+  requestAnimationFrame(draw);
+
+  // Votes: one per visitor per round, can be moved
+  var KEY = "gs_next_vote_" + ROUND;
   var cards = document.querySelectorAll(".nx-card"), mine = null;
-  try { mine = localStorage.getItem("gs_next_vote"); } catch (e) {}
+  try { mine = localStorage.getItem(KEY); } catch (e) {}
   var mark = function () {
     cards.forEach(function (c) {
       var on = c.dataset.f === mine;
@@ -246,8 +325,8 @@ document.addEventListener("click", function (e) {
     c.querySelector(".nx-vote").onclick = function () {
       if (c.dataset.f === mine) return;
       var before = mine; mine = c.dataset.f;
-      try { localStorage.setItem("gs_next_vote", mine); } catch (e) {}
-      if (window.posthog) posthog.capture("next_vote", { feature: mine, changed_from: before });
+      try { localStorage.setItem(KEY, mine); } catch (e) {}
+      if (window.posthog) posthog.capture("next_vote", { feature: mine, changed_from: before, round: ROUND });
       mark();
     };
   });
@@ -259,7 +338,7 @@ document.addEventListener("click", function (e) {
   say.onsubmit = function (e) {
     e.preventDefault();
     var t = text.value.trim(); if (!t) return;
-    if (window.posthog) posthog.capture("next_feedback", { text: t, vote: mine });
+    if (window.posthog) posthog.capture("next_feedback", { text: t, vote: mine, round: ROUND });
     say.innerHTML = '<p class="nx-sent">Got it. Thank you.</p><button type="button" class="nx-link" id="nx-more">Write another</button>';
     $("nx-more").onclick = function () { location.reload(); };
   };
