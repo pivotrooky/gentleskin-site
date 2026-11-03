@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&family=Castoro:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=78707272">
+<link rel="stylesheet" href="style.css?v=7cb69069">
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag identify alias people.set people.set_once set_config".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 posthog.init("phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY", {api_host: "https://us.i.posthog.com", cookieless_mode: "always", capture_pageview: true, capture_pageleave: true, enable_heatmaps: true, autocapture: true});
@@ -51,25 +51,29 @@ document.addEventListener("click", function (e) {
 
 <div class="wrap">
   <div class="clips">
-    <div class="clip"><p>An urge is a wave.<br>Ride it out.</p><video src="media/01-dunk.mp4" poster="media/01-dunk.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The starfish riding the wave"></video></div>
-    <div class="clip"><p>Something<br>for your hands</p><video src="media/03-pods.mp4" poster="media/03-pods.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Popping kelp pods"></video></div>
-    <div class="clip"><p>A win<br>on your chart</p><video src="media/08-a-win.mp4" poster="media/08-a-win.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A win landing on the Today screen"></video></div>
-    <div class="clip"><p>Watch the<br>pattern appear</p><video src="media/09-the-pattern.mp4" poster="media/09-the-pattern.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The patterns chart drawing itself"></video></div>
-    <div class="clip"><p>A report<br>for your therapist</p><video src="media/10-the-report.mp4" poster="media/10-the-report.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Making the PDF report"></video></div>
+    <div class="clip"><p>Log a pick<br>in seconds</p><video src="media/01-log.mp4" poster="media/01-log.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Logging a pick from the Today screen"></video></div>
+    <div class="clip"><p>An urge is a wave.<br>Ride it out.</p><video src="media/02-urge.mp4" poster="media/02-urge.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The starfish riding the wave"></video></div>
+    <div class="clip"><p>Something<br>for your hands</p><video src="media/03-pop.mp4" poster="media/03-pop.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Popping kelp pods"></video></div>
+    <div class="clip"><p>Didn't pick?<br>That's a win.</p><video src="media/04-passed.mp4" poster="media/04-passed.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Tapping Urge passed on the Today screen"></video></div>
+    <div class="clip"><p>Read any day<br>on your chart</p><video src="media/05-chart.mp4" poster="media/05-chart.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Reading days on the Patterns chart"></video></div>
+    <div class="clip"><p>A report<br>for your therapist</p><video src="media/06-report.mp4" poster="media/06-report.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Making the PDF report"></video></div>
   </div>
 </div>
 
 <div class="wrap">
   <h2>What it does</h2>
   <div class="features">
-    <div class="feature"><h3>Logging</h3><p>Pick the spot and type how many. If you'd rather time it, enter minutes instead, or both. You can add your own spots.</p></div>
+    <div class="feature"><h3>Today</h3><p>Everything fits on one screen. Your body parts are tiles: tap one and type how many. If you'd rather time it, enter minutes instead, or both. Rings fill toward your daily target. The spots you use less sit behind the +, and you can add your own.</p></div>
     <div class="feature"><h3>What was going on</h3><p>When you log, tap what was happening: bored, stressed, tired, at the mirror, on your phone, in bed, or one you add. It can also ask how aware you were. You choose which questions, or none.</p></div>
     <div class="feature"><h3>Urges</h3><p>When you feel the urge, open the wave and keep a finger on the water, or pop kelp pods. You choose how long each one lasts. Each urge you get through shows on your chart. The urge screen is free, with or without a subscription.</p></div>
-    <div class="feature"><h3>Patterns</h3><p>One chart of your week, your month, or everything. You set a daily target and it shows as a line. You see which situations come up most.</p></div>
-    <div class="feature"><h3>Lock Screen</h3><p>One widget shows how long it's been since your last pick. Another logs a pick with one tap, without opening the app.</p></div>
-    <div class="feature"><h3>Therapist report</h3><p>A printable PDF with totals, the chart, body parts, time of day, how aware you were and what was going on, for a week, a month, or since your last session.</p></div>
+    <div class="feature"><h3>What helped</h3><p>When an urge passes, tap what got you through it: a fidget, gloves, leaving the room, breathing, moisturizer, talking to someone, or one you add. Patterns shows what works for you.</p></div>
+    <div class="feature"><h3>Patterns</h3><p>One chart of your week, your month, or everything. Put a finger on it to read any day. Your daily target shows as a line. Under the chart are your days one by one, with a calendar for older ones.</p></div>
+    <div class="feature"><h3>Skin photos</h3><p>If you want, add a photo when you log, or on any day from Patterns, and compare how a spot changes over time. The photos stay on your phone. Off unless you turn it on.</p></div>
+    <div class="feature"><h3>Lock Screen</h3><p>One widget shows how long it's been since your last pick. Another logs a pick with one tap on a part, without opening the app.</p></div>
+    <div class="feature"><h3>Therapist report</h3><p>A printable PDF with totals, the chart, body parts, time of day, how aware you were, what was going on and what helped. Pick a week, a month, three months, everything, or since your last session.</p></div>
   </div>
-  <p>Check-ins are off unless you turn them on. Then they come on the days and at the time you choose.</p>
+  <p>Check-ins are off unless you turn them on. Then they come on the days you choose, each day at its own time.</p>
+  <p>Gentleskin is in English and Spanish.</p>
   <p>There are no streaks. The app remembers your longest time between picks, and a bad day doesn't reset anything.</p>
 
   <h2>Guides</h2>
