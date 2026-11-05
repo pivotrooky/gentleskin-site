@@ -11,3 +11,12 @@ Castoro + Albert Sans).
   Store Connect shows installs from the site.
 - Preview: `python3 -m http.server 8765`.
 - Hosting: GitHub Pages from this repo, custom domain `gentleskin.app` (`CNAME`), DNS at Cloudflare (DNS only, not proxied).
+
+## Instagram scheduler (`ig/`)
+
+`python3 ig/ig.py queue <slug> --at "2026-11-05 21:30" --caption-file cap.txt --images *.png` (or `--video x.mp4 [--cover c.png]`, `--story`).
+GitHub Actions (`.github/workflows/ig.yml`, every 10 min) publishes due posts through the official Instagram API
+(token in the repo secret `IG_TOKEN`). Images are served from `ig/media/` (Disallowed in robots), videos are
+assets of the `ig-media` release; both are removed after posting, and `ig/posted/<slug>.json` keeps the permalink.
+A failed post stays in `ig/queue/` with an `error` field (red run, GitHub emails); delete the field to retry.
+Full usage at the top of `ig/ig.py`.

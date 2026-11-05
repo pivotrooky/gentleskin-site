@@ -1,0 +1,33 @@
+name: Instagram queue
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ig
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Anything due?
+        id: due
+        run: |
+          if ls ig/queue/*.json >/dev/null 2>&1; then echo "any=1" >> "$GITHUB_OUTPUT"; fi
+      - name: Publish due posts
+        if: steps.due.outputs.any == '1'
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "gentleskin-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python3 ig/ig.py run
