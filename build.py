@@ -66,9 +66,29 @@ location.replace("{url}");
 """
 
 
-def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None):
+# Spanish pages (lang: es) get Spanish chrome. `alt:` in a page's header names
+# its counterpart in the other language, for hreflang.
+CHROME = {
+    "en": {"guides": "Guides", "guides_path": "guides/", "get": "Get the app",
+           "foot": "Gentleskin is a self-tracking tool, not a medical device. It doesn't diagnose or treat any condition.",
+           "privacy": "Privacy", "support": "Support"},
+    "es": {"guides": "Guías", "guides_path": "es/guias/", "get": "Descargar la app",
+           "foot": "Gentleskin es una herramienta para registrarte, no un dispositivo médico. No diagnostica ni trata ninguna condición.",
+           "privacy": "Privacidad", "support": "Ayuda"},
+}
+
+
+def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None, lang="en", alt=None):
     up = "../" * depth
     url = SITE + "/" + path
+    c = CHROME[lang]
+    hreflang = ""
+    if alt:
+        alt = alt.strip("/") + "/"
+        en, es = (path, alt) if lang == "en" else (alt, path)
+        hreflang = (f'<link rel="alternate" hreflang="en" href="{SITE}/{en}">\n'
+                    f'<link rel="alternate" hreflang="es" href="{SITE}/{es}">\n'
+                    f'<link rel="alternate" hreflang="x-default" href="{SITE}/{en}">\n')
     ld = [{
         "@context": "https://schema.org", "@type": "MobileApplication",
         "name": "Gentleskin: Skin Picking", "operatingSystem": "iOS",
@@ -81,7 +101,7 @@ def shell(title, description, path, body, depth, kind, image="img/header.jpg", c
         ld.append({
             "@context": "https://schema.org", "@type": "Article", "headline": title,
             "description": description, "dateModified": UPDATED, "mainEntityOfPage": url,
-            "author": {"@type": "Organization", "name": "Gentleskin"},
+            "author": {"@type": "Organization", "name": "Gentleskin"}, "inLanguage": lang,
         })
     faq = re.findall(r"<details><summary>(.*?)</summary>\s*<p>(.*?)</p>", body, re.S)
     if faq:
@@ -91,14 +111,14 @@ def shell(title, description, path, body, depth, kind, image="img/header.jpg", c
             for q, a in faq]})
     body = body.replace("{{store}}", store(ct or ("web" if kind == "home" else "web_guide"))).replace("{{up}}", up)
     return f"""<!doctype html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(description)}">
 <link rel="canonical" href="{url}">
-<meta name="apple-itunes-app" content="app-id={APP_ID}">
+{hreflang}<meta name="apple-itunes-app" content="app-id={APP_ID}">
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:image" content="{SITE}/{image}">
@@ -129,12 +149,12 @@ document.addEventListener("click", function (e) {{
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="{up or './'}"><img src="{up}img/icon.png" alt="">Gentleskin</a>
-  <nav><a href="{up}guides/">Guides</a><a href="{store('web_nav')}">Get the app</a></nav>
+  <nav><a href="{up}{c['guides_path']}">{c['guides']}</a><a href="{store('web_nav')}">{c['get']}</a></nav>
 </div></header>
 {body}
 <footer><div class="wrap">
-  <span>Gentleskin is a self-tracking tool, not a medical device. It doesn't diagnose or treat any condition.</span>
-  <span><a href="https://pivotrooky.github.io/privacy-policies/gentleskin/">Privacy</a> · <a href="https://pivotrooky.github.io/privacy-policies/gentleskin/support/">Support</a></span>
+  <span>{c['foot']}</span>
+  <span><a href="https://pivotrooky.github.io/privacy-policies/gentleskin/">{c['privacy']}</a> · <a href="https://pivotrooky.github.io/privacy-policies/gentleskin/support/">{c['support']}</a></span>
 </div></footer>
 </body>
 </html>
@@ -151,11 +171,13 @@ def main():
         meta = dict(line.split(": ", 1) for line in head.strip().splitlines())
         path = meta["path"].strip("/")
         path = path + "/" if path else ""
-        kind = "home" if not path else ("article" if path.startswith("guides/") and path != "guides/" else "list")
+        is_guide = path.startswith(("guides/", "es/guias/")) and path not in ("guides/", "es/guias/")
+        kind = "home" if not path else ("article" if is_guide else "list")
         out_dir = os.path.join(ROOT, path)
         os.makedirs(out_dir, exist_ok=True)
         page = shell(meta["title"], meta["description"], path, body, path.count("/"), kind,
-                     meta.get("image", "img/header.jpg"), meta.get("ct"))
+                     meta.get("image", "img/header.jpg"), meta.get("ct"),
+                     meta.get("lang", "en"), meta.get("alt"))
         open(os.path.join(out_dir, "index.html"), "w").write(page)
         pages.append((path, meta))
         print("wrote", path or "/")
@@ -180,6 +202,8 @@ def main():
              "- Price: 7-day free trial, then $29.99/year or $5.99/month (US; varies by region)", "",
              "## Guides", ""]
     lines += [f"- [{m['title']}]({SITE}/{p}): {m['description']}" for p, m in pages if p.startswith("guides/") and p != "guides/"]
+    lines += ["", "## Guías en español", ""]
+    lines += [f"- [{m['title']}]({SITE}/{p}): {m['description']}" for p, m in pages if p.startswith("es/guias/") and p != "es/guias/"]
     open(os.path.join(ROOT, "llms.txt"), "w").write("\n".join(lines) + "\n")
 
 
