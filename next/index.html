@@ -88,14 +88,20 @@ document.addEventListener("click", function (e) {
 .nx-key span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
 .nx-key .k1::before { background: var(--sage); } .nx-key .k2::before { background: var(--honey); } .nx-key .k3::before { background: #8fb4c9; }
 .nx-colour { display: grid; justify-items: center; gap: 8px; }
-.nx-colour svg { width: 100%; max-width: 200px; height: auto; cursor: pointer; touch-action: manipulation; }
-.nx-colour svg path, .nx-colour svg circle { stroke: var(--ink); stroke-width: 1.2; transition: fill .2s; }
+.nx-canvas { position: relative; width: 100%; max-width: 280px; aspect-ratio: 1; }
+.nx-canvas canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+#nx-paint { touch-action: none; cursor: crosshair; background: #FFF9FA; border-radius: 50%; }
+#nx-lines { pointer-events: none; }
+.nx-crow { display: flex; gap: 8px; }
+.nx-crow button { font: inherit; font-size: 13.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--hair, #EEDAE0); background: #FFF9FA; color: var(--ink); cursor: pointer; }
+.nx-crow button:disabled { opacity: .45; cursor: default; }
+#nx-keepdraw:not(:disabled) { border-color: var(--rose, #8E4B55); color: var(--rose, #8E4B55); }
 .nx-pal { display: flex; gap: 8px; }
 .nx-pal button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
 .nx-pal button[aria-pressed="true"] { border-color: var(--ink); }
 .nx-pal button.locked { opacity: .35; cursor: default; }
 .nx-gallery { display: flex; gap: 6px; flex-wrap: wrap; min-height: 34px; }
-.nx-gallery i { width: 34px; height: 34px; border-radius: 50%; display: block; }
+.nx-gallery img { width: 40px; height: 40px; border-radius: 50%; display: block; border: 1px solid var(--hair, #EEDAE0); }
 .nx-note { width: 100%; min-height: 96px; resize: vertical; border: 1px solid var(--hair); border-radius: 14px; padding: 10px 12px; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); box-sizing: border-box; }
 .nx-kept { display: grid; gap: 6px; }
 .nx-kept div { background: var(--paper); border: 1px solid var(--hair); border-radius: 12px; padding: 8px 10px; font-size: 14px; }
@@ -169,27 +175,28 @@ document.addEventListener("click", function (e) {
 
   <article class="nx-card" data-f="calendar">
     <div class="nx-top"><span class="nx-n">Idea 2</span><h2>A calendar of <em>progress</em></h2>
-      <p>Not just days without picking. Noticing and stopping counts, and so does trying something else.</p></div>
+      <p>Not just days without picking. Noticing and stopping counts, and so does an urge you rode out. It fills itself from what you already log, with nothing extra to answer each day.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
       <div class="nx-chips" id="nx-marks"></div>
       <div class="nx-cal" id="nx-cal"></div>
-      <div class="nx-key"><span class="k1">Didn't pick</span><span class="k2">Noticed and stopped</span><span class="k3">Tried something else</span></div>
+      <div class="nx-key"><span class="k1">Didn't pick</span><span class="k2">Noticed and stopped</span><span class="k3">Rode out an urge</span></div>
       <p class="nx-hint" id="nx-calfoot">Mark today. The rest is a sample fortnight.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="colour">
-    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Colour it in, <em>tap tap tap</em></h2>
-      <p>When the urge comes, give your hands a drawing to fill. Each one you finish is kept in a gallery, and new colours open up as you go.</p></div>
+    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Colour it in, <em>with your finger</em></h2>
+      <p>When the urge comes, give your hands a drawing to colour. Your finger is the crayon and the colour stays inside the lines. Each one you keep goes in a gallery, and new colours open up as you go.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
       <div class="nx-colour">
-        <svg id="nx-mandala" viewBox="-100 -100 200 200" role="img" aria-label="A drawing to colour in, tap each part"></svg>
+        <div class="nx-canvas"><canvas id="nx-paint" aria-label="A drawing to colour in with your finger or mouse"></canvas><canvas id="nx-lines" aria-hidden="true"></canvas></div>
         <div class="nx-pal" id="nx-pal"></div>
+        <div class="nx-crow"><button type="button" id="nx-keepdraw" disabled>Keep it</button><button type="button" id="nx-cleardraw">Start over</button></div>
       </div>
-      <p class="nx-hint" id="nx-cfoot">Tap the parts to fill them.</p>
+      <p class="nx-hint" id="nx-cfoot">Colour with your finger. It stays inside the lines.</p>
       <div class="nx-gallery" id="nx-gallery" aria-label="Your gallery"></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
@@ -306,10 +313,10 @@ document.addEventListener("click", function (e) {
       return '<span class="' + d + (i === days.length - 1 ? " today" : "") + '">' + (i === days.length - 1 ? "Today" : i + 1) + "</span>";
     }).join("");
     var n = function (k) { return days.filter(function (d) { return d === k; }).length; };
-    $("nx-calfoot").textContent = "These two weeks: " + n("clear") + " days without picking, " + n("noticed") + " times you noticed and stopped, " + n("tried") + " times you tried something else.";
+    $("nx-calfoot").textContent = "These two weeks: " + n("clear") + " days without picking, " + n("noticed") + " times you noticed and stopped, " + n("tried") + " urges ridden out. In the app this fills in from your logs; here, tap to mark today.";
   };
   var mbtns = [];
-  [["clear", "Didn't pick today"], ["noticed", "Noticed and stopped"], ["tried", "Tried something else"]].forEach(function (m) {
+  [["clear", "Didn't pick today"], ["noticed", "Noticed and stopped"], ["tried", "Rode out an urge"]].forEach(function (m) {
     var b = chip($("nx-marks"), m[1], function () {
       days[days.length - 1] = days[days.length - 1] === m[0] ? "" : m[0];
       mbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b && days[days.length - 1] === m[0]); });
@@ -319,46 +326,113 @@ document.addEventListener("click", function (e) {
   });
   drawCal();
 
-  // 3 · colouring: a simple mandala of petals; fill every part to keep it
-  var NS = "http://www.w3.org/2000/svg", svg = $("nx-mandala");
+  // 3 · colouring: a mandala coloured with a finger. A stroke stays inside
+  // the part it started in (a colouring book's lines), drawn as a soft crayon.
   var COLOURS = ["#E3A0AA", "#9FC4B4", "#E9C468", "#8fb4c9", "#B49AD4", "#F0A97C"];
-  var unlocked = 3, current = COLOURS[0], parts = [], done = 0;
+  var unlocked = 3, current = COLOURS[0], done = 0, painted = false;
+  var cnv = $("nx-paint"), cl_lines = $("nx-lines"), pc = cnv.getContext("2d"), lc = cl_lines.getContext("2d");
+  var SIZE = 560; // drawing units: the mandala lives in -100..100, scaled by SIZE/200
+  cnv.width = cl_lines.width = SIZE; cnv.height = cl_lines.height = SIZE;
+  var K = SIZE / 200;
   var petal = function (r1, r2, w, a) {
-    var t = a * Math.PI / 180, c = Math.cos(t), s = Math.sin(t);
-    var pt = function (x, y) { return (x * c - y * s).toFixed(1) + " " + (x * s + y * c).toFixed(1); };
-    return "M " + pt(r1, 0) + " Q " + pt((r1 + r2) / 2, w) + " " + pt(r2, 0) + " Q " + pt((r1 + r2) / 2, -w) + " " + pt(r1, 0) + " Z";
+    var cl_t = a * Math.PI / 180, c = Math.cos(cl_t), cl_s = Math.sin(cl_t), p = new Path2D();
+    var pt = function (x, y) { return [(x * c - y * cl_s + 100) * K, (x * cl_s + y * c + 100) * K]; };
+    var m = (r1 + r2) / 2, A = pt(r1, 0), B = pt(m, w), C = pt(r2, 0), D = pt(m, -w);
+    p.moveTo(A[0], A[1]); p.quadraticCurveTo(B[0], B[1], C[0], C[1]); p.quadraticCurveTo(D[0], D[1], A[0], A[1]); p.closePath();
+    return p;
   };
-  var build = function () {
-    svg.innerHTML = ""; parts = [];
-    var add = function (el) { el.setAttribute("fill", "#FFF9FA"); svg.append(el); parts.push(el); el.addEventListener("click", function () { el.setAttribute("fill", current); el.dataset.filled = "1"; tried("colour"); check(); }); };
-    for (var i = 0; i < 8; i++) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", petal(48, 96, 22, i * 45)); add(p); }
-    for (var j = 0; j < 8; j++) { var q = document.createElementNS(NS, "path"); q.setAttribute("d", petal(16, 58, 13, j * 45 + 22.5)); add(q); }
-    var c = document.createElementNS(NS, "circle"); c.setAttribute("r", 16); add(c);
+  var circle = function (cl_r) { var p = new Path2D(); p.arc(100 * K, 100 * K, cl_r * K, 0, Math.PI * 2); return p; };
+  // Parts, bottom to top: the ring behind everything, big petals, small petals, the centre.
+  var parts = [circle(98)];
+  for (var cl_i = 0; cl_i < 8; cl_i++) parts.push(petal(48, 96, 22, cl_i * 45));
+  for (var j = 0; j < 8; j++) parts.push(petal(16, 58, 13, j * 45 + 22.5));
+  parts.push(circle(16));
+  var drawLines = function () {
+    lc.clearRect(0, 0, SIZE, SIZE);
+    lc.strokeStyle = "#3E2B29"; lc.lineWidth = 2.6; lc.lineJoin = "round";
+    parts.forEach(function (p) { lc.stroke(p); });
   };
+  var partAt = function (x, y) {
+    for (var k = parts.length - 1; k >= 0; k--) if (pc.isPointInPath(parts[k], x, y)) return k;
+    return -1;
+  };
+  var at = function (e) {
+    var cl_r = cnv.getBoundingClientRect();
+    return [(e.clientX - cl_r.left) * SIZE / cl_r.width, (e.clientY - cl_r.top) * SIZE / cl_r.height];
+  };
+  var stroke = null;
+  // One stroke colours one part: clipped to it, and the parts drawn on top
+  // of it are put back from a copy taken when the finger went down.
+  var dab = function (from, to) {
+    pc.save();
+    pc.clip(parts[stroke.part]);
+    pc.strokeStyle = current; pc.lineCap = "round"; pc.lineJoin = "round";
+    pc.globalAlpha = 0.55; pc.lineWidth = 30;
+    pc.beginPath(); pc.moveTo(from[0], from[1]); pc.lineTo(to[0], to[1]); pc.stroke();
+    // A few thin grains across the stroke: crayon, not a marker.
+    pc.globalAlpha = 0.35; pc.lineWidth = 3;
+    for (var cl_g = -12; cl_g <= 12; cl_g += 6) {
+      pc.beginPath(); pc.moveTo(from[0] + cl_g * 0.4, from[1] + cl_g); pc.lineTo(to[0] + cl_g * 0.4, to[1] + cl_g); pc.stroke();
+    }
+    pc.restore();
+    if (stroke.above) {
+      pc.save(); pc.clip(stroke.above); pc.clearRect(0, 0, SIZE, SIZE); pc.drawImage(stroke.copy, 0, 0); pc.restore();
+    }
+  };
+  cnv.addEventListener("pointerdown", function (e) {
+    var p = at(e), k = partAt(p[0], p[1]);
+    if (k < 0) return;
+    cnv.setPointerCapture(e.pointerId);
+    var above = null, copy = null;
+    if (k < parts.length - 1) {
+      above = new Path2D();
+      for (var u = k + 1; u < parts.length; u++) above.addPath(parts[u]);
+      copy = document.createElement("canvas"); copy.width = copy.height = SIZE;
+      copy.getContext("2d").drawImage(cnv, 0, 0);
+    }
+    stroke = { part: k, last: p, above: above, copy: copy };
+    dab(p, [p[0] + 0.1, p[1] + 0.1]);
+  });
+  cnv.addEventListener("pointermove", function (e) {
+    if (!stroke) return;
+    var p = at(e); dab(stroke.last, p); stroke.last = p;
+  });
+  var end = function () {
+    if (!stroke) return;
+    stroke = null; painted = true; $("nx-keepdraw").disabled = false; tried("colour");
+  };
+  cnv.addEventListener("pointerup", end);
+  cnv.addEventListener("pointercancel", end);
   var drawPal = function () {
     $("nx-pal").innerHTML = "";
-    COLOURS.forEach(function (col, i) {
-      var b = document.createElement("button"); b.type = "button"; b.style.background = col;
-      b.setAttribute("aria-label", i < unlocked ? "Colour " + (i + 1) : "Locked colour");
-      if (i >= unlocked) b.classList.add("locked");
-      b.setAttribute("aria-pressed", col === current);
-      b.onclick = function () { if (i >= unlocked) return; current = col; drawPal(); };
-      $("nx-pal").append(b);
+    COLOURS.forEach(function (col, cl_i) {
+      var cl_b = document.createElement("button"); cl_b.type = "button"; cl_b.style.background = col;
+      cl_b.setAttribute("aria-label", cl_i < unlocked ? "Colour " + (cl_i + 1) : "Locked colour");
+      if (cl_i >= unlocked) cl_b.classList.add("locked");
+      cl_b.setAttribute("aria-pressed", col === current);
+      cl_b.onclick = function () { if (cl_i >= unlocked) return; current = col; drawPal(); };
+      $("nx-pal").append(cl_b);
     });
   };
-  var check = function () {
-    var left = parts.filter(function (p) { return !p.dataset.filled; }).length;
-    if (left > 0) { $("nx-cfoot").textContent = left + " parts left."; return; }
+  var fresh = function () { pc.clearRect(0, 0, SIZE, SIZE); painted = false; $("nx-keepdraw").disabled = true; };
+  $("nx-cleardraw").onclick = fresh;
+  $("nx-keepdraw").onclick = function () {
+    if (!painted) return;
+    var cl_out = document.createElement("canvas"); cl_out.width = cl_out.height = 120;
+    var oc = cl_out.getContext("2d");
+    oc.fillStyle = "#FFF9FA"; oc.beginPath(); oc.arc(60, 60, 60, 0, Math.PI * 2); oc.fill();
+    oc.drawImage(cnv, 0, 0, 120, 120); oc.drawImage(cl_lines, 0, 0, 120, 120);
+    var img = document.createElement("img"); img.src = cl_out.toDataURL(); img.alt = "A drawing you coloured";
+    $("nx-gallery").append(img);
     done++;
-    var thumb = document.createElement("i"); thumb.style.background = "conic-gradient(" + parts.slice(0, 8).map(function (p, k) { return p.getAttribute("fill") + " " + (k * 12.5) + "% " + ((k + 1) * 12.5) + "%"; }).join(",") + ")";
-    $("nx-gallery").append(thumb);
     var msg = "Kept in your gallery.";
     if (done % 2 === 0 && unlocked < COLOURS.length) { unlocked++; msg += " A new colour opened up."; drawPal(); }
     else if (unlocked < COLOURS.length) msg += " One more for a new colour.";
     $("nx-cfoot").textContent = msg + " Here's a fresh one.";
-    setTimeout(build, 900);
+    if (window.posthog) posthog.capture("next_colour_kept", { round: ROUND, n: done });
+    fresh();
   };
-  build(); drawPal();
+  drawLines(); drawPal();
 
   // 4 · notebook (stays on the page)
   var note = $("nx-note"), keep = $("nx-keep");
