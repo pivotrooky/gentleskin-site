@@ -78,12 +78,6 @@ document.addEventListener("click", function (e) {
 .nx-chips button.hit { background: var(--sage); color: #fff; border-color: var(--sage); }
 .nx-label { font: 700 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--sub); margin: 2px 0 0; }
 .nx-tip { background: var(--paper); border: 1px solid var(--hair); border-radius: 16px; padding: 12px 14px; font: 17px/1.45 var(--serif); font-style: italic; color: var(--ink); min-height: 3.2em; }
-.nx-feels { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
-.nx-feels button { border: 1px solid var(--hair); background: var(--paper); border-radius: 16px; padding: 6px 4px 7px; display: grid; justify-items: center; gap: 2px; cursor: pointer; font: 600 12px/1.2 var(--sans); color: var(--ink); }
-.nx-feels button svg { width: 62px; height: 62px; display: block; }
-.nx-feels button[aria-pressed="true"] { background: #fff; border-color: var(--rose); box-shadow: inset 0 0 0 1px var(--rose); color: var(--rose); }
-.nx-tipbox { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center; }
-.nx-tipbox svg { width: 64px; height: 64px; }
 .nx-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; text-align: center; font: 700 10px var(--sans); letter-spacing: .12em; color: var(--mute); }
 .nx-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
 .nx-cal button, .nx-cal i { aspect-ratio: 1; border-radius: 10px; }
@@ -172,7 +166,7 @@ document.addEventListener("click", function (e) {
 <main class="wrap nx">
 <section class="nx-intro">
   <h1>What should I build <em>next?</em></h1>
-  <p>Round three. These six came from people who pick, answering a community form. Each one works right here, so you can feel it before you vote.</p>
+  <p>Six ideas from people who pick. Each one works here.</p>
   <div class="nx-steps"><span><i>1</i>Try them</span><span><i>2</i>Vote for up to two</span><span><i>3</i>Tell me anything</span></div>
 </section>
 <p class="nx-left" id="nx-left">You have 2 votes.</p>
@@ -180,27 +174,25 @@ document.addEventListener("click", function (e) {
 <div class="nx-grid">
   <article class="nx-card" data-f="feelings">
     <div class="nx-top"><span class="nx-n">Idea 1</span><h2>How you <em>felt</em>, and what helps</h2>
-      <p>Tap how you felt before or after, as one of the star's faces, and get one small thing to try for that feeling.</p></div>
+      <p>Tap what you felt. Get one thing to try.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
-      <p class="nx-label">Before</p><div class="nx-feels" id="nx-before"></div>
-      <p class="nx-label">After</p><div class="nx-feels" id="nx-after"></div>
-      <div class="nx-tip nx-tipbox" id="nx-tipbox"><span id="nx-tipface"></span><span id="nx-tip">Tap a face.</span></div>
+      <p class="nx-label">Before</p><div class="nx-chips" id="nx-before"></div>
+      <p class="nx-label">After</p><div class="nx-chips" id="nx-after"></div>
+      <div class="nx-tip" id="nx-tip">Tap a feeling.</div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="calendar">
     <div class="nx-top"><span class="nx-n">Idea 2</span><h2>A calendar of <em>progress</em></h2>
-      <p>Each day gets a colour from what you already log. Not only days without picking: a pick you stopped partway counts, and so does an urge you rode out. Nothing extra to answer.</p></div>
+      <p>Each day takes its colour from what you log. Stopping partway counts, and so does an urge you rode out.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
       <p class="nx-sum" id="nx-calsum"></p>
       <div class="nx-week"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
       <div class="nx-cal" id="nx-cal"></div>
       <div class="nx-key" id="nx-key"></div>
       <div class="nx-why" id="nx-why"></div>
-      <p class="nx-label">Log something today and watch today change</p>
+      <p class="nx-label">Log today</p>
       <div class="nx-chips" id="nx-marks"></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
@@ -208,15 +200,14 @@ document.addEventListener("click", function (e) {
 
   <article class="nx-card" data-f="colour">
     <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Colour it in, <em>with your finger</em></h2>
-      <p>When the urge comes, give your hands a drawing to colour. Your finger is the crayon and the colour stays inside the lines. Each one you keep goes in a gallery, and new colours open up as you go.</p></div>
+      <p>Something for your hands when the urge comes. Keep the ones you like; new colours open up.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
       <div class="nx-colour">
         <div class="nx-canvas"><canvas id="nx-paint" aria-label="A drawing to colour in with your finger or mouse"></canvas><canvas id="nx-lines" aria-hidden="true"></canvas></div>
         <div class="nx-pal" id="nx-pal"></div>
         <div class="nx-crow"><button type="button" id="nx-keepdraw" disabled>Keep it</button><button type="button" id="nx-cleardraw">Start over</button></div>
       </div>
-      <p class="nx-hint" id="nx-cfoot">Colour with your finger. It stays inside the lines.</p>
+      <p class="nx-hint" id="nx-cfoot"></p>
       <div class="nx-gallery" id="nx-gallery" aria-label="Your gallery"></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
@@ -224,53 +215,48 @@ document.addEventListener("click", function (e) {
 
   <article class="nx-card" data-f="notebook">
     <div class="nx-top"><span class="nx-n">Idea 4</span><h2>A <em>notebook</em> to write it out</h2>
-      <p>When the urge feels like a rush of energy or a thought that won't stop, put it somewhere. Two lines is enough.</p></div>
+      <p>When the urge is a thought that won't stop, write it out. Two lines is enough.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
       <textarea class="nx-note" id="nx-note" maxlength="400" placeholder="What's on your mind?" aria-label="Write a note"></textarea>
       <button class="nx-btn" id="nx-keep" type="button" disabled>Keep it</button>
       <div class="nx-kept" id="nx-kept"></div>
-      <p class="nx-hint">Only on this page; nothing you write here is sent anywhere. In the app it would stay on your phone.</p>
+      <p class="nx-hint">Nothing here is sent anywhere.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="selfcare">
     <div class="nx-top"><span class="nx-n">Idea 5</span><h2>Self-care <em>checks</em></h2>
-      <p>Your own small daily checks next to the picks: skincare morning and night, water, a plaster on. Only the ones you add.</p></div>
+      <p>Your own daily checks next to the picks: skincare, water, a plaster.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
       <div class="nx-checks" id="nx-checks"></div>
-      <p class="nx-hint" id="nx-sfoot">Tap to tick. The water one counts glasses.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="mirror">
     <div class="nx-top"><span class="nx-n">Idea 6</span><h2>A <em>mirror</em> timer</h2>
-      <p>Going to the mirror anyway? Give it a few minutes, not the whole night. When time's up, the star tells you to step away.</p></div>
+      <p>A few minutes at the mirror, not the whole night. Then the star tells you to step away.</p></div>
     <div class="nx-play">
-      <span class="nx-tag">Try it</span>
       <div class="nx-chips" id="nx-mins"></div>
       <div class="nx-mirror" id="nx-mirror"><div class="nx-mclock" id="nx-mclock">5:00</div>
-        <p class="nx-mline" id="nx-mline">Set the time, then start.</p>
+        <p class="nx-mline" id="nx-mline"></p>
         <div class="nx-mring"><span id="nx-mbar"></span></div></div>
       <button class="nx-btn" id="nx-mstart" type="button">Start</button>
-      <p class="nx-hint">Sped up for the demo: a minute goes by in a few seconds.</p>
+      <p class="nx-hint">Sped up for the demo.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 </div>
 
-<p class="nx-thanks" id="nx-thanks" hidden>Thanks for voting. I'll post which ones win.<br>
+<p class="nx-thanks" id="nx-thanks" hidden>Thanks. I'll post which ones win.<br>
   <a class="cta" href="https://apps.apple.com/app/apple-store/id6789245158?pt=668857691&ct=web_next&mt=8">Get Gentleskin</a></p>
 
 <form class="nx-say" id="nx-say">
   <h2>Anything else?</h2>
-  <p>What would make Gentleskin more useful to you? Something missing, something that bugs you, an idea of your own. I read every one.</p>
-  <label for="nx-text" class="nx-n">Your message</label>
-  <textarea id="nx-text" maxlength="2000" placeholder="Write anything"></textarea>
-  <div class="nx-say-row"><small>Anonymous. No name or email needed.</small><button class="nx-send" id="nx-send" disabled>Send</button></div>
+  <p>Something missing, something that bugs you. I read every one.</p>
+  <textarea id="nx-text" maxlength="2000" placeholder="Write anything" aria-label="Your message"></textarea>
+  <div class="nx-say-row"><small>Anonymous.</small><button class="nx-send" id="nx-send" disabled>Send</button></div>
 </form>
 
 <section class="nx-section">
@@ -297,80 +283,25 @@ document.addEventListener("click", function (e) {
     var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
   };
 
-  // The star, drawn as in the app (Mascot.swift, MascotArt): the seed-909
-  // body in 140-space and the face for a mood. Only the face changes.
-  var STAR_D = (function () {
-    var x = 909, rnd = function () { x = (Math.imul(x, 1664525) + 1013904223) >>> 0; return x / 4294967296; };
-    var c = 70, outer = 63, inner = 49, spin = rnd() * Math.PI * 2, pts = [];
-    for (var i = 0; i < 5; i++) {
-      var at = spin + i * 2 * Math.PI / 5, av = at + Math.PI / 5;
-      var oj = outer * (0.95 + rnd() * 0.1), ij = inner * (0.92 + rnd() * 0.16);
-      pts.push([c + Math.cos(at) * oj, c + Math.sin(at) * oj], [c + Math.cos(av) * ij, c + Math.sin(av) * ij]);
-    }
-    var m = pts.length, f = function (v) { return v.toFixed(2); }, d = "M" + f(pts[0][0]) + " " + f(pts[0][1]);
-    for (var k = 0; k < m; k++) {
-      var p0 = pts[(k - 1 + m) % m], p1 = pts[k], p2 = pts[(k + 1) % m], p3 = pts[(k + 2) % m];
-      d += "C" + f(p1[0] + (p2[0] - p0[0]) / 6) + " " + f(p1[1] + (p2[1] - p0[1]) / 6) + " " + f(p2[0] - (p3[0] - p1[0]) / 6) + " " + f(p2[1] - (p3[1] - p1[1]) / 6) + " " + f(p2[0]) + " " + f(p2[1]);
-    }
-    return d + "Z";
-  })();
-  var INK = "#4A2E22", LIGHT = "#FFF6F4";
-  var dot = function (x, y, r, col) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + col + '"/>'; };
-  var ln = function (d, w) { return '<path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="' + w + '" stroke-linecap="round"/>'; };
-  var dotEyes = function () { return dot(57, 65, 3.9, INK) + dot(58.3, 63.6, 1.05, LIGHT) + dot(83, 65, 3.9, INK) + dot(84.3, 63.6, 1.05, LIGHT); };
-  var glossy = function (y, r, two) {
-    return [57, 83].map(function (x) { return dot(x, y, r, INK) + dot(x + 2.2, y - 2.1, 2.1, LIGHT) + (two ? dot(x - 1.4, y + 2.1, 1, LIGHT) : ""); }).join("");
-  };
-  var FACES = {
-    calm: function () { return dotEyes() + ln("M59 78.5Q70 81 81 78.5", 3.6); },
-    happy: function () { return ln("M51 66Q57 59 63 66M77 66Q83 59 89 66", 3.4) + ln("M58 77Q70 89 82 77", 3.6); },
-    concerned: function () { return glossy(64.5, 6.2, true) + ln("M64 79.5Q70 84 76 79.5", 3.2); },
-    sleepy: function () { return ln("M51 65Q57 70 63 65M77 65Q83 70 89 65", 3.4) + ln("M63 79Q70 84 77 79", 3.2); },
-    anxious: function () { return glossy(64, 6.4, false) + ln("M64 80Q67 82.4 70 80Q73 77.6 76 80", 3); },
-    startled: function () { return glossy(64, 6.8, false) + '<ellipse cx="70" cy="81.3" rx="3.4" ry="4.3" fill="' + INK + '"/>'; },
-    worried: function () { return dotEyes() + ln("M62 81.2Q70 78.4 78 81.2", 3.2); },
-    tense: function () { return dotEyes() + ln("M65 79.6Q70 79.2 75 79.6", 3.6); },
-    sheepish: function () { return dotEyes() + ln("M64.5 80Q67.2 81.6 70 80Q72.8 78.4 75.5 80", 3); }
-  };
-  var starN = 0;
-  var star = function (mood) {
-    var id = "nxs" + (starN++);
-    return '<svg viewBox="5 5 130 130" aria-hidden="true"><defs><radialGradient id="' + id + '" cx="50" cy="44" r="96" gradientUnits="userSpaceOnUse">' +
-      '<stop offset="0" stop-color="#E8AA9A"/><stop offset=".5" stop-color="#DE8E7C"/><stop offset="1" stop-color="#D27E6A"/></radialGradient>' +
-      '<radialGradient id="' + id + 'b"><stop offset="0" stop-color="#C4643F" stop-opacity=".3"/><stop offset="1" stop-color="#C4643F" stop-opacity="0"/></radialGradient></defs>' +
-      '<path d="' + STAR_D + '" fill="url(#' + id + ')" stroke="#C06B54" stroke-width="2"/>' +
-      '<path d="' + STAR_D + '" transform="translate(15.4 15.4) scale(.78)" fill="#fff" fill-opacity=".12"/>' +
-      '<ellipse cx="45" cy="43" rx="8" ry="3" transform="rotate(-38 45 43)" fill="#fff" fill-opacity=".38"/>' +
-      '<circle cx="47" cy="76" r="7.5" fill="url(#' + id + 'b)"/><circle cx="93" cy="76" r="7.5" fill="url(#' + id + 'b)"/>' +
-      FACES[mood]() + "</svg>";
-  };
-
-  // 1 · feelings, each one of the star's faces, and a tip for each
-  var FEEL = {
-    "Anxious": ["anxious", "Breathe out longer than you breathe in. Three times, then decide."],
-    "Bored": ["sleepy", "Give your hands a job for two minutes: a fidget, a pen, an ice cube."],
-    "Frustrated": ["tense", "Make a tight fist for ten seconds, then let it go. Twice."],
-    "Tense": ["worried", "Drop your shoulders and unclench your jaw. Notice where your hands are."],
-    "Restless": ["startled", "Stand up and walk to another room. The urge often stays behind."],
-    "Guilty": ["sheepish", "One pick doesn't undo the good days. Wash it, cover it, leave it."],
-    "Relieved": ["happy", "Notice what led here. Next time you can catch it a little earlier."],
-    "Angry at myself": ["concerned", "Talk to yourself the way you'd talk to a friend who picks."],
-    "Calm": ["calm", "Good. What helped? Remember it for next time."]
+  // 1 · feelings and a tip for each
+  var TIPS = {
+    "Anxious": "Breathe out longer than you breathe in. Three times, then decide.",
+    "Bored": "Give your hands a job for two minutes: a fidget, a pen, an ice cube.",
+    "Frustrated": "Make a tight fist for ten seconds, then let it go. Twice.",
+    "Tense": "Drop your shoulders and unclench your jaw. Notice where your hands are.",
+    "Restless": "Stand up and walk to another room. The urge often stays behind.",
+    "Guilty": "One pick doesn't undo the good days. Wash it, cover it, leave it.",
+    "Relieved": "Notice what led here. Next time you can catch it a little earlier.",
+    "Angry at myself": "Talk to yourself the way you'd talk to a friend who picks.",
+    "Calm": "Good. What helped? Remember it for next time."
   };
   var fbtns = [];
-  var face = function (box, k) {
-    var b = document.createElement("button"); b.type = "button";
-    b.innerHTML = star(FEEL[k][0]) + "<span>" + k + "</span>";
-    b.onclick = function () {
-      fbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-      $("nx-tipface").innerHTML = star(FEEL[k][0]);
-      $("nx-tip").textContent = FEEL[k][1]; tried("feelings");
-    };
-    box.append(b); fbtns.push(b);
+  var pickFeeling = function (b, k) {
+    fbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+    $("nx-tip").textContent = TIPS[k]; tried("feelings");
   };
-  ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { face($("nx-before"), k); });
-  ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { face($("nx-after"), k); });
-  $("nx-tipface").innerHTML = star("calm");
+  ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { fbtns.push(chip($("nx-before"), k, function (x) { pickFeeling(x, k); })); });
+  ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { fbtns.push(chip($("nx-after"), k, function (x) { pickFeeling(x, k); })); });
 
   // 2 · calendar: the last two weeks, ending today. Each day's colour comes
   // from its log; tap a day to see which log gave it. Today starts empty and
@@ -396,12 +327,12 @@ document.addEventListener("click", function (e) {
   };
   var why = function (i) {
     var l = LOGS[i], k = kind(l), bits = [];
-    if (i === TODAY && !l.picks && !l.stopped && !l.urges) return "Nothing logged yet today, so it counts as no picks so far. Log something below.";
-    if (k === "clear") return "No picks logged that day.";
-    if (l.urges) bits.push((l.urges === 1 ? "An urge" : l.urges + " urges") + " passed: you tapped Urge passed or rode the wave.");
-    if (l.stopped) bits.push("You logged a pick and answered " + '"I stopped partway".');
+    if (i === TODAY && !l.picks && !l.stopped && !l.urges) return "Nothing logged yet.";
+    if (k === "clear") return "No picks.";
+    if (l.urges) bits.push((l.urges === 1 ? "An urge" : l.urges + " urges") + " passed.");
+    if (l.stopped) bits.push("A pick stopped partway.");
     var other = (l.picks || 0) - (l.stopped || 0);
-    if (other > 0) bits.push((l.stopped ? "And " : "") + other + (other === 1 ? " pick" : " picks") + " logged" + (l.stopped ? " besides." : "."));
+    if (other > 0) bits.push(other + (other === 1 ? " pick." : " picks."));
     return bits.join(" ");
   };
   var sel = TODAY;
@@ -416,14 +347,14 @@ document.addEventListener("click", function (e) {
     });
     $("nx-cal").innerHTML = html;
     var n = function (k) { return LOGS.filter(function (l) { return kind(l) === k; }).length; };
-    $("nx-calsum").textContent = (n("clear") + n("noticed") + n("tried")) + " of the last 14 days were progress.";
+    $("nx-calsum").textContent = (n("clear") + n("noticed") + n("tried")) + " of 14 days count as progress.";
     $("nx-why").innerHTML = "<b>" + dayName(sel) + "</b>" + why(sel);
   };
   $("nx-cal").onclick = function (e) {
     var b = e.target.closest("button"); if (!b) return;
     sel = +b.dataset.i; drawCal(); tried("calendar");
   };
-  [["picks", "Log a pick"], ["stopped", "A pick I stopped partway"], ["urges", "Urge passed"], ["reset", "Clear today"]].forEach(function (m) {
+  [["picks", "A pick"], ["stopped", "Stopped partway"], ["urges", "Urge passed"], ["reset", "Clear"]].forEach(function (m) {
     chip($("nx-marks"), m[1], function () {
       var t = LOGS[TODAY];
       if (m[0] === "reset") LOGS[TODAY] = { picks: 0 };
@@ -532,10 +463,9 @@ document.addEventListener("click", function (e) {
     var img = document.createElement("img"); img.src = cl_out.toDataURL(); img.alt = "A drawing you coloured";
     $("nx-gallery").append(img);
     done++;
-    var msg = "Kept in your gallery.";
-    if (done % 2 === 0 && unlocked < COLOURS.length) { unlocked++; msg += " A new colour opened up."; drawPal(); }
-    else if (unlocked < COLOURS.length) msg += " One more for a new colour.";
-    $("nx-cfoot").textContent = msg + " Here's a fresh one.";
+    var msg = "";
+    if (done % 2 === 0 && unlocked < COLOURS.length) { unlocked++; msg = "New colour."; drawPal(); }
+    $("nx-cfoot").textContent = msg;
     if (window.posthog) posthog.capture("next_colour_kept", { round: ROUND, n: done });
     fresh();
   };
@@ -583,7 +513,7 @@ document.addEventListener("click", function (e) {
   var minBtns = [];
   [3, 5, 10].forEach(function (m) {
     var b = chip($("nx-mins"), m + " min", function () {
-      stop(); total = left = m * 60; mirror.classList.remove("done"); mline.textContent = "Set the time, then start.";
+      stop(); total = left = m * 60; mirror.classList.remove("done"); mline.textContent = "";
       minBtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); paint();
     });
     b.setAttribute("aria-pressed", m === 5); minBtns.push(b);
@@ -650,7 +580,7 @@ document.addEventListener("click", function (e) {
       btn.disabled = !on && full;
     });
     var left = MAX - mine.length;
-    $("nx-left").textContent = left === 2 ? "You have 2 votes." : left === 1 ? "1 vote left." : "Both votes used. Tap Undo to move one.";
+    $("nx-left").textContent = left === 2 ? "You have 2 votes." : left === 1 ? "1 vote left." : "Both votes used.";
     $("nx-thanks").hidden = mine.length === 0;
   };
   cards.forEach(function (c) {
