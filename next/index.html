@@ -78,15 +78,31 @@ document.addEventListener("click", function (e) {
 .nx-chips button.hit { background: var(--sage); color: #fff; border-color: var(--sage); }
 .nx-label { font: 700 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--sub); margin: 2px 0 0; }
 .nx-tip { background: var(--paper); border: 1px solid var(--hair); border-radius: 16px; padding: 12px 14px; font: 17px/1.45 var(--serif); font-style: italic; color: var(--ink); min-height: 3.2em; }
+.nx-feels { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 6px; }
+.nx-feels button { border: 1px solid var(--hair); background: var(--paper); border-radius: 16px; padding: 6px 4px 7px; display: grid; justify-items: center; gap: 2px; cursor: pointer; font: 600 12px/1.2 var(--sans); color: var(--ink); }
+.nx-feels button svg { width: 62px; height: 62px; display: block; }
+.nx-feels button[aria-pressed="true"] { background: #fff; border-color: var(--rose); box-shadow: inset 0 0 0 1px var(--rose); color: var(--rose); }
+.nx-tipbox { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: center; }
+.nx-tipbox svg { width: 64px; height: 64px; }
+.nx-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; text-align: center; font: 700 10px var(--sans); letter-spacing: .12em; color: var(--mute); }
 .nx-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
-.nx-cal span { aspect-ratio: 1; border-radius: 8px; background: var(--paper); border: 1px solid var(--hair); display: grid; place-items: center; font: 600 11px var(--sans); color: var(--sub); }
-.nx-cal span.clear { background: var(--sage); border-color: var(--sage); color: #fff; }
-.nx-cal span.noticed { background: var(--honey); border-color: var(--honey); color: #fff; }
-.nx-cal span.tried { background: #8fb4c9; border-color: #8fb4c9; color: #fff; }
-.nx-cal span.today { outline: 2px solid var(--ink); outline-offset: 1px; }
+.nx-cal button, .nx-cal i { aspect-ratio: 1; border-radius: 10px; }
+.nx-cal button { position: relative; border: 1px solid var(--hair); background: var(--paper); padding: 0; cursor: pointer; display: grid; place-items: center; color: var(--sub); }
+.nx-cal button b { position: absolute; top: 3px; left: 5px; font: 600 9.5px var(--sans); color: inherit; opacity: .85; }
+.nx-cal button svg { width: 55%; height: 55%; margin-top: 4px; }
+.nx-cal button.clear { background: var(--sage); border-color: var(--sage); color: #fff; }
+.nx-cal button.noticed { background: var(--honey); border-color: var(--honey); color: #fff; }
+.nx-cal button.tried { background: #7FA7BE; border-color: #7FA7BE; color: #fff; }
+.nx-cal button.picked { color: var(--sub); }
+.nx-cal button.today { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--ink); }
+.nx-cal button[aria-pressed="true"] { transform: scale(1.06); }
 .nx-key { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--sub); }
-.nx-key span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
-.nx-key .k1::before { background: var(--sage); } .nx-key .k2::before { background: var(--honey); } .nx-key .k3::before { background: #8fb4c9; }
+.nx-key span { display: inline-flex; align-items: center; gap: 5px; }
+.nx-key svg { width: 15px; height: 15px; border-radius: 4px; padding: 2px; box-sizing: border-box; color: #fff; }
+.nx-key .k1 svg { background: var(--sage); } .nx-key .k2 svg { background: var(--honey); } .nx-key .k3 svg { background: #7FA7BE; } .nx-key .k4 svg { background: var(--paper); border: 1px solid var(--hair); color: var(--sub); }
+.nx-why { background: var(--paper); border: 1px solid var(--hair); border-radius: 14px; padding: 10px 12px; font-size: 14px; line-height: 1.45; color: var(--ink); min-height: 2.9em; }
+.nx-why b { display: block; font: 800 10.5px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); margin-bottom: 2px; }
+.nx-sum { font: 17px/1.35 var(--serif); color: var(--ink); margin: 0; }
 .nx-colour { display: grid; justify-items: center; gap: 8px; }
 .nx-canvas { position: relative; width: 100%; max-width: 280px; aspect-ratio: 1; }
 .nx-canvas canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -163,25 +179,28 @@ document.addEventListener("click", function (e) {
 <div class="nx-grid">
   <article class="nx-card" data-f="feelings">
     <div class="nx-top"><span class="nx-n">Idea 1</span><h2>How you <em>felt</em>, and what helps</h2>
-      <p>Tap what you felt before or after, and get one small thing to try for that feeling.</p></div>
+      <p>Tap how you felt before or after, as one of the star's faces, and get one small thing to try for that feeling.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
-      <p class="nx-label">Before</p><div class="nx-chips" id="nx-before"></div>
-      <p class="nx-label">After</p><div class="nx-chips" id="nx-after"></div>
-      <div class="nx-tip" id="nx-tip">Tap a feeling.</div>
+      <p class="nx-label">Before</p><div class="nx-feels" id="nx-before"></div>
+      <p class="nx-label">After</p><div class="nx-feels" id="nx-after"></div>
+      <div class="nx-tip nx-tipbox" id="nx-tipbox"><span id="nx-tipface"></span><span id="nx-tip">Tap a face.</span></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="calendar">
     <div class="nx-top"><span class="nx-n">Idea 2</span><h2>A calendar of <em>progress</em></h2>
-      <p>Not just days without picking. Noticing and stopping counts, and so does an urge you rode out. It fills itself from what you already log, with nothing extra to answer each day.</p></div>
+      <p>Each day gets a colour from what you already log. Not only days without picking: a pick you stopped partway counts, and so does an urge you rode out. Nothing extra to answer.</p></div>
     <div class="nx-play">
       <span class="nx-tag">Try it</span>
-      <div class="nx-chips" id="nx-marks"></div>
+      <p class="nx-sum" id="nx-calsum"></p>
+      <div class="nx-week"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
       <div class="nx-cal" id="nx-cal"></div>
-      <div class="nx-key"><span class="k1">Didn't pick</span><span class="k2">Noticed and stopped</span><span class="k3">Rode out an urge</span></div>
-      <p class="nx-hint" id="nx-calfoot">Mark today. The rest is a sample fortnight.</p>
+      <div class="nx-key" id="nx-key"></div>
+      <div class="nx-why" id="nx-why"></div>
+      <p class="nx-label">Log something today and watch today change</p>
+      <div class="nx-chips" id="nx-marks"></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -286,43 +305,139 @@ document.addEventListener("click", function (e) {
     var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
   };
 
-  // 1 · feelings and a tip for each
-  var TIPS = {
-    "Anxious": "Breathe out longer than you breathe in. Three times, then decide.",
-    "Bored": "Give your hands a job for two minutes: a fidget, a pen, an ice cube.",
-    "Frustrated": "Make a tight fist for ten seconds, then let it go. Twice.",
-    "Tense": "Drop your shoulders and unclench your jaw. Notice where your hands are.",
-    "Restless": "Stand up and walk to another room. The urge often stays behind.",
-    "Guilty": "One pick doesn't undo the good days. Wash it, cover it, leave it.",
-    "Relieved": "Notice what led here. Next time you can catch it a little earlier.",
-    "Angry at myself": "Talk to yourself the way you'd talk to a friend who picks.",
-    "Calm": "Good. What helped? Remember it for next time."
+  // The star, drawn as in the app (Mascot.swift, MascotArt): the seed-909
+  // body in 140-space and the face for a mood. Only the face changes.
+  var STAR_D = (function () {
+    var x = 909, rnd = function () { x = (Math.imul(x, 1664525) + 1013904223) >>> 0; return x / 4294967296; };
+    var c = 70, outer = 63, inner = 49, spin = rnd() * Math.PI * 2, pts = [];
+    for (var i = 0; i < 5; i++) {
+      var at = spin + i * 2 * Math.PI / 5, av = at + Math.PI / 5;
+      var oj = outer * (0.95 + rnd() * 0.1), ij = inner * (0.92 + rnd() * 0.16);
+      pts.push([c + Math.cos(at) * oj, c + Math.sin(at) * oj], [c + Math.cos(av) * ij, c + Math.sin(av) * ij]);
+    }
+    var m = pts.length, f = function (v) { return v.toFixed(2); }, d = "M" + f(pts[0][0]) + " " + f(pts[0][1]);
+    for (var k = 0; k < m; k++) {
+      var p0 = pts[(k - 1 + m) % m], p1 = pts[k], p2 = pts[(k + 1) % m], p3 = pts[(k + 2) % m];
+      d += "C" + f(p1[0] + (p2[0] - p0[0]) / 6) + " " + f(p1[1] + (p2[1] - p0[1]) / 6) + " " + f(p2[0] - (p3[0] - p1[0]) / 6) + " " + f(p2[1] - (p3[1] - p1[1]) / 6) + " " + f(p2[0]) + " " + f(p2[1]);
+    }
+    return d + "Z";
+  })();
+  var INK = "#4A2E22", LIGHT = "#FFF6F4";
+  var dot = function (x, y, r, col) { return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="' + col + '"/>'; };
+  var ln = function (d, w) { return '<path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="' + w + '" stroke-linecap="round"/>'; };
+  var dotEyes = function () { return dot(57, 65, 3.9, INK) + dot(58.3, 63.6, 1.05, LIGHT) + dot(83, 65, 3.9, INK) + dot(84.3, 63.6, 1.05, LIGHT); };
+  var glossy = function (y, r, two) {
+    return [57, 83].map(function (x) { return dot(x, y, r, INK) + dot(x + 2.2, y - 2.1, 2.1, LIGHT) + (two ? dot(x - 1.4, y + 2.1, 1, LIGHT) : ""); }).join("");
+  };
+  var FACES = {
+    calm: function () { return dotEyes() + ln("M59 78.5Q70 81 81 78.5", 3.6); },
+    happy: function () { return ln("M51 66Q57 59 63 66M77 66Q83 59 89 66", 3.4) + ln("M58 77Q70 89 82 77", 3.6); },
+    concerned: function () { return glossy(64.5, 6.2, true) + ln("M64 79.5Q70 84 76 79.5", 3.2); },
+    sleepy: function () { return ln("M51 65Q57 70 63 65M77 65Q83 70 89 65", 3.4) + ln("M63 79Q70 84 77 79", 3.2); },
+    anxious: function () { return glossy(64, 6.4, false) + ln("M64 80Q67 82.4 70 80Q73 77.6 76 80", 3); },
+    startled: function () { return glossy(64, 6.8, false) + '<ellipse cx="70" cy="81.3" rx="3.4" ry="4.3" fill="' + INK + '"/>'; },
+    worried: function () { return dotEyes() + ln("M62 81.2Q70 78.4 78 81.2", 3.2); },
+    tense: function () { return dotEyes() + ln("M65 79.6Q70 79.2 75 79.6", 3.6); },
+    sheepish: function () { return dotEyes() + ln("M64.5 80Q67.2 81.6 70 80Q72.8 78.4 75.5 80", 3); }
+  };
+  var starN = 0;
+  var star = function (mood) {
+    var id = "nxs" + (starN++);
+    return '<svg viewBox="5 5 130 130" aria-hidden="true"><defs><radialGradient id="' + id + '" cx="50" cy="44" r="96" gradientUnits="userSpaceOnUse">' +
+      '<stop offset="0" stop-color="#E8AA9A"/><stop offset=".5" stop-color="#DE8E7C"/><stop offset="1" stop-color="#D27E6A"/></radialGradient>' +
+      '<radialGradient id="' + id + 'b"><stop offset="0" stop-color="#C4643F" stop-opacity=".3"/><stop offset="1" stop-color="#C4643F" stop-opacity="0"/></radialGradient></defs>' +
+      '<path d="' + STAR_D + '" fill="url(#' + id + ')" stroke="#C06B54" stroke-width="2"/>' +
+      '<path d="' + STAR_D + '" transform="translate(15.4 15.4) scale(.78)" fill="#fff" fill-opacity=".12"/>' +
+      '<ellipse cx="45" cy="43" rx="8" ry="3" transform="rotate(-38 45 43)" fill="#fff" fill-opacity=".38"/>' +
+      '<circle cx="47" cy="76" r="7.5" fill="url(#' + id + 'b)"/><circle cx="93" cy="76" r="7.5" fill="url(#' + id + 'b)"/>' +
+      FACES[mood]() + "</svg>";
+  };
+
+  // 1 · feelings, each one of the star's faces, and a tip for each
+  var FEEL = {
+    "Anxious": ["anxious", "Breathe out longer than you breathe in. Three times, then decide."],
+    "Bored": ["sleepy", "Give your hands a job for two minutes: a fidget, a pen, an ice cube."],
+    "Frustrated": ["tense", "Make a tight fist for ten seconds, then let it go. Twice."],
+    "Tense": ["worried", "Drop your shoulders and unclench your jaw. Notice where your hands are."],
+    "Restless": ["startled", "Stand up and walk to another room. The urge often stays behind."],
+    "Guilty": ["sheepish", "One pick doesn't undo the good days. Wash it, cover it, leave it."],
+    "Relieved": ["happy", "Notice what led here. Next time you can catch it a little earlier."],
+    "Angry at myself": ["concerned", "Talk to yourself the way you'd talk to a friend who picks."],
+    "Calm": ["calm", "Good. What helped? Remember it for next time."]
   };
   var fbtns = [];
-  var pickFeeling = function (b, k) {
-    fbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-    $("nx-tip").textContent = TIPS[k]; tried("feelings");
+  var face = function (box, k) {
+    var b = document.createElement("button"); b.type = "button";
+    b.innerHTML = star(FEEL[k][0]) + "<span>" + k + "</span>";
+    b.onclick = function () {
+      fbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
+      $("nx-tipface").innerHTML = star(FEEL[k][0]);
+      $("nx-tip").textContent = FEEL[k][1]; tried("feelings");
+    };
+    box.append(b); fbtns.push(b);
   };
-  ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { var b = chip($("nx-before"), k, function (x) { pickFeeling(x, k); }); fbtns.push(b); });
-  ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { var b = chip($("nx-after"), k, function (x) { pickFeeling(x, k); }); fbtns.push(b); });
+  ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { face($("nx-before"), k); });
+  ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { face($("nx-after"), k); });
+  $("nx-tipface").innerHTML = star("calm");
 
-  // 2 · calendar: a sample fortnight, today is the last day
-  var days = ["clear", "", "noticed", "clear", "clear", "tried", "", "noticed", "clear", "", "clear", "tried", "noticed", ""];
-  var drawCal = function () {
-    $("nx-cal").innerHTML = days.map(function (d, i) {
-      return '<span class="' + d + (i === days.length - 1 ? " today" : "") + '">' + (i === days.length - 1 ? "Today" : i + 1) + "</span>";
-    }).join("");
-    var n = function (k) { return days.filter(function (d) { return d === k; }).length; };
-    $("nx-calfoot").textContent = "These two weeks: " + n("clear") + " days without picking, " + n("noticed") + " times you noticed and stopped, " + n("tried") + " urges ridden out. In the app this fills in from your logs; here, tap to mark today.";
+  // 2 · calendar: the last two weeks, ending today. Each day's colour comes
+  // from its log; tap a day to see which log gave it. Today starts empty and
+  // the buttons log into it.
+  var ICON = {
+    clear: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    noticed: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>',
+    tried: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 9.5c2-3 4-3 6.5 0s4.5 3 6.5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M1.5 5.5c2-3 4-3 6.5 0s4.5 3 6.5 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".55"/></svg>',
+    picked: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.4" fill="#C98C98"/></svg>'
   };
-  var mbtns = [];
-  [["clear", "Didn't pick today"], ["noticed", "Noticed and stopped"], ["tried", "Rode out an urge"]].forEach(function (m) {
-    var b = chip($("nx-marks"), m[1], function () {
-      days[days.length - 1] = days[days.length - 1] === m[0] ? "" : m[0];
-      mbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b && days[days.length - 1] === m[0]); });
-      drawCal(); tried("calendar");
+  $("nx-key").innerHTML = [["k1", "clear", "No picks"], ["k2", "noticed", "Stopped partway"], ["k3", "tried", "Rode out an urge"], ["k4", "picked", "Picked"]]
+    .map(function (k) { return '<span class="' + k[0] + '">' + ICON[k[1]] + k[2] + "</span>"; }).join("");
+  // what the sample fortnight logged, oldest first; today (last) is yours
+  var LOGS = [
+    { picks: 0 }, { picks: 4 }, { picks: 2, stopped: 1 }, { picks: 0 }, { picks: 0 }, { picks: 3, urges: 1 }, { picks: 6 },
+    { picks: 1, stopped: 1 }, { picks: 0 }, { picks: 5 }, { picks: 0 }, { picks: 2, urges: 2 }, { picks: 1, stopped: 1 }, { picks: 0 }
+  ];
+  var TODAY = LOGS.length - 1;
+  var kind = function (l) { return l.urges ? "tried" : l.stopped ? "noticed" : l.picks ? "picked" : "clear"; };
+  var dayName = function (i) {
+    var d = new Date(); d.setDate(d.getDate() - (TODAY - i));
+    return i === TODAY ? "Today" : d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  };
+  var why = function (i) {
+    var l = LOGS[i], k = kind(l), bits = [];
+    if (i === TODAY && !l.picks && !l.stopped && !l.urges) return "Nothing logged yet today, so it counts as no picks so far. Log something below.";
+    if (k === "clear") return "No picks logged that day.";
+    if (l.urges) bits.push((l.urges === 1 ? "An urge" : l.urges + " urges") + " passed: you tapped Urge passed or rode the wave.");
+    if (l.stopped) bits.push("You logged a pick and answered " + '"I stopped partway".');
+    var other = (l.picks || 0) - (l.stopped || 0);
+    if (other > 0) bits.push((l.stopped ? "And " : "") + other + (other === 1 ? " pick" : " picks") + " logged" + (l.stopped ? " besides." : "."));
+    return bits.join(" ");
+  };
+  var sel = TODAY;
+  var drawCal = function () {
+    var first = new Date(); first.setDate(first.getDate() - TODAY);
+    var lead = (first.getDay() + 6) % 7, html = "";
+    for (var j = 0; j < lead; j++) html += "<i></i>";
+    LOGS.forEach(function (l, i) {
+      var d = new Date(first); d.setDate(first.getDate() + i);
+      var k = kind(l);
+      html += '<button type="button" data-i="' + i + '" class="' + k + (i === TODAY ? " today" : "") + '" aria-pressed="' + (i === sel) + '" aria-label="' + dayName(i) + '"><b>' + d.getDate() + "</b>" + ICON[k] + "</button>";
     });
-    mbtns.push(b);
+    $("nx-cal").innerHTML = html;
+    var n = function (k) { return LOGS.filter(function (l) { return kind(l) === k; }).length; };
+    $("nx-calsum").textContent = (n("clear") + n("noticed") + n("tried")) + " of the last 14 days were progress.";
+    $("nx-why").innerHTML = "<b>" + dayName(sel) + "</b>" + why(sel);
+  };
+  $("nx-cal").onclick = function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    sel = +b.dataset.i; drawCal(); tried("calendar");
+  };
+  [["picks", "Log a pick"], ["stopped", "A pick I stopped partway"], ["urges", "Urge passed"], ["reset", "Clear today"]].forEach(function (m) {
+    chip($("nx-marks"), m[1], function () {
+      var t = LOGS[TODAY];
+      if (m[0] === "reset") LOGS[TODAY] = { picks: 0 };
+      else { t[m[0]] = (t[m[0]] || 0) + 1; if (m[0] === "stopped") t.picks = (t.picks || 0) + 1; }
+      sel = TODAY; drawCal(); tried("calendar");
+    });
   });
   drawCal();
 
