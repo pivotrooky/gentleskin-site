@@ -162,6 +162,8 @@ document.addEventListener("click", function (e) {{
 
 
 def main():
+    import next_es
+    next_es.main()  # the Spanish /next, from the English one
     pages = []
     for name in sorted(os.listdir(os.path.join(ROOT, "content"))):
         if not name.endswith(".html"):

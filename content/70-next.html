@@ -1,13 +1,16 @@
 title: What should Gentleskin build next? | Gentleskin
 description: Six ideas for the Gentleskin skin picking app, working in your browser: feelings and tips, a calendar of progress, colouring for your hands, a notebook, self-care checks and a mirror timer. Try them, then vote for up to two.
 path: next/
+alt: es/siguiente/
 image: img/next-og.jpg
 ct: web_next
 ---
+<script>/* the language switch */ var NX_ES = true; try { if (NX_ES && /^es\b/i.test(navigator.language || "") && !/[?&]lang=en/.test(location.search)) location.replace("../es/siguiente/" + location.search); } catch (e) {}</script>
 <style>
 /* /next, round three (2026-11, from Isabel's community form): six cards in a grid, each a demo on top and a vote bar at the bottom; then what's coming and what's shipped. */
 .nx { --mute: #BC8F9C; --sage-tint: #EEF4EF; --honey: #C9A04A; }
-.nx-intro { text-align: center; padding: 8px 0 28px; }
+.nx-intro { text-align: center; padding: 8px 0 28px; position: relative; }
+.nx-lang { position: absolute; top: 0; right: 0; font: 600 13px var(--sans); color: var(--sub); }
 .nx-intro h1 { margin: 0 0 8px; text-wrap: balance; }
 .nx-intro p { margin: 0 auto; max-width: 36em; }
 .nx-steps { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 14px; font: 600 14px var(--sans); color: var(--ink); }
@@ -130,6 +133,7 @@ ct: web_next
 </style>
 <main class="wrap nx">
 <section class="nx-intro">
+  <a class="nx-lang" href="../es/siguiente/">Español</a>
   <h1>What should I build <em>next?</em></h1>
   <p>Six ideas from people who pick. Each one works here.</p>
   <div class="nx-steps"><span><i>1</i>Try them</span><span><i>2</i>Vote for up to two</span><span><i>3</i>Tell me anything</span></div>
@@ -297,7 +301,7 @@ ct: web_next
     if (l.urges) bits.push((l.urges === 1 ? "An urge" : l.urges + " urges") + " passed.");
     if (l.stopped) bits.push("A pick stopped partway.");
     var other = (l.picks || 0) - (l.stopped || 0);
-    if (other > 0) bits.push(other + (other === 1 ? " pick." : " picks."));
+    if (other > 0) bits.push(other + (l.stopped ? " more" : "") + (other === 1 ? " pick." : " picks."));
     return bits.join(" ");
   };
   var sel = TODAY;
