@@ -18,12 +18,12 @@ OUT = os.path.join(ROOT, "content", "71-es-siguiente.html")
 PAIRS = [
     # header
     ("title: What should Gentleskin build next? | Gentleskin", "title: ¿Qué debería agregar Gentleskin? | Gentleskin"),
-    ("description: Five ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress, a notebook and self-care checks. Try them, then vote for up to two.",
-     "description: Cinco ideas para Gentleskin, la app para la dermatilomanía, funcionando en tu navegador: colorear sin salirte de las líneas, emociones y consejos, un calendario de avances, una libreta y autocuidado. Pruébalas y vota hasta dos."),
+    ("description: Four ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress and a notebook. Try them, then vote for up to two.",
+     "description: Cuatro ideas para Gentleskin, la app para la dermatilomanía, funcionando en tu navegador: colorear sin salirte de las líneas, emociones y consejos, un calendario de avances y una libreta. Pruébalas y vota hasta dos."),
     ("path: next/\nalt: es/siguiente/", "path: es/siguiente/\nlang: es\nalt: next/"),
     # intro
     ("What should I build <em>next?</em>", "¿Qué agrego <em>ahora?</em>"),
-    ("<p>Five ideas from people who pick. Each one works here.</p>", "<p>Cinco ideas de personas que se pellizcan la piel. Todas funcionan aquí.</p>"),
+    ("<p>Four ideas from people who pick. Each one works here.</p>", "<p>Cuatro ideas de personas que se pellizcan la piel. Todas funcionan aquí.</p>"),
     ("<i>1</i>Try them", "<i>1</i>Pruébalas"),
     ("<i>2</i>Vote for up to two", "<i>2</i>Vota hasta dos"),
     ("<i>3</i>Tell me anything", "<i>3</i>Cuéntame lo que quieras"),
@@ -118,14 +118,6 @@ PAIRS = [
     ('id="nx-keep" type="button" disabled>Keep it</button>', 'id="nx-keep" type="button" disabled>Guardar</button>'),
     ("Nothing here is sent anywhere.", "Nada de esto se envía a ningún lado."),
     ('" · kept"', '" · guardado"'),
-    # 5 self-care
-    ("Self-care <em>checks</em>", "<em>Autocuidado</em> del día"),
-    ("<p>Your own daily checks next to the picks: skincare, water, a plaster.</p>",
-     "<p>Tus propios checks diarios junto a los pellizcos: skincare, agua, una curita.</p>"),
-    ('addCheck("Skincare, morning"); addCheck("Skincare, night"); addCheck("Glasses of water", true); addCheck("Plaster on");',
-     'addCheck("Skincare, mañana"); addCheck("Skincare, noche"); addCheck("Vasos de agua", true); addCheck("Curita puesta");'),
-    ('"Done" : "Tap"', '"Listo" : "Tocar"'),
-    ('r.textContent = "Tap"', 'r.textContent = "Tocar"'),
     # thanks, feedback
     ("Thanks. I'll post which ones win.", "Gracias. Voy a publicar cuáles ganan."),
     ('href="{{store}}">Get Gentleskin</a>', 'href="{{store}}">Descargar Gentleskin</a>'),

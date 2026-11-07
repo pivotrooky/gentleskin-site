@@ -1,5 +1,5 @@
 title: What should Gentleskin build next? | Gentleskin
-description: Five ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress, a notebook and self-care checks. Try them, then vote for up to two.
+description: Four ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress and a notebook. Try them, then vote for up to two.
 path: next/
 alt: es/siguiente/
 image: img/next-og.jpg
@@ -7,7 +7,7 @@ ct: web_next
 ---
 <script>/* the language switch */ var NX_ES = true; try { if (NX_ES && /^es\b/i.test(navigator.language || "") && !/[?&]lang=en/.test(location.search)) location.replace("../es/siguiente/" + location.search); } catch (e) {}</script>
 <style>
-/* /next, round three (2026-11, from Isabel's community form): five cards in a grid (colouring first and wide), each a demo on top and a vote bar at the bottom; then what's coming and what's shipped. The mirror timer was taken out on 2026-11-07, same round. */
+/* /next, round three (2026-11, from Isabel's community form): four cards, two by two, all the same size, each a demo on top and a vote bar at the bottom; then what's coming and what's shipped. The mirror timer and self-care checks were taken out on 2026-11-07, same round. */
 .nx { --mute: #BC8F9C; --sage-tint: #EEF4EF; --honey: #C9A04A; }
 .nx-intro { text-align: center; padding: 8px 0 28px; position: relative; }
 .nx-lang { position: absolute; top: 0; right: 0; font: 600 13px var(--sans); color: var(--sub); }
@@ -17,8 +17,7 @@ ct: web_next
 .nx-steps span { display: inline-flex; align-items: center; gap: 7px; }
 .nx-steps i { font-style: normal; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; color: #fff; background: var(--ink); }
 .nx-left { text-align: center; font: 600 14px var(--sans); color: var(--sub); margin: -8px 0 18px; }
-.nx-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
-@media (max-width: 960px) { .nx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.nx-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
 @media (max-width: 640px) { .nx-grid { grid-template-columns: minmax(0, 1fr); max-width: 460px; margin: 0 auto; } }
 .nx-card { padding: 0; position: relative; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--hair); border-radius: 22px; overflow: hidden; transition: border-color .3s, box-shadow .3s; }
 .nx-card.voted { border: 2px solid var(--sage); box-shadow: 0 8px 24px rgba(86,122,98,.16); }
@@ -66,12 +65,10 @@ ct: web_next
 .nx-why b { display: block; font: 800 10.5px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); margin-bottom: 2px; }
 .nx-sum { font: 17px/1.35 var(--serif); color: var(--ink); margin: 0; }
 /* colouring, as the app paints it (ColouringActivity.swift): the page, then tools beside it when there's room */
-@media (min-width: 641px) { .nx-wide { grid-column: span 2; } }
 .nx-points { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 15px; line-height: 1.45; color: var(--ink); }
 .nx-points li { position: relative; padding-left: 18px; }
 .nx-points li::before { content: ""; position: absolute; left: 3px; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--star, #DE8E7C); }
 .nx-cplay { gap: 14px; }
-@media (min-width: 641px) { .nx-cplay { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } }
 .nx-cleft { display: grid; gap: 6px; justify-items: center; }
 .nx-cright { display: grid; gap: 12px; align-content: start; }
 .nx-page { position: relative; width: 100%; max-width: 380px; aspect-ratio: 1; border-radius: 22px; overflow: hidden; background: var(--card, #FFF9FA); box-shadow: inset 0 0 0 1.8px var(--ink), 0 6px 14px rgba(62,43,41,.08); touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
@@ -112,14 +109,6 @@ ct: web_next
 .nx-kept small { color: var(--sub); display: block; font-size: 12px; }
 .nx-btn { justify-self: start; border: 0; background: var(--rose); color: var(--on-rose); font: 600 14px var(--sans); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
 .nx-btn:disabled { opacity: .45; cursor: default; }
-.nx-checks { display: grid; gap: 8px; }
-.nx-check { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--paper); border: 1px solid var(--hair); border-radius: 14px; padding: 8px 12px; font: 600 14px var(--sans); color: var(--ink); cursor: pointer; text-align: left; }
-.nx-check b { font-weight: 600; }
-.nx-check em { font-style: normal; color: var(--sub); font-weight: 600; }
-.nx-check.on { border-color: var(--sage); background: var(--sage-tint); }
-.nx-drops { display: flex; gap: 3px; }
-.nx-drops i { width: 9px; height: 13px; border-radius: 50% 50% 45% 45%; background: var(--hair); display: block; }
-.nx-drops i.on { background: #8fb4c9; }
 
 .nx-section { max-width: 960px; margin: 40px auto 0; display: grid; gap: 12px; }
 .nx-section h2 { font-size: 24px; margin: 0; text-align: center; }
@@ -153,13 +142,13 @@ ct: web_next
 <section class="nx-intro">
   <a class="nx-lang" href="../es/siguiente/">Español</a>
   <h1>What should I build <em>next?</em></h1>
-  <p>Five ideas from people who pick. Each one works here.</p>
+  <p>Four ideas from people who pick. Each one works here.</p>
   <div class="nx-steps"><span><i>1</i>Try them</span><span><i>2</i>Vote for up to two</span><span><i>3</i>Tell me anything</span></div>
 </section>
 <p class="nx-left" id="nx-left">You have 2 votes.</p>
 
 <div class="nx-grid">
-  <article class="nx-card nx-wide" data-f="colour">
+  <article class="nx-card" data-f="colour">
     <div class="nx-top"><span class="nx-n">Idea 1</span><h2>Colour it in, <em>inside the lines</em></h2>
       <p>For the minutes when your hands need something to do.</p>
       <ul class="nx-points">
@@ -226,14 +215,6 @@ ct: web_next
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
-  <article class="nx-card" data-f="selfcare">
-    <div class="nx-top"><span class="nx-n">Idea 5</span><h2>Self-care <em>checks</em></h2>
-      <p>Your own daily checks next to the picks: skincare, water, a plaster.</p></div>
-    <div class="nx-play">
-      <div class="nx-checks" id="nx-checks"></div>
-    </div>
-    <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
-  </article>
 </div>
 
 <p class="nx-thanks" id="nx-thanks" hidden>Thanks. I'll post which ones win.<br>
@@ -614,22 +595,6 @@ ct: web_next
     note.value = ""; keep.disabled = true; tried("notebook");
   };
 
-  // 5 · self-care checks
-  var water = 0;
-  var addCheck = function (label, counter) {
-    var b = document.createElement("button"); b.type = "button"; b.className = "nx-check";
-    var l = document.createElement("b"); l.textContent = label; var r = document.createElement(counter ? "span" : "em");
-    if (counter) { r.className = "nx-drops"; for (var i = 0; i < 8; i++) r.append(document.createElement("i")); } else r.textContent = "Tap";
-    b.append(l, r);
-    b.onclick = function () {
-      tried("selfcare");
-      if (counter) { water = (water + 1) % 9; r.querySelectorAll("i").forEach(function (x, k) { x.classList.toggle("on", k < water); }); b.classList.toggle("on", water > 0); }
-      else { var on = b.classList.toggle("on"); r.textContent = on ? "Done" : "Tap"; }
-    };
-    $("nx-checks").append(b);
-  };
-  addCheck("Skincare, morning"); addCheck("Skincare, night"); addCheck("Glasses of water", true); addCheck("Plaster on");
-
   // Coming next · sounds, made in the browser
   var ctx = null, playing = null, nodes = [];
   var noise = function (kind) {
@@ -671,7 +636,7 @@ ct: web_next
   var KEY = "gs_next_votes_" + ROUND, MAX = 2;
   var cards = document.querySelectorAll(".nx-card"), mine = [];
   try { mine = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { mine = []; }
-  // An idea taken off the page mid-round (the mirror timer, 2026-11-07) gives its vote back.
+  // An idea taken off the page mid-round (the mirror timer and self-care checks, 2026-11-07) gives its vote back.
   var ids = [].map.call(cards, function (c) { return c.dataset.f; });
   if (!Array.isArray(mine)) mine = [];
   mine = mine.filter(function (f) { return ids.indexOf(f) >= 0; }).slice(0, MAX);
