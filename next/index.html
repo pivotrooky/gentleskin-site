@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What should Gentleskin build next? | Gentleskin</title>
-<meta name="description" content="Six ideas for the Gentleskin skin picking app, working in your browser: feelings and tips, a calendar of progress, colouring for your hands, a notebook, self-care checks and a mirror timer. Try them, then vote for up to two.">
+<meta name="description" content="Five ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress, a notebook and self-care checks. Try them, then vote for up to two.">
 <link rel="canonical" href="https://gentleskin.app/next/">
 <link rel="alternate" hreflang="en" href="https://gentleskin.app/next/">
 <link rel="alternate" hreflang="es" href="https://gentleskin.app/es/siguiente/">
 <link rel="alternate" hreflang="x-default" href="https://gentleskin.app/next/">
 <meta name="apple-itunes-app" content="app-id=6789245158">
 <meta property="og:title" content="What should Gentleskin build next? | Gentleskin">
-<meta property="og:description" content="Six ideas for the Gentleskin skin picking app, working in your browser: feelings and tips, a calendar of progress, colouring for your hands, a notebook, self-care checks and a mirror timer. Try them, then vote for up to two.">
+<meta property="og:description" content="Five ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress, a notebook and self-care checks. Try them, then vote for up to two.">
 <meta property="og:image" content="https://gentleskin.app/img/next-og.jpg">
 <meta property="og:url" content="https://gentleskin.app/next/">
 <meta name="twitter:card" content="summary_large_image">
@@ -45,7 +45,7 @@ document.addEventListener("click", function (e) {
 </div></header>
 <script>/* the language switch */ var NX_ES = true; try { if (NX_ES && /^es\b/i.test(navigator.language || "") && !/[?&]lang=en/.test(location.search)) location.replace("../es/siguiente/" + location.search); } catch (e) {}</script>
 <style>
-/* /next, round three (2026-11, from Isabel's community form): six cards in a grid, each a demo on top and a vote bar at the bottom; then what's coming and what's shipped. */
+/* /next, round three (2026-11, from Isabel's community form): five cards in a grid (colouring first and wide), each a demo on top and a vote bar at the bottom; then what's coming and what's shipped. The mirror timer was taken out on 2026-11-07, same round. */
 .nx { --mute: #BC8F9C; --sage-tint: #EEF4EF; --honey: #C9A04A; }
 .nx-intro { text-align: center; padding: 8px 0 28px; position: relative; }
 .nx-lang { position: absolute; top: 0; right: 0; font: 600 13px var(--sans); color: var(--sub); }
@@ -103,21 +103,47 @@ document.addEventListener("click", function (e) {
 .nx-why { background: var(--paper); border: 1px solid var(--hair); border-radius: 14px; padding: 10px 12px; font-size: 14px; line-height: 1.45; color: var(--ink); min-height: 2.9em; }
 .nx-why b { display: block; font: 800 10.5px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); margin-bottom: 2px; }
 .nx-sum { font: 17px/1.35 var(--serif); color: var(--ink); margin: 0; }
-.nx-colour { display: grid; justify-items: center; gap: 8px; }
-.nx-canvas { position: relative; width: 100%; max-width: 280px; aspect-ratio: 1; }
-.nx-canvas canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-#nx-paint { touch-action: none; cursor: crosshair; background: #FFF9FA; border-radius: 50%; }
+/* colouring, as the app paints it (ColouringActivity.swift): the page, then tools beside it when there's room */
+@media (min-width: 641px) { .nx-wide { grid-column: span 2; } }
+.nx-points { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.nx-points li { position: relative; padding-left: 18px; }
+.nx-points li::before { content: ""; position: absolute; left: 3px; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--star, #DE8E7C); }
+.nx-cplay { gap: 14px; }
+@media (min-width: 641px) { .nx-cplay { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } }
+.nx-cleft { display: grid; gap: 6px; justify-items: center; }
+.nx-cright { display: grid; gap: 12px; align-content: start; }
+.nx-page { position: relative; width: 100%; max-width: 380px; aspect-ratio: 1; border-radius: 22px; overflow: hidden; background: var(--card, #FFF9FA); box-shadow: inset 0 0 0 1.8px var(--ink), 0 6px 14px rgba(62,43,41,.08); touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.nx-page canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#nx-paint { touch-action: none; cursor: crosshair; }
 #nx-lines { pointer-events: none; }
-.nx-crow { display: flex; gap: 8px; }
-.nx-crow button { font: inherit; font-size: 13.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 1.5px solid var(--hair, #EEDAE0); background: #FFF9FA; color: var(--ink); cursor: pointer; }
-.nx-crow button:disabled { opacity: .45; cursor: default; }
-#nx-keepdraw:not(:disabled) { border-color: var(--rose, #8E4B55); color: var(--rose, #8E4B55); }
-.nx-pal { display: flex; gap: 8px; }
-.nx-pal button { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
+.nx-cfoot { text-align: center; min-height: 1.4em; }
+.nx-trow { display: flex; align-items: center; gap: 14px; }
+.nx-tools { justify-self: start; display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: var(--card, #FFF9FA); border: 1.5px solid var(--hair); }
+.nx-tools button { display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; color: var(--sub); font: 700 13px var(--sans); padding: 7px 12px; border-radius: 999px; cursor: pointer; }
+.nx-tools button svg { width: 15px; height: 15px; flex: none; }
+.nx-tools button[aria-pressed="true"] { background: var(--rose); color: var(--on-rose); }
+.nx-undo { display: inline-grid; place-items: center; width: 40px; height: 36px; border-radius: 999px; border: 1.5px solid var(--hair); background: var(--card, #FFF9FA); color: var(--sub); cursor: pointer; padding: 0; }
+.nx-undo svg { width: 18px; height: 18px; }
+.nx-undo:disabled { opacity: .4; cursor: default; }
+.nx-sizes { display: flex; align-items: center; gap: 6px; }
+.nx-sizes button { width: 40px; height: 36px; border-radius: 999px; border: 1.5px solid transparent; background: none; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.nx-sizes button i { display: block; border-radius: 50%; background: var(--c, #DE8E7C); }
+.nx-sizes button[aria-pressed="true"] { border-color: var(--ink); background: var(--card, #FFF9FA); }
+.nx-sizes.off { opacity: .35; }
+.nx-pal { display: grid; grid-template-columns: repeat(6, 36px); gap: 4px 6px; }
+.nx-pal button { width: 36px; height: 36px; border-radius: 50%; border: 2px solid transparent; padding: 3px; background: none; cursor: pointer; }
+.nx-pal button i { display: block; width: 100%; height: 100%; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(62,43,41,.12); }
 .nx-pal button[aria-pressed="true"] { border-color: var(--ink); }
-.nx-pal button.locked { opacity: .35; cursor: default; }
-.nx-gallery { display: flex; gap: 6px; flex-wrap: wrap; min-height: 34px; }
-.nx-gallery img { width: 40px; height: 40px; border-radius: 50%; display: block; border: 1px solid var(--hair, #EEDAE0); }
+.nx-pal button.locked i { opacity: .2; box-shadow: none; }
+.nx-pal button.locked { border: 1.2px dashed var(--mute); border-color: color-mix(in srgb, var(--c) 60%, transparent); }
+.nx-pal button.opened i { animation: nx-open .6s ease-out; }
+@keyframes nx-open { 0% { transform: scale(.6); } 60% { transform: scale(1.15); } 100% { transform: scale(1); } }
+#nx-keepdraw { justify-self: start; }
+.nx-pages, .nx-gallery { display: flex; gap: 7px; flex-wrap: wrap; }
+.nx-pages button { padding: 0; border: 0; background: none; cursor: pointer; border-radius: 12px; }
+.nx-pages canvas, .nx-gallery img { width: 48px; height: 48px; display: block; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--ink); }
+.nx-pages button[aria-pressed="true"] { outline: 2px solid var(--rose); outline-offset: 2px; }
+.nx-gallery img { box-shadow: none; border: 1px solid var(--ink); box-sizing: border-box; }
 .nx-note { width: 100%; min-height: 96px; resize: vertical; border: 1px solid var(--hair); border-radius: 14px; padding: 10px 12px; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); box-sizing: border-box; }
 .nx-kept { display: grid; gap: 6px; }
 .nx-kept div { background: var(--paper); border: 1px solid var(--hair); border-radius: 12px; padding: 8px 10px; font-size: 14px; }
@@ -132,14 +158,6 @@ document.addEventListener("click", function (e) {
 .nx-drops { display: flex; gap: 3px; }
 .nx-drops i { width: 9px; height: 13px; border-radius: 50% 50% 45% 45%; background: var(--hair); display: block; }
 .nx-drops i.on { background: #8fb4c9; }
-.nx-mirror { position: relative; border-radius: 18px; padding: 18px 14px; text-align: center; color: #fff; background: radial-gradient(90% 60% at 50% 0%, #fff3d6 0, transparent 60%), linear-gradient(170deg, #b9c8c4, #7f9a95 70%); overflow: hidden; }
-.nx-mirror.done { background: linear-gradient(170deg, #2b3b3f, #1d2a2d); }
-.nx-mirror .nx-mline { color: #24363a; }
-.nx-mirror.done .nx-mline, .nx-mirror.done .nx-mclock { color: #fff; }
-.nx-mclock { font: 44px/1 var(--serif); font-variant-numeric: tabular-nums; text-shadow: 0 1px 8px rgba(0,0,0,.18); }
-.nx-mline { font: 600 14px/1.4 var(--sans); margin: 8px 0 0; min-height: 2.8em; }
-.nx-mring { height: 6px; border-radius: 99px; background: rgba(255,255,255,.35); overflow: hidden; margin-top: 12px; }
-.nx-mring span { display: block; height: 100%; width: 100%; background: #fff; transition: width .25s linear; }
 
 .nx-section { max-width: 960px; margin: 40px auto 0; display: grid; gap: 12px; }
 .nx-section h2 { font-size: 24px; margin: 0; text-align: center; }
@@ -173,14 +191,43 @@ document.addEventListener("click", function (e) {
 <section class="nx-intro">
   <a class="nx-lang" href="../es/siguiente/">Español</a>
   <h1>What should I build <em>next?</em></h1>
-  <p>Six ideas from people who pick. Each one works here.</p>
+  <p>Five ideas from people who pick. Each one works here.</p>
   <div class="nx-steps"><span><i>1</i>Try them</span><span><i>2</i>Vote for up to two</span><span><i>3</i>Tell me anything</span></div>
 </section>
 <p class="nx-left" id="nx-left">You have 2 votes.</p>
 
 <div class="nx-grid">
+  <article class="nx-card nx-wide" data-f="colour">
+    <div class="nx-top"><span class="nx-n">Idea 1</span><h2>Colour it in, <em>inside the lines</em></h2>
+      <p>For the minutes when your hands need something to do.</p>
+      <ul class="nx-points">
+        <li>Paint with your finger. The colour stays in the shape you start in, so it never goes over a line, however you scribble.</li>
+        <li>Or tap, tap, tap, and each shape fills in.</li>
+        <li>Every page you colour is kept in a gallery. Each one opens a new colour.</li>
+      </ul></div>
+    <div class="nx-play nx-cplay">
+      <div class="nx-cleft">
+        <div class="nx-page" id="nx-page"><canvas id="nx-paint" role="img" aria-label="A page to colour in with your finger or mouse"></canvas><canvas id="nx-lines" aria-hidden="true"></canvas></div>
+        <p class="nx-hint nx-cfoot" id="nx-cfoot">Try scribbling over a line.</p>
+      </div>
+      <div class="nx-cright">
+        <div class="nx-tools" id="nx-tools" role="group" aria-label="Tools"></div>
+        <div class="nx-trow"><div class="nx-sizes" id="nx-sizes" role="group" aria-label="Brush size"></div>
+          <button type="button" class="nx-undo" id="nx-undo" aria-label="Undo" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 5.5L4 9l3.5 3.5M4.5 9h7a4.5 4.5 0 010 9H9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="nx-pal" id="nx-pal" role="group" aria-label="Colours"></div>
+        <button type="button" class="nx-btn" id="nx-keepdraw" disabled>Keep it</button>
+        <p class="nx-label">Pages</p>
+        <div class="nx-pages" id="nx-pages"></div>
+        <p class="nx-label" id="nx-gallery-l" hidden>Your gallery</p>
+        <div class="nx-gallery" id="nx-gallery" aria-label="Your gallery"></div>
+      </div>
+    </div>
+    <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
+  </article>
+
   <article class="nx-card" data-f="feelings">
-    <div class="nx-top"><span class="nx-n">Idea 1</span><h2>How you <em>felt</em>, and what helps</h2>
+    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>How you <em>felt</em>, and what helps</h2>
       <p>Tap what you felt. Get one thing to try.</p></div>
     <div class="nx-play">
       <p class="nx-label">Before</p><div class="nx-chips" id="nx-before"></div>
@@ -191,7 +238,7 @@ document.addEventListener("click", function (e) {
   </article>
 
   <article class="nx-card" data-f="calendar">
-    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>A calendar of <em>progress</em></h2>
+    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>A calendar of <em>progress</em></h2>
       <p>Each day takes its colour from what you log. Stopping partway counts, and so does an urge you rode out.</p></div>
     <div class="nx-play">
       <p class="nx-sum" id="nx-calsum"></p>
@@ -201,21 +248,6 @@ document.addEventListener("click", function (e) {
       <div class="nx-why" id="nx-why"></div>
       <p class="nx-label">Log today</p>
       <div class="nx-chips" id="nx-marks"></div>
-    </div>
-    <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
-  </article>
-
-  <article class="nx-card" data-f="colour">
-    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Colour it in, <em>with your finger</em></h2>
-      <p>Something for your hands when the urge comes. Keep the ones you like; new colours open up.</p></div>
-    <div class="nx-play">
-      <div class="nx-colour">
-        <div class="nx-canvas"><canvas id="nx-paint" aria-label="A drawing to colour in with your finger or mouse"></canvas><canvas id="nx-lines" aria-hidden="true"></canvas></div>
-        <div class="nx-pal" id="nx-pal"></div>
-        <div class="nx-crow"><button type="button" id="nx-keepdraw" disabled>Keep it</button><button type="button" id="nx-cleardraw">Start over</button></div>
-      </div>
-      <p class="nx-hint" id="nx-cfoot"></p>
-      <div class="nx-gallery" id="nx-gallery" aria-label="Your gallery"></div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -237,20 +269,6 @@ document.addEventListener("click", function (e) {
       <p>Your own daily checks next to the picks: skincare, water, a plaster.</p></div>
     <div class="nx-play">
       <div class="nx-checks" id="nx-checks"></div>
-    </div>
-    <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
-  </article>
-
-  <article class="nx-card" data-f="mirror">
-    <div class="nx-top"><span class="nx-n">Idea 6</span><h2>A <em>mirror</em> timer</h2>
-      <p>A few minutes at the mirror, not the whole night. Then the star tells you to step away.</p></div>
-    <div class="nx-play">
-      <div class="nx-chips" id="nx-mins"></div>
-      <div class="nx-mirror" id="nx-mirror"><div class="nx-mclock" id="nx-mclock">5:00</div>
-        <p class="nx-mline" id="nx-mline"></p>
-        <div class="nx-mring"><span id="nx-mbar"></span></div></div>
-      <button class="nx-btn" id="nx-mstart" type="button">Start</button>
-      <p class="nx-hint">Sped up for the demo.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -280,6 +298,7 @@ document.addEventListener("click", function (e) {
   </ul>
 </section>
 </main>
+<script src="../next/drawings.js"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
@@ -290,7 +309,7 @@ document.addEventListener("click", function (e) {
     var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
   };
 
-  // 1 · feelings and a tip for each
+  // 2 · feelings and a tip for each
   var TIPS = {
     "Anxious": "Breathe out longer than you breathe in. Three times, then decide.",
     "Bored": "Give your hands a job for two minutes: a fidget, a pen, an ice cube.",
@@ -310,7 +329,7 @@ document.addEventListener("click", function (e) {
   ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { fbtns.push(chip($("nx-before"), k, function (x) { pickFeeling(x, k); })); });
   ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { fbtns.push(chip($("nx-after"), k, function (x) { pickFeeling(x, k); })); });
 
-  // 2 · calendar: the last two weeks, ending today. Each day's colour comes
+  // 3 · calendar: the last two weeks, ending today. Each day's colour comes
   // from its log; tap a day to see which log gave it. Today starts empty and
   // the buttons log into it.
   var ICON = {
@@ -371,112 +390,256 @@ document.addEventListener("click", function (e) {
   });
   drawCal();
 
-  // 3 · colouring: a mandala coloured with a finger. A stroke stays inside
-  // the part it started in (a colouring book's lines), drawn as a soft crayon.
-  var COLOURS = ["#E3A0AA", "#9FC4B4", "#E9C468", "#8fb4c9", "#B49AD4", "#F0A97C"];
-  var unlocked = 3, current = COLOURS[0], done = 0, painted = false;
-  var cnv = $("nx-paint"), cl_lines = $("nx-lines"), pc = cnv.getContext("2d"), lc = cl_lines.getContext("2d");
-  var SIZE = 560; // drawing units: the mandala lives in -100..100, scaled by SIZE/200
-  cnv.width = cl_lines.width = SIZE; cnv.height = cl_lines.height = SIZE;
-  var K = SIZE / 200;
-  var petal = function (r1, r2, w, a) {
-    var cl_t = a * Math.PI / 180, c = Math.cos(cl_t), cl_s = Math.sin(cl_t), p = new Path2D();
-    var pt = function (x, y) { return [(x * c - y * cl_s + 100) * K, (x * cl_s + y * c + 100) * K]; };
-    var m = (r1 + r2) / 2, A = pt(r1, 0), B = pt(m, w), C = pt(r2, 0), D = pt(m, -w);
-    p.moveTo(A[0], A[1]); p.quadraticCurveTo(B[0], B[1], C[0], C[1]); p.quadraticCurveTo(D[0], D[1], A[0], A[1]); p.closePath();
-    return p;
-  };
-  var circle = function (cl_r) { var p = new Path2D(); p.arc(100 * K, 100 * K, cl_r * K, 0, Math.PI * 2); return p; };
-  // Parts, bottom to top: the ring behind everything, big petals, small petals, the centre.
-  var parts = [circle(98)];
-  for (var cl_i = 0; cl_i < 8; cl_i++) parts.push(petal(48, 96, 22, cl_i * 45));
-  for (var j = 0; j < 8; j++) parts.push(petal(16, 58, 13, j * 45 + 22.5));
-  parts.push(circle(16));
-  var drawLines = function () {
-    lc.clearRect(0, 0, SIZE, SIZE);
-    lc.strokeStyle = "#3E2B29"; lc.lineWidth = 2.6; lc.lineJoin = "round";
-    parts.forEach(function (p) { lc.stroke(p); });
-  };
-  var partAt = function (x, y) {
-    for (var k = parts.length - 1; k >= 0; k--) if (pc.isPointInPath(parts[k], x, y)) return k;
-    return -1;
-  };
-  var at = function (e) {
-    var cl_r = cnv.getBoundingClientRect();
-    return [(e.clientX - cl_r.left) * SIZE / cl_r.width, (e.clientY - cl_r.top) * SIZE / cl_r.height];
-  };
-  var stroke = null;
-  // One stroke colours one part: clipped to it, and the parts drawn on top
-  // of it are put back from a copy taken when the finger went down.
-  var dab = function (from, to) {
-    pc.save();
-    pc.clip(parts[stroke.part]);
-    pc.strokeStyle = current; pc.lineCap = "round"; pc.lineJoin = "round";
-    pc.globalAlpha = 0.55; pc.lineWidth = 30;
-    pc.beginPath(); pc.moveTo(from[0], from[1]); pc.lineTo(to[0], to[1]); pc.stroke();
-    // A few thin grains across the stroke: crayon, not a marker.
-    pc.globalAlpha = 0.35; pc.lineWidth = 3;
-    for (var cl_g = -12; cl_g <= 12; cl_g += 6) {
-      pc.beginPath(); pc.moveTo(from[0] + cl_g * 0.4, from[1] + cl_g); pc.lineTo(to[0] + cl_g * 0.4, to[1] + cl_g); pc.stroke();
-    }
-    pc.restore();
-    if (stroke.above) {
-      pc.save(); pc.clip(stroke.above); pc.clearRect(0, 0, SIZE, SIZE); pc.drawImage(stroke.copy, 0, 0); pc.restore();
-    }
-  };
-  cnv.addEventListener("pointerdown", function (e) {
-    var p = at(e), k = partAt(p[0], p[1]);
-    if (k < 0) return;
-    cnv.setPointerCapture(e.pointerId);
-    var above = null, copy = null;
-    if (k < parts.length - 1) {
-      above = new Path2D();
-      for (var u = k + 1; u < parts.length; u++) above.addPath(parts[u]);
-      copy = document.createElement("canvas"); copy.width = copy.height = SIZE;
-      copy.getContext("2d").drawImage(cnv, 0, 0);
-    }
-    stroke = { part: k, last: p, above: above, copy: copy };
-    dab(p, [p[0] + 0.1, p[1] + 0.1]);
-  });
-  cnv.addEventListener("pointermove", function (e) {
-    if (!stroke) return;
-    var p = at(e); dab(stroke.last, p); stroke.last = p;
-  });
-  var end = function () {
-    if (!stroke) return;
-    stroke = null; painted = true; $("nx-keepdraw").disabled = false; tried("colour");
-  };
-  cnv.addEventListener("pointerup", end);
-  cnv.addEventListener("pointercancel", end);
-  var drawPal = function () {
-    $("nx-pal").innerHTML = "";
-    COLOURS.forEach(function (col, cl_i) {
-      var cl_b = document.createElement("button"); cl_b.type = "button"; cl_b.style.background = col;
-      cl_b.setAttribute("aria-label", cl_i < unlocked ? "Colour " + (cl_i + 1) : "Locked colour");
-      if (cl_i >= unlocked) cl_b.classList.add("locked");
-      cl_b.setAttribute("aria-pressed", col === current);
-      cl_b.onclick = function () { if (cl_i >= unlocked) return; current = col; drawPal(); };
-      $("nx-pal").append(cl_b);
+  // 1 · colouring, ported from the app (ColouringActivity / PaintRender):
+  // the app's own five pages (drawings.js). A stroke is clipped to the part
+  // of the shape it started in that nothing sits over, so paint never
+  // crosses a line. A soft brush (a faint halo, the core, a paper grain
+  // multiplied in), the bucket ("tap to fill"), an eraser, undo a gesture
+  // at a time. Keep it puts the page in the gallery and opens a colour.
+  (function () {
+    var ART = window.GS_DRAWINGS; if (!ART) return;
+    var NAMES = { starfish: "Starfish", sea: "The sea", shell: "Shell", plant: "Plant", flower: "Flower" };
+    var PAL = ["#DE8E7C", "#E9C468", "#F0C7D0", "#C5D6CE", "#88AA9B", "#C89AA6", "#D2789B", "#7E6BAE", "#4E79A8", "#4F9E85", "#C68A4E", "#8E4B55"];
+    var INK = "#3E2B29", PAPER = "#FFF9FA", PX = 900, K = PX / 200;
+    var SIZES = [8, 16, 28];
+    var ICONS = {
+      brush: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 2.5l-7.2 8.1 1.6 1.6 7-8.2a1 1 0 00-1.4-1.5z" fill="currentColor"/><path d="M8.2 11.7c-1.9-.2-3.2 1-3.4 2.6-.2 1.3-.9 2-2.3 2.4 2.6 1.3 6.2.9 7.3-1.6.4-1 .1-2.2-.9-2.8z" fill="currentColor"/></svg>',
+      fill: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5s-5 5.6-5 9a5 5 0 0010 0c0-3.4-5-9-5-9z" fill="currentColor"/></svg>',
+      eraser: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11.6 3.2l5.2 5.2c.5.5.5 1.3 0 1.8L10.4 16.6H6.6l-3.4-3.4c-.5-.5-.5-1.3 0-1.8l6.6-8.2c.5-.5 1.3-.5 1.8 0z" fill="currentColor"/><path d="M10.5 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
+    };
+    var LABELS = { brush: "Brush", fill: "Tap to fill", eraser: "Eraser" };
+    var send = function (el, v) { if (window.posthog) posthog.capture("next_colour_tap", { element: el, value: v, round: ROUND }); };
+
+    ART.forEach(function (a) {
+      a.R = a.r.map(function (d) { return new Path2D(d); });
+      a.C = a.c.map(function (d) { return new Path2D(d); });
+      a.D = a.d.map(function (d) { return new Path2D(d); });
     });
-  };
-  var fresh = function () { pc.clearRect(0, 0, SIZE, SIZE); painted = false; $("nx-keepdraw").disabled = true; };
-  $("nx-cleardraw").onclick = fresh;
-  $("nx-keepdraw").onclick = function () {
-    if (!painted) return;
-    var cl_out = document.createElement("canvas"); cl_out.width = cl_out.height = 120;
-    var oc = cl_out.getContext("2d");
-    oc.fillStyle = "#FFF9FA"; oc.beginPath(); oc.arc(60, 60, 60, 0, Math.PI * 2); oc.fill();
-    oc.drawImage(cnv, 0, 0, 120, 120); oc.drawImage(cl_lines, 0, 0, 120, 120);
-    var img = document.createElement("img"); img.src = cl_out.toDataURL(); img.alt = "A drawing you coloured";
-    $("nx-gallery").append(img);
-    done++;
-    var msg = "";
-    if (done % 2 === 0 && unlocked < COLOURS.length) { unlocked++; msg = "New colour."; drawPal(); }
-    $("nx-cfoot").textContent = msg;
-    if (window.posthog) posthog.capture("next_colour_kept", { round: ROUND, n: done });
-    fresh();
-  };
-  drawLines(); drawPal();
+    var make = function (n) { var c = document.createElement("canvas"); c.width = c.height = n; return c; };
+    var hit = make(1).getContext("2d");
+    // the paper's tooth, as the app makes it: mostly white, a few grey flecks, 30 units a tile
+    var tile = make(96), tc = tile.getContext("2d"), td = tc.createImageData(96, 96), seed = 0x9E3779B9;
+    for (var q = 0; q < 96 * 96; q++) {
+      seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+      var u = seed / 4294967296, v = u < 0.82 ? 1 - u * 0.07 : 0.8 + (1 - u) * 0.5, g = Math.round(Math.min(1, v) * 255);
+      td.data[q * 4] = td.data[q * 4 + 1] = td.data[q * 4 + 2] = g; td.data[q * 4 + 3] = 255;
+    }
+    tc.putImageData(td, 0, 0);
+
+    var cnv = $("nx-paint"), lines = $("nx-lines"), pc = cnv.getContext("2d");
+    cnv.width = cnv.height = PX;
+    var grain = pc.createPattern(tile, "repeat");
+    if (grain.setTransform && window.DOMMatrix) grain.setTransform(new DOMMatrix().scale(30 / 96));
+
+    // the finger's points as one smooth line, through the midpoints
+    var line = function (pts) {
+      var p = new Path2D(); p.moveTo(pts[0][0], pts[0][1]);
+      if (pts.length === 1) { p.lineTo(pts[0][0] + 0.01, pts[0][1]); return p; }
+      for (var i = 1; i < pts.length - 1; i++) p.quadraticCurveTo(pts[i][0], pts[i][1], (pts[i][0] + pts[i + 1][0]) / 2, (pts[i][1] + pts[i + 1][1]) / 2);
+      p.lineTo(pts[pts.length - 1][0], pts[pts.length - 1][1]);
+      return p;
+    };
+    var alpha = function (hex, a) { var n = parseInt(hex.slice(1), 16); return "rgba(" + (n >> 16) + "," + (n >> 8 & 255) + "," + (n & 255) + "," + a + ")"; };
+    var draw = function (ctx, s) {
+      var clip = art().C[s.region];
+      ctx.save(); ctx.setTransform(K, 0, 0, K, 0, 0); ctx.clip(clip);
+      ctx.lineCap = ctx.lineJoin = "round";
+      if (s.kind === "fill") {
+        ctx.fillStyle = s.colour; ctx.fill(clip);
+        ctx.globalCompositeOperation = "multiply"; ctx.fillStyle = grain; ctx.fill(clip);
+      } else if (s.kind === "eraser") {
+        ctx.globalCompositeOperation = "destination-out"; ctx.lineWidth = s.width; ctx.stroke(line(s.points));
+      } else {
+        var path = line(s.points);
+        ctx.strokeStyle = alpha(s.colour, 0.3); ctx.lineWidth = s.width * 1.3; ctx.stroke(path);
+        ctx.strokeStyle = s.colour; ctx.lineWidth = s.width; ctx.stroke(path);
+        ctx.globalCompositeOperation = "multiply"; ctx.strokeStyle = grain; ctx.stroke(path);
+      }
+      ctx.restore();
+    };
+
+    // one page per drawing, kept while the page is open; the one in view is on the canvas
+    var pages = ART.map(function (a, i) { return { i: i, paint: null, undo: [], strokes: 0 }; });
+    var cur = 0, tool = "brush", colour = 0, size = 1, open = 6, kept = 0, painting = null, base = make(PX), bc = base.getContext("2d");
+    var art = function () { return ART[cur]; };
+    var regionAt = function (x, y) {
+      var R = art().R;
+      for (var i = R.length - 1; i >= 0; i--) if (hit.isPointInPath(R[i], x, y)) return i;
+      return -1;
+    };
+
+    // the lines on top: each shape's outline, with the outlines under it hidden where it sits over them
+    var drawLines = function () {
+      var side = lines.getBoundingClientRect().width || 300, dpr = Math.min(window.devicePixelRatio || 1, 3);
+      var n = Math.round(side * dpr); if (lines.width !== n) lines.width = lines.height = n;
+      var lc = lines.getContext("2d"), k = n / 200;
+      lc.setTransform(1, 0, 0, 1, 0, 0); lc.clearRect(0, 0, n, n); lc.setTransform(k, 0, 0, k, 0, 0);
+      lineArt(lc, art(), 1.8 * 200 / side);
+    };
+    var lineArt = function (lc, a, w) {
+      lc.lineWidth = w; lc.lineCap = lc.lineJoin = "round"; lc.strokeStyle = INK; lc.fillStyle = "#000";
+      a.R.forEach(function (r) {
+        lc.globalCompositeOperation = "destination-out"; lc.fill(r);
+        lc.globalCompositeOperation = "source-over"; lc.stroke(r);
+      });
+      a.D.forEach(function (d) { lc.stroke(d); });
+    };
+    // a page drawn small: paper, its paint, the lines
+    var thumb = function (into, i, paint) {
+      var n = into.width, c = into.getContext("2d"), k = n / 200;
+      c.setTransform(1, 0, 0, 1, 0, 0); c.fillStyle = PAPER; c.fillRect(0, 0, n, n);
+      if (paint) c.drawImage(paint, 0, 0, n, n);
+      var l = make(n), lc = l.getContext("2d"); lc.setTransform(k, 0, 0, k, 0, 0); lineArt(lc, ART[i], 1.2 * 200 / (n / 2));
+      c.drawImage(l, 0, 0);
+    };
+
+    var pageBtns = ART.map(function (a, i) {
+      var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", NAMES[a.id]);
+      var t = make(104); b.append(t); thumb(t, i, null);
+      b.onclick = function () { if (i !== cur) { show(i); send("page", a.id); } };
+      $("nx-pages").append(b); return b;
+    });
+    var save = function () {
+      var p = pages[cur]; p.paint = p.paint || make(PX);
+      var c = p.paint.getContext("2d"); c.clearRect(0, 0, PX, PX); c.drawImage(cnv, 0, 0);
+      thumb(pageBtns[cur].firstChild, cur, p.strokes ? p.paint : null);
+    };
+    var show = function (i) {
+      if (painting) return;
+      save(); cur = i;
+      pc.clearRect(0, 0, PX, PX); if (pages[i].paint && pages[i].strokes) pc.drawImage(pages[i].paint, 0, 0);
+      pageBtns.forEach(function (b, k) { b.setAttribute("aria-pressed", k === i); });
+      drawLines(); state();
+    };
+    var state = function () {
+      var p = pages[cur];
+      $("nx-undo").disabled = !p.undo.length;
+      $("nx-keepdraw").disabled = !p.strokes;
+    };
+    var snapshot = function () {
+      var c = make(PX); c.getContext("2d").drawImage(cnv, 0, 0);
+      var u = pages[cur].undo; u.push(c); if (u.length > 20) u.shift();
+    };
+
+    // painting: the stroke under the finger is drawn again from its start each frame (over a copy of the page), so its soft edge never builds up
+    var toUnits = function (e) {
+      var r = cnv.getBoundingClientRect();
+      return [(e.clientX - r.left) * 200 / r.width, (e.clientY - r.top) * 200 / r.height];
+    };
+    var frame = 0;
+    var render = function () {
+      frame = 0; if (!painting) return;
+      pc.globalCompositeOperation = "source-over";
+      pc.clearRect(0, 0, PX, PX); pc.drawImage(base, 0, 0); draw(pc, painting.s);
+    };
+    var later = function () { if (!frame) frame = requestAnimationFrame(render); };
+    var done = function () {
+      pages[cur].strokes++; tried("colour"); save(); state();
+      $("nx-cfoot").textContent = "";
+    };
+    cnv.addEventListener("pointerdown", function (e) {
+      if (painting || (e.pointerType === "mouse" && e.button !== 0)) return;
+      e.preventDefault();
+      var p = toUnits(e), k = regionAt(p[0], p[1]);
+      if (k < 0) return;
+      try { cnv.setPointerCapture(e.pointerId); } catch (x) {}
+      painting = { id: e.pointerId, at: [e.clientX, e.clientY], region: k, s: null };
+      if (tool === "fill") return;
+      snapshot();
+      bc.clearRect(0, 0, PX, PX); bc.drawImage(cnv, 0, 0);
+      painting.s = { kind: tool, region: k, colour: PAL[colour], width: SIZES[size], points: [p] };
+      later();
+    });
+    cnv.addEventListener("pointermove", function (e) {
+      if (!painting || e.pointerId !== painting.id || !painting.s) return;
+      var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e]; if (!evs.length) evs = [e];
+      var pts = painting.s.points;
+      evs.forEach(function (ev) {
+        var p = toUnits(ev), last = pts[pts.length - 1];
+        if (Math.hypot(p[0] - last[0], p[1] - last[1]) > 0.45) pts.push(p);
+      });
+      // a long stroke is put down and carried on, so each frame stays short
+      if (pts.length > 300) { render(); bc.clearRect(0, 0, PX, PX); bc.drawImage(cnv, 0, 0); painting.s.points = [pts[pts.length - 1]]; }
+      later();
+    });
+    var end = function (e) {
+      if (!painting || e.pointerId !== painting.id) return;
+      var was = painting;
+      if (was.s) { render(); painting = null; done(); return; }
+      painting = null;
+      // the bucket: a tap, not a drag that wandered off
+      if (e.type === "pointerup" && Math.hypot(e.clientX - was.at[0], e.clientY - was.at[1]) < 12) {
+        snapshot(); draw(pc, { kind: "fill", region: was.region, colour: PAL[colour] }); done();
+      }
+    };
+    cnv.addEventListener("pointerup", end);
+    cnv.addEventListener("pointercancel", end);
+    // belt and braces for older iOS: a finger on the page never scrolls it
+    cnv.addEventListener("touchmove", function (e) { e.preventDefault(); }, { passive: false });
+
+    $("nx-undo").onclick = function () {
+      var u = pages[cur].undo; if (!u.length || painting) return;
+      pc.globalCompositeOperation = "source-over"; pc.clearRect(0, 0, PX, PX); pc.drawImage(u.pop(), 0, 0);
+      pages[cur].strokes = Math.max(0, pages[cur].strokes - 1);
+      save(); state(); send("undo");
+    };
+
+    var toolBtns = {};
+    ["brush", "fill", "eraser"].forEach(function (t) {
+      var b = document.createElement("button"); b.type = "button"; b.innerHTML = ICONS[t] + "<span>" + LABELS[t] + "</span>";
+      b.onclick = function () { tool = t; drawTools(); send("tool", t); };
+      toolBtns[t] = b; $("nx-tools").append(b);
+    });
+    var sizeBtns = SIZES.map(function (w, i) {
+      var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", ["Thin", "Medium", "Thick"][i] + " brush");
+      var d = document.createElement("i"); d.style.width = d.style.height = (5 + i * 6) + "px"; b.append(d);
+      b.onclick = function () { size = i; if (tool === "fill") tool = "brush"; drawTools(); send("size", w); };
+      $("nx-sizes").append(b); return b;
+    });
+    var drawTools = function () {
+      Object.keys(toolBtns).forEach(function (t) { toolBtns[t].setAttribute("aria-pressed", t === tool); });
+      sizeBtns.forEach(function (b, i) { b.setAttribute("aria-pressed", i === size); b.style.setProperty("--c", tool === "eraser" ? "#D9C2C9" : PAL[colour]); });
+      $("nx-sizes").classList.toggle("off", tool === "fill");
+      drawPal();
+    };
+    var swatches = PAL.map(function (c, i) {
+      var b = document.createElement("button"); b.type = "button"; b.style.setProperty("--c", c);
+      var d = document.createElement("i"); d.style.background = c; b.append(d);
+      b.onclick = function () {
+        if (i >= open) { $("nx-cfoot").textContent = "Each page you keep opens a new colour."; send("swatch_locked", i + 1); return; }
+        colour = i; if (tool === "eraser") tool = "brush"; drawTools(); send("swatch", i + 1);
+      };
+      $("nx-pal").append(b); return b;
+    });
+    var drawPal = function () {
+      swatches.forEach(function (b, i) {
+        b.classList.toggle("locked", i >= open);
+        b.setAttribute("aria-label", i < open ? "Colour " + (i + 1) : "Locked colour");
+        b.setAttribute("aria-pressed", i === colour && i < open && tool !== "eraser");
+      });
+    };
+
+    $("nx-keepdraw").onclick = function () {
+      var p = pages[cur]; if (!p.strokes || painting) return;
+      save();
+      var t = make(156); thumb(t, cur, p.paint);
+      var img = document.createElement("img"); img.src = t.toDataURL(); img.alt = NAMES[art().id] + ", kept";
+      $("nx-gallery").prepend(img); $("nx-gallery-l").hidden = false;
+      kept++;
+      var msg = "Kept in your gallery.";
+      if (open < PAL.length) { open++; msg = "Kept in your gallery. A new colour."; swatches[open - 1].classList.add("opened"); }
+      if (window.posthog) posthog.capture("next_colour_kept", { round: ROUND, n: kept, drawing: art().id, strokes: p.strokes });
+      p.strokes = 0; p.undo = []; p.paint = null;
+      pc.clearRect(0, 0, PX, PX); save();
+      show((cur + 1) % ART.length); drawPal();
+      $("nx-cfoot").textContent = msg;
+    };
+
+    pageBtns.forEach(function (b, k) { b.setAttribute("aria-pressed", k === cur); });
+    drawTools(); drawLines(); state();
+    var rt = 0;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawLines, 120); });
+  })();
 
   // 4 · notebook (stays on the page)
   var note = $("nx-note"), keep = $("nx-keep");
@@ -504,37 +667,6 @@ document.addEventListener("click", function (e) {
     $("nx-checks").append(b);
   };
   addCheck("Skincare, morning"); addCheck("Skincare, night"); addCheck("Glasses of water", true); addCheck("Plaster on");
-
-  // 6 · mirror timer (a minute runs in 3 s)
-  var total = 300, left = 300, timer = null, SPEED = 20;
-  var mclock = $("nx-mclock"), mline = $("nx-mline"), mbar = $("nx-mbar"), mirror = $("nx-mirror"), mstart = $("nx-mstart");
-  var fmt = function (s) { return Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0"); };
-  var lines = function (k) {
-    if (k > 0.66) return "Checking is fine. Gentle hands.";
-    if (k > 0.33) return "Halfway. Notice your shoulders.";
-    if (k > 0) return "Nearly time. Start to wrap up.";
-    return "Time. Lights off, step out. You did it.";
-  };
-  var paint = function () { mclock.textContent = fmt(left); mbar.style.width = (100 * left / total) + "%"; };
-  var stop = function () { clearInterval(timer); timer = null; mstart.textContent = "Start"; };
-  var minBtns = [];
-  [3, 5, 10].forEach(function (m) {
-    var b = chip($("nx-mins"), m + " min", function () {
-      stop(); total = left = m * 60; mirror.classList.remove("done"); mline.textContent = "";
-      minBtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); paint();
-    });
-    b.setAttribute("aria-pressed", m === 5); minBtns.push(b);
-  });
-  mstart.onclick = function () {
-    if (timer) { stop(); return; }
-    if (left <= 0) { left = total; mirror.classList.remove("done"); }
-    tried("mirror"); mstart.textContent = "Stop"; mline.textContent = lines(left / total);
-    timer = setInterval(function () {
-      left = Math.max(0, left - SPEED * 0.25); paint(); mline.textContent = lines(left / total);
-      if (left <= 0) { stop(); mirror.classList.add("done"); mstart.textContent = "Again"; }
-    }, 250);
-  };
-  paint();
 
   // Coming next · sounds, made in the browser
   var ctx = null, playing = null, nodes = [];
@@ -577,6 +709,10 @@ document.addEventListener("click", function (e) {
   var KEY = "gs_next_votes_" + ROUND, MAX = 2;
   var cards = document.querySelectorAll(".nx-card"), mine = [];
   try { mine = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { mine = []; }
+  // An idea taken off the page mid-round (the mirror timer, 2026-11-07) gives its vote back.
+  var ids = [].map.call(cards, function (c) { return c.dataset.f; });
+  if (!Array.isArray(mine)) mine = [];
+  mine = mine.filter(function (f) { return ids.indexOf(f) >= 0; }).slice(0, MAX);
   var mark = function () {
     var full = mine.length >= MAX;
     cards.forEach(function (c) {
