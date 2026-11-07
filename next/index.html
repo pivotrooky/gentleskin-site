@@ -82,7 +82,6 @@ document.addEventListener("click", function (e) {
 .nx-chips button[aria-pressed="true"] { background: var(--rose); color: var(--on-rose); border-color: var(--rose); }
 .nx-chips button.hit { background: var(--sage); color: #fff; border-color: var(--sage); }
 .nx-label { font: 700 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--sub); margin: 2px 0 0; }
-.nx-tip { background: var(--paper); border: 1px solid var(--hair); border-radius: 16px; padding: 12px 14px; font: 17px/1.45 var(--serif); font-style: italic; color: var(--ink); min-height: 3.2em; }
 .nx-week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; text-align: center; font: 700 10px var(--sans); letter-spacing: .12em; color: var(--mute); }
 .nx-cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; }
 .nx-cal button, .nx-cal i { aspect-ratio: 1; border-radius: 10px; }
@@ -141,10 +140,45 @@ document.addEventListener("click", function (e) {
 .nx-pages canvas, .nx-gallery img { width: 48px; height: 48px; display: block; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--ink); }
 .nx-pages button[aria-pressed="true"] { outline: 2px solid var(--rose); outline-offset: 2px; }
 .nx-gallery img { box-shadow: none; border: 1px solid var(--ink); box-sizing: border-box; }
-.nx-note { width: 100%; min-height: 96px; resize: vertical; border: 1px solid var(--hair); border-radius: 14px; padding: 10px 12px; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); box-sizing: border-box; }
-.nx-kept { display: grid; gap: 6px; }
-.nx-kept div { background: var(--paper); border: 1px solid var(--hair); border-radius: 12px; padding: 8px 10px; font-size: 14px; }
-.nx-kept small { color: var(--sub); display: block; font-size: 12px; }
+/* the notebook, as the app draws it: Castoro on faint rules, Keep it, the pages kept */
+.nx-ruled { background: var(--card); border: 1px solid var(--hair); border-radius: 22px; box-shadow: 0 6px 14px rgba(62,43,41,.08); padding: 14px 18px 4px; }
+.nx-note { display: block; width: 100%; height: 206px; resize: none; border: 0; outline: 0; margin: 0; padding: 0; box-sizing: border-box; background: transparent repeating-linear-gradient(to bottom, transparent 0 27px, var(--hair) 27px 28px, transparent 28px 34px); background-attachment: local; color: var(--ink); caret-color: var(--rose); font: 19px/34px var(--serif); }
+.nx-note::placeholder { color: var(--mute); opacity: 1; }
+.nx-nrow { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.nx-keepbtn { width: 180px; border: 0; border-radius: 999px; padding: 13px 0; background: var(--rose); color: var(--on-rose); font: 800 15px var(--sans); cursor: pointer; transition: background .2s; }
+.nx-keepbtn:disabled { background: #E0BFC9; cursor: default; }
+.nx-trash { height: 44px; min-width: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--hair); background: none; color: var(--rose); font: 700 13.5px var(--sans); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.nx-trash svg { width: 16px; height: 16px; }
+.nx-trash.ask { background: var(--rose); color: var(--on-rose); border-color: var(--rose); padding: 0 16px; }
+.nx-trash[hidden] { display: none; }
+.nx-flash { text-align: center; margin: 0; min-height: 1.3em; font: 600 13.5px var(--sans); color: var(--sage); }
+.nx-bookhead { display: flex; justify-content: space-between; align-items: baseline; padding-top: 6px; border-top: 1px solid var(--hair); }
+.nx-bookhead span { font: 22px var(--serif); color: var(--ink); }
+.nx-bookhead small { font: 600 13px var(--sans); color: var(--sub); }
+.nx-prow { display: grid; gap: 5px; width: 100%; text-align: left; border: 0; border-bottom: 1px solid #F4E4E8; background: none; padding: 14px 0; cursor: pointer; }
+.nx-prow small { font: 800 9.5px var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
+.nx-prow span { font: 17px/1.5 var(--serif); color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.nx-prow.open span { color: var(--mute); }
+/* feelings, as the app asks them after Log: one question a screen, then the tip */
+.nx-phone { background: var(--paper); border: 1px solid var(--hair); border-radius: 18px; padding: 14px 16px; display: grid; gap: 12px; align-content: start; min-height: 250px; }
+.nx-fhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.nx-flog { font: 800 10px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--sage); }
+.nx-fdots { display: inline-flex; gap: 5px; }
+.nx-fdots i { width: 6px; height: 6px; border-radius: 50%; background: var(--hair); transition: background .25s; }
+.nx-fdots i.on { background: var(--rose); }
+.nx-q { font: 22px/1.25 var(--serif); color: var(--ink); margin: 2px 0 14px; }
+.nx-fchips button { padding: 9px 14px; font-size: 14px; background: var(--card); }
+.nx-frow { display: flex; align-items: center; margin-top: 14px; }
+.nx-quiet { border: 0; background: none; color: var(--sub); font: 600 13.5px var(--sans); padding: 6px 0; cursor: pointer; }
+.nx-quiet:hover { color: var(--rose); }
+.nx-quiet[hidden] { display: none; }
+.nx-frow .nx-quiet:last-child { margin-left: auto; }
+.nx-fpair { margin: 2px 0 12px; font: italic 20px var(--serif); color: var(--ink); }
+.nx-tipcard { background: var(--card); border: 1px solid var(--hair); border-radius: 16px; padding: 12px 14px; }
+.nx-tipcard b { display: block; font: 800 10.5px var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--mute); margin-bottom: 4px; }
+.nx-tipcard p { margin: 0; font: 17px/1.45 var(--serif); color: var(--ink); }
+.nx-fade { animation: nx-in .32s ease-out; }
+@keyframes nx-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .nx-btn { justify-self: start; border: 0; background: var(--rose); color: var(--on-rose); font: 600 14px var(--sans); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
 .nx-btn:disabled { opacity: .45; cursor: default; }
 
@@ -217,11 +251,21 @@ document.addEventListener("click", function (e) {
 
   <article class="nx-card" data-f="feelings">
     <div class="nx-top"><span class="nx-n">Idea 2</span><h2>How you <em>felt</em>, and what helps</h2>
-      <p>Tap what you felt. Get one thing to try.</p></div>
+      <p>Right after you log a pick: how you felt before, how you feel now, and one small thing to try.</p></div>
     <div class="nx-play">
-      <p class="nx-label">Before</p><div class="nx-chips" id="nx-before"></div>
-      <p class="nx-label">After</p><div class="nx-chips" id="nx-after"></div>
-      <div class="nx-tip" id="nx-tip">Tap a feeling.</div>
+      <div class="nx-phone">
+        <div class="nx-fhead"><span class="nx-flog">✓ Logged · 3 picks, face</span><span class="nx-fdots" id="nx-fdots" aria-hidden="true"><i></i><i></i></span></div>
+        <div id="nx-fask">
+          <p class="nx-q" id="nx-q"></p>
+          <div class="nx-chips nx-fchips" id="nx-fchips"></div>
+          <div class="nx-frow"><button type="button" class="nx-quiet" id="nx-fback" hidden>‹ Back</button><button type="button" class="nx-quiet" id="nx-fskip">Skip</button></div>
+        </div>
+        <div id="nx-fclose" hidden>
+          <p class="nx-fpair" id="nx-fpair"></p>
+          <div class="nx-tipcard" id="nx-tipcard"><b>Something to try</b><p id="nx-tip"></p></div>
+          <div class="nx-frow"><button type="button" class="nx-quiet" id="nx-fmore">Another one →</button><button type="button" class="nx-quiet" id="nx-fagain">Start again</button></div>
+        </div>
+      </div>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -245,10 +289,14 @@ document.addEventListener("click", function (e) {
     <div class="nx-top"><span class="nx-n">Idea 4</span><h2>A <em>notebook</em> to write it out</h2>
       <p>When the urge is a thought that won't stop, write it out. Two lines is enough.</p></div>
     <div class="nx-play">
-      <textarea class="nx-note" id="nx-note" maxlength="400" placeholder="What's on your mind?" aria-label="Write a note"></textarea>
-      <button class="nx-btn" id="nx-keep" type="button" disabled>Keep it</button>
-      <div class="nx-kept" id="nx-kept"></div>
-      <p class="nx-hint">Nothing here is sent anywhere.</p>
+      <div class="nx-ruled"><textarea class="nx-note" id="nx-note" maxlength="4000" placeholder="What's on your mind? Two lines is enough." aria-label="Write a page"></textarea></div>
+      <div class="nx-nrow"><button class="nx-trash" id="nx-trash" type="button" hidden aria-label="Delete this page"></button><button class="nx-keepbtn" id="nx-keep" type="button" disabled>Keep it</button></div>
+      <p class="nx-flash" id="nx-flash" aria-live="polite"></p>
+      <div id="nx-book" hidden>
+        <div class="nx-bookhead"><span>Notebook</span><small id="nx-npages"></small></div>
+        <div id="nx-kept"></div>
+      </div>
+      <p class="nx-hint">Kept in this browser only. Nothing here is sent anywhere.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -290,25 +338,68 @@ document.addEventListener("click", function (e) {
     var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
   };
 
-  // 2 · feelings and a tip for each
-  var TIPS = {
-    "Anxious": "Breathe out longer than you breathe in. Three times, then decide.",
-    "Bored": "Give your hands a job for two minutes: a fidget, a pen, an ice cube.",
-    "Frustrated": "Make a tight fist for ten seconds, then let it go. Twice.",
-    "Tense": "Drop your shoulders and unclench your jaw. Notice where your hands are.",
-    "Restless": "Stand up and walk to another room. The urge often stays behind.",
-    "Guilty": "One pick doesn't undo the good days. Wash it, cover it, leave it.",
-    "Relieved": "Notice what led here. Next time you can catch it a little earlier.",
-    "Angry at myself": "Talk to yourself the way you'd talk to a friend who picks.",
-    "Calm": "Good. What helped? Remember it for next time."
+  // 2 · feelings, as the app asks them right after Log: before, then now,
+  // one a screen, a tap moves on (0.32 s, the app's); then the tips that fit
+  // what was felt, before's first. Same feelings, tips and tags as the app
+  // (shared/strings/answers.toml [tips], config.toml [tips] fits).
+  var BEFORE = [["anxious", "Anxious"], ["bored", "Bored"], ["frustrated", "Frustrated"], ["tense", "Tense"], ["restless", "Restless"]];
+  var AFTER = [["guilty", "Guilty"], ["relieved", "Relieved"], ["angry", "Angry at myself"], ["calm", "Calm"]];
+  var TIPS = [
+    ["Breathe out longer than you breathe in. Three times, then decide.", "anxious tense"],
+    ["Give your hands a job for two minutes: a fidget, a pen, an ice cube.", "bored restless"],
+    ["Make a tight fist for ten seconds, then let it go. Twice.", "frustrated tense angry"],
+    ["Drop your shoulders and unclench your jaw. Notice where your hands are.", "tense anxious"],
+    ["Stand up and walk to another room. The urge often stays behind.", "restless bored"],
+    ["One pick doesn't undo the good days. Wash it, cover it, leave it.", "guilty"],
+    ["Notice what led here. Next time you can catch it a little earlier.", "relieved calm"],
+    ["Talk to yourself the way you'd talk to a friend who picks.", "angry guilty"],
+    ["Note what helped, so it's there next time.", "calm relieved"],
+    ["Name five things you can see. It pulls attention out of your fingertips.", "anxious"],
+    ["Wear something with texture: a ring, a hair tie, soft gloves.", "bored restless"],
+    ["Cold water on your hands and face for thirty seconds.", "frustrated anxious angry"],
+    ["Cover the spot with a bandage. Out of sight is easier to leave.", "guilty relieved"],
+    ["Write one line about what came before. Patterns show up later.", "relieved calm"],
+    ["Slow the next ten minutes down: a glass of water, a window, a breath.", "frustrated restless"]
+  ];
+  var QS = ["How were you feeling before?", "And how do you feel now?"];
+  var fstep = 0, felt = [null, null], tipList = [], tipAt = 0, moving = 0;
+  var fade = function (el) { el.classList.remove("nx-fade"); void el.offsetWidth; el.classList.add("nx-fade"); };
+  var nameOf = function (id) { var all = BEFORE.concat(AFTER); for (var i = 0; i < all.length; i++) if (all[i][0] === id) return all[i][1]; return id; };
+  var fdots = function () { [].forEach.call($("nx-fdots").children, function (d, i) { d.classList.toggle("on", i <= fstep); }); };
+  var ask = function () {
+    var box = $("nx-fchips");
+    $("nx-q").textContent = QS[fstep]; box.innerHTML = "";
+    (fstep === 0 ? BEFORE : AFTER).forEach(function (o) {
+      var b = chip(box, o[1], function () {
+        felt[fstep] = o[0];
+        [].forEach.call(box.children, function (x) { x.setAttribute("aria-pressed", x === b); });
+        tried("feelings"); clearTimeout(moving); moving = setTimeout(fnext, 320);
+      });
+      b.setAttribute("aria-pressed", felt[fstep] === o[0]);
+    });
+    $("nx-fback").hidden = fstep === 0;
+    fdots(); fade($("nx-fask"));
   };
-  var fbtns = [];
-  var pickFeeling = function (b, k) {
-    fbtns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
-    $("nx-tip").textContent = TIPS[k]; tried("feelings");
+  var showTip = function () { if (tipList.length) { $("nx-tip").textContent = tipList[tipAt % tipList.length]; fade($("nx-tipcard")); } };
+  var fclose = function () {
+    $("nx-fask").hidden = true; $("nx-fclose").hidden = false; fstep = 2; fdots();
+    var said = felt.filter(Boolean);
+    $("nx-fpair").textContent = said.length ? said.map(function (id) { return nameOf(id).toLowerCase(); }).join(" → ") : "Logged.";
+    tipList = [];
+    said.forEach(function (id) {
+      TIPS.forEach(function (t) { if ((" " + t[1] + " ").indexOf(" " + id + " ") >= 0 && tipList.indexOf(t[0]) < 0) tipList.push(t[0]); });
+    });
+    tipAt = 0;
+    $("nx-tipcard").hidden = !tipList.length; $("nx-fmore").hidden = tipList.length < 2;
+    showTip(); fade($("nx-fclose"));
+    if (window.posthog) posthog.capture("next_feelings_done", { round: ROUND, before: felt[0], after: felt[1] });
   };
-  ["Anxious", "Bored", "Frustrated", "Tense", "Restless"].forEach(function (k) { fbtns.push(chip($("nx-before"), k, function (x) { pickFeeling(x, k); })); });
-  ["Guilty", "Relieved", "Angry at myself", "Calm"].forEach(function (k) { fbtns.push(chip($("nx-after"), k, function (x) { pickFeeling(x, k); })); });
+  var fnext = function () { moving = 0; if (fstep === 0) { fstep = 1; ask(); } else fclose(); };
+  $("nx-fskip").onclick = function () { clearTimeout(moving); felt[fstep] = null; fnext(); };
+  $("nx-fback").onclick = function () { clearTimeout(moving); fstep = 0; ask(); };
+  $("nx-fmore").onclick = function () { tipAt++; showTip(); if (window.posthog) posthog.capture("next_feelings_more", { round: ROUND, n: tipAt }); };
+  $("nx-fagain").onclick = function () { felt = [null, null]; fstep = 0; $("nx-fclose").hidden = true; $("nx-fask").hidden = false; ask(); };
+  ask();
 
   // 3 · calendar: the last two weeks, ending today. Each day's colour comes
   // from its log; tap a day to see which log gave it. Today starts empty and
@@ -622,16 +713,69 @@ document.addEventListener("click", function (e) {
     window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawLines, 120); });
   })();
 
-  // 4 · notebook (stays on the page)
-  var note = $("nx-note"), keep = $("nx-keep");
-  note.oninput = function () { keep.disabled = !note.value.trim(); };
-  keep.onclick = function () {
-    var t = note.value.trim(); if (!t) return;
-    var d = document.createElement("div"); var s = document.createElement("small");
-    s.textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) + " · kept";
-    d.append(s, document.createTextNode(t)); $("nx-kept").prepend(d);
-    note.value = ""; keep.disabled = true; tried("notebook");
-  };
+  // 4 · notebook, the app's: a ruled page and Keep it, then the pages kept,
+  // newest first, each under its time. A kept page opens again to change
+  // (Done) or delete (asked twice, like an entry). Kept in this browser only.
+  (function () {
+    var NKEY = "gs_next_notebook", note = $("nx-note"), keep = $("nx-keep"), trash = $("nx-trash");
+    var TRASH = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.6 8.5h5.8l.6-8.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var pages = [], editing = -1, asking = false, flashT = 0;
+    try { pages = JSON.parse(localStorage.getItem(NKEY) || "[]"); } catch (e) { pages = []; }
+    if (!Array.isArray(pages)) pages = [];
+    var store = function () { try { localStorage.setItem(NKEY, JSON.stringify(pages)); } catch (e) {} };
+    var stamp = function (t) {
+      var d = new Date(t), today = d.toDateString() === new Date().toDateString();
+      return (today ? "Today" : d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" })) +
+        " · " + d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    };
+    var flash = function (msg) { $("nx-flash").textContent = msg; clearTimeout(flashT); flashT = setTimeout(function () { $("nx-flash").textContent = ""; }, 2200); };
+    var state = function () {
+      keep.textContent = editing >= 0 ? "Done" : "Keep it";
+      keep.disabled = editing < 0 && !note.value.trim();
+      trash.hidden = editing < 0;
+      trash.classList.toggle("ask", asking);
+      trash.innerHTML = asking ? "Really delete" : TRASH;
+    };
+    var draw = function () {
+      var box = $("nx-kept"); box.innerHTML = "";
+      pages.forEach(function (p, i) {
+        var b = document.createElement("button"); b.type = "button"; b.className = "nx-prow" + (i === editing ? " open" : "");
+        var st = document.createElement("small"); st.textContent = stamp(p.t);
+        var tx = document.createElement("span"); tx.textContent = p.text;
+        b.append(st, tx);
+        b.onclick = function () {
+          editing = i; asking = false; note.value = p.text; draw(); note.focus();
+          if (window.posthog) posthog.capture("next_note_opened", { round: ROUND });
+        };
+        box.append(b);
+      });
+      $("nx-book").hidden = !pages.length;
+      $("nx-npages").textContent = pages.length === 1 ? "1 page" : pages.length + " pages";
+      state();
+    };
+    note.oninput = function () { asking = false; state(); };
+    keep.onclick = function () {
+      var t = note.value.trim();
+      if (editing >= 0) {
+        // a kept page emptied keeps its old words: delete is the verb for that
+        if (t) pages[editing].text = t;
+        editing = -1;
+      } else {
+        if (!t) return;
+        pages.unshift({ t: Date.now(), text: t });
+        flash("Kept."); tried("notebook");
+        if (window.posthog) posthog.capture("next_note_kept", { round: ROUND, chars: t.length, n: pages.length });
+      }
+      note.value = ""; asking = false; store(); draw();
+    };
+    trash.onclick = function () {
+      if (editing < 0) return;
+      if (!asking) { asking = true; state(); return; }
+      pages.splice(editing, 1); editing = -1; asking = false; note.value = "";
+      store(); draw(); flash("Deleted");
+    };
+    draw();
+  })();
 
   // Coming next · sounds, made in the browser
   var ctx = null, playing = null, nodes = [];
