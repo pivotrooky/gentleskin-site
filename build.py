@@ -69,10 +69,10 @@ location.replace("{url}");
 # Spanish pages (lang: es) get Spanish chrome. `alt:` in a page's header names
 # its counterpart in the other language, for hreflang.
 CHROME = {
-    "en": {"guides": "Guides", "guides_path": "guides/", "get": "Get the app",
+    "en": {"guides": "Guides", "guides_path": "guides/", "next": "What's next", "next_path": "next/?from=nav", "get": "Get the app",
            "foot": "Gentleskin is a self-tracking tool, not a medical device. It doesn't diagnose or treat any condition.",
            "privacy": "Privacy", "support": "Support"},
-    "es": {"guides": "Guías", "guides_path": "es/guias/", "get": "Descargar la app",
+    "es": {"guides": "Guías", "guides_path": "es/guias/", "next": "Lo que sigue", "next_path": "es/siguiente/?from=nav", "get": "Descargar la app",
            "foot": "Gentleskin es una herramienta para registrarte, no un dispositivo médico. No diagnostica ni trata ninguna condición.",
            "privacy": "Privacidad", "support": "Ayuda"},
 }
@@ -150,7 +150,7 @@ document.addEventListener("click", function (e) {{
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="{up or './'}"><img src="{up}img/icon.png" alt="">Gentleskin</a>
-  <nav><a href="{up}{c['guides_path']}">{c['guides']}</a><a href="{store('web_nav')}">{c['get']}</a></nav>
+  <nav><a href="{up}{c['next_path']}">{c['next']}</a><a href="{up}{c['guides_path']}">{c['guides']}</a><a href="{store('web_nav')}">{c['get']}</a></nav>
 </div></header>
 {body}
 <footer><div class="wrap">

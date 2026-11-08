@@ -91,6 +91,10 @@ em { font-family: var(--serif); font-style: italic; }
 .guide-card strong { display: block; color: var(--ink); font: 21px/1.3 var(--serif); font-weight: 400; margin-bottom: 4px; }
 .guide-card:hover { border-color: var(--rose); color: var(--body); }
 @media (max-width: 720px) { .guides { grid-template-columns: 1fr; } }
+.next-card { display: block; background: var(--card); border: 1px solid var(--hair); border-radius: 20px; padding: 22px 26px; margin-top: 48px; text-decoration: none; color: var(--body); }
+.next-card strong { display: block; color: var(--ink); font: 24px/1.3 var(--serif); font-weight: 400; margin-bottom: 6px; }
+.next-card .next-go { display: block; margin-top: 10px; color: var(--rose); font-weight: 600; }
+.next-card:hover { border-color: var(--rose); color: var(--body); }
 
 /* FAQ */
 details { border-bottom: 1px solid var(--hair); padding: 14px 0; }
@@ -149,3 +153,5 @@ footer a { color: var(--sub); }
 .sources { font-size: 15px; color: var(--sub); padding-left: 20px; }
 .sources li { margin: 4px 0; overflow-wrap: anywhere; }
 .guides-group { margin: 40px 0 0; font-size: clamp(24px, 3vw, 30px); }
+.top nav a { white-space: nowrap; }
+@media (max-width: 560px) { .top nav { gap: 14px; font-size: 14.5px; } .brand { font-size: 0; gap: 0; } }
