@@ -153,6 +153,8 @@ PAIRS = [
     ('"▶ Rain"', '"▶ Lluvia"'),
     ('"▶ Brown noise"', '"▶ Ruido marrón"'),
     ('<span class="nx-n">In the app</span>', '<span class="nx-n">En la app</span>'),
+    ('aria-expanded="false">Already in the app (6)</button>', 'aria-expanded="false">Ya en la app (6)</button>'),
+    ('open ? "Hide" : "Already in the app (6)"', 'open ? "Ocultar" : "Ya en la app (6)"'),
     ("<b>Log from the Lock Screen</b><span>One tap on the widget, without unlocking.</span>",
      "<b>Registrar desde la pantalla bloqueada</b><span>Un toque en el widget, sin desbloquear.</span>"),
     ("<b>Check-ins at your time</b><span>Pick the hour and the days.</span>",

@@ -156,6 +156,9 @@ ct: web_next
 .nx-list b { font: 17px var(--serif); font-weight: 400; color: var(--ink); }
 .nx-list span:not(.nx-n) { font-size: 14px; color: var(--sub); }
 .nx-list .nx-n { font-size: 10px; color: var(--sage); }
+.nx-list:not(.open) li.done { display: none; }
+.nx-list li.nx-fold { display: block; padding: 10px 0; }
+.nx-fold button { border: 0; background: none; padding: 0; color: var(--rose); font: 600 14px var(--sans); cursor: pointer; }
 .nx-list .soon .nx-n { color: var(--rose); }
 .nx-list .nx-sounds { margin-top: 6px; }
 .nx-sounds button.on { background: var(--rose); color: var(--on-rose); border-color: var(--rose); }
@@ -280,12 +283,13 @@ ct: web_next
   <ul class="nx-list">
     <li class="soon"><span class="nx-n">Próxima versión</span><div><b>Sonidos para la ola</b><span>Mar, lluvia o ruido marrón durante la ola. Vienen apagados.</span>
       <div class="nx-chips nx-sounds" id="nx-sounds"></div></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Registrar desde la pantalla bloqueada</b><span>Un toque en el widget, sin desbloquear.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Avisos a tu hora</b><span>Eliges la hora y los días.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Qué estaba pasando</b><span>Un toque opcional al registrar.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Fotos de la piel</b><span>Para comparar cómo se cura. Quedan en tu teléfono.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Qué ayudó</b><span>Cuando pasa un impulso, toca qué ayudó.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Duración de la ola</b><span>De 15 a 90 segundos, y cuántas burbujas reventar.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Registrar desde la pantalla bloqueada</b><span>Un toque en el widget, sin desbloquear.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Avisos a tu hora</b><span>Eliges la hora y los días.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Qué estaba pasando</b><span>Un toque opcional al registrar.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Fotos de la piel</b><span>Para comparar cómo se cura. Quedan en tu teléfono.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Qué ayudó</b><span>Cuando pasa un impulso, toca qué ayudó.</span></div></li>
+    <li class="done"><span class="nx-n">En la app</span><div><b>Duración de la ola</b><span>De 15 a 90 segundos, y cuántas burbujas reventar.</span></div></li>
+      <li class="nx-fold"><button type="button" id="nx-fold" aria-expanded="false">Ya en la app (6)</button></li>
   </ul>
 </section>
 </main>
@@ -294,6 +298,11 @@ ct: web_next
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var ROUND = "2026-11c"; if (window.posthog) posthog.register({ next_lang: "es" });
+  $("nx-fold").onclick = function () {
+    var list = this.closest(".nx-list"), open = list.classList.toggle("open");
+    this.setAttribute("aria-expanded", open); this.textContent = open ? "Ocultar" : "Ya en la app (6)";
+    if (window.posthog) posthog.capture("next_inapp_toggled", { round: ROUND, open: open });
+  };
   var seen = {};
   var tried = function (f) { if (seen[f]) return; seen[f] = true; if (window.posthog) posthog.capture("next_tried", { feature: f, round: ROUND }); };
   var chip = function (box, label, onclick) {
