@@ -1,5 +1,5 @@
 title: ¿Qué debería agregar Gentleskin? | Gentleskin
-description: Cuatro ideas para Gentleskin, la app para la dermatilomanía, funcionando en tu navegador: colorear sin salirte de las líneas, emociones y consejos, un calendario de avances y un cuaderno. Pruébalas y vota hasta dos.
+description: Cuatro ideas para Gentleskin, la app para la dermatilomanía: colorear, emociones y consejos, un calendario de avances y un cuaderno. Pruébalas en el navegador y vota hasta dos.
 path: es/siguiente/
 lang: es
 alt: next/
@@ -178,7 +178,6 @@ ct: web_next
 <section class="nx-intro">
   <a class="nx-lang" href="../../next/?lang=en">English</a>
   <h1>¿Qué agrego <em>ahora?</em></h1>
-  <p>Cuatro ideas de personas que se pellizcan la piel. Todas funcionan aquí.</p>
   <div class="nx-steps"><span><i>1</i>Pruébalas</span><span><i>2</i>Vota hasta dos</span><span><i>3</i>Cuéntame lo que quieras</span></div>
 </section>
 <p class="nx-left" id="nx-left">Tienes 2 votos.</p>
@@ -186,11 +185,11 @@ ct: web_next
 <div class="nx-grid">
   <article class="nx-card" data-f="colour">
     <div class="nx-top"><span class="nx-n">Idea 1</span><h2>Colorea <em>sin salirte de las líneas</em></h2>
-      <p>Para esos minutos en que tus manos necesitan hacer algo.</p>
+      <p>Algo para hacer con las manos.</p>
       <ul class="nx-points">
-        <li>Pinta con el dedo. El color se queda en la forma donde empiezas, así que nunca pasa una línea, por más que garabatees.</li>
-        <li>O toca, toca, toca, y cada forma se rellena.</li>
-        <li>Cada página que coloreas queda guardada en una galería. Cada una abre un color nuevo.</li>
+        <li>Pinta con el dedo. El color se queda dentro de la forma donde empezaste, aunque garabatees encima de una línea.</li>
+        <li>O toca una forma para rellenarla.</li>
+        <li>Las páginas terminadas quedan en una galería, y cada una desbloquea un color nuevo.</li>
       </ul></div>
     <div class="nx-play nx-cplay">
       <div class="nx-cleft">
@@ -214,8 +213,8 @@ ct: web_next
   </article>
 
   <article class="nx-card" data-f="feelings">
-    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>Cómo te <em>sentiste</em>, y qué ayuda</h2>
-      <p>Justo después de registrar un pellizco: cómo te sentías antes, cómo te sientes ahora, y algo pequeño para probar.</p></div>
+    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>Cómo te <em>sentiste</em>, y un consejo</h2>
+      <p>Después de registrar un pellizco, tocas cómo te sentías antes y después, y te sale un consejo para eso.</p></div>
     <div class="nx-play">
       <div class="nx-phone">
         <div class="nx-fhead"><span class="nx-flog">✓ Registrado · 3 pellizcos, cara</span><span class="nx-fdots" id="nx-fdots" aria-hidden="true"><i></i><i></i></span></div>
@@ -236,22 +235,21 @@ ct: web_next
 
   <article class="nx-card" data-f="calendar">
     <div class="nx-top"><span class="nx-n">Idea 3</span><h2>Un calendario de <em>avances</em></h2>
-      <p>Cada día toma su color de lo que registras. Frenar a mitad de camino cuenta, y también un impulso que dejaste pasar.</p></div>
+      <p>Cada día tiene un color según lo que registraste. Frenar a mitad y aguantar un impulso también cuentan.</p></div>
     <div class="nx-play">
       <p class="nx-sum" id="nx-calsum"></p>
       <div class="nx-week"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
       <div class="nx-cal" id="nx-cal"></div>
       <div class="nx-key" id="nx-key"></div>
       <div class="nx-why" id="nx-why"></div>
-      <p class="nx-label">Registra hoy</p>
-      <div class="nx-chips" id="nx-marks"></div>
+      <p class="nx-hint">Toca un día para ver qué se registró.</p>
     </div>
     <div class="nx-vote-bar"><span>¿Quieres esta?</span><button class="nx-vote" type="button">Votar</button></div>
   </article>
 
   <article class="nx-card" data-f="notebook">
     <div class="nx-top"><span class="nx-n">Idea 4</span><h2>Un <em>cuaderno</em> para escribirlo</h2>
-      <p>Cuando el impulso es un pensamiento que no para, escríbelo. Con dos líneas alcanza.</p></div>
+      <p>Para un pensamiento que no se va. Lo escribes y guardas la página.</p></div>
     <div class="nx-play">
       <div class="nx-ruled"><textarea class="nx-note" id="nx-note" maxlength="4000" placeholder="¿Qué tienes en mente? Con dos líneas basta." aria-label="Escribe una página"></textarea></div>
       <div class="nx-nrow"><button class="nx-trash" id="nx-trash" type="button" hidden aria-label="Borrar esta página"></button><button class="nx-keepbtn" id="nx-keep" type="button" disabled>Guardar</button></div>
@@ -260,7 +258,7 @@ ct: web_next
         <div class="nx-bookhead"><span>Cuaderno</span><small id="nx-npages"></small></div>
         <div id="nx-kept"></div>
       </div>
-      <p class="nx-hint">Se guarda solo en este navegador. Nada de esto se envía a ningún lado.</p>
+      <p class="nx-hint">Solo se guarda en este navegador.</p>
     </div>
     <div class="nx-vote-bar"><span>¿Quieres esta?</span><button class="nx-vote" type="button">Votar</button></div>
   </article>
@@ -272,22 +270,22 @@ ct: web_next
 
 <form class="nx-say" id="nx-say">
   <h2>¿Algo más?</h2>
-  <p>Algo que falta, algo que te molesta. Leo todos los mensajes.</p>
+  <p>Algo que falta o algo que te molesta.</p>
   <textarea id="nx-text" maxlength="2000" placeholder="Escribe lo que quieras" aria-label="Tu mensaje"></textarea>
   <div class="nx-say-row"><small>Anónimo.</small><button class="nx-send" id="nx-send" disabled>Enviar</button></div>
 </form>
 
 <section class="nx-section">
-  <h2>Nuevo en la app, y lo que <em>viene</em></h2>
+  <h2>En la app, y lo <em>próximo</em></h2>
   <ul class="nx-list">
-    <li class="soon"><span class="nx-n">Próxima versión</span><div><b>Sonidos para la ola</b><span>El mar, lluvia o ruido marrón mientras pasa. Apagado hasta que lo actives.</span>
+    <li class="soon"><span class="nx-n">Próxima versión</span><div><b>Sonidos para la ola</b><span>Mar, lluvia o ruido marrón durante la ola. Vienen apagados.</span>
       <div class="nx-chips nx-sounds" id="nx-sounds"></div></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Registrar desde la pantalla bloqueada</b><span>Un toque en el widget y queda registrado, sin desbloquear.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Avisos a tu hora</b><span>Tú eliges la hora y los días.</span></div></li>
+    <li><span class="nx-n">En la app</span><div><b>Registrar desde la pantalla bloqueada</b><span>Un toque en el widget, sin desbloquear.</span></div></li>
+    <li><span class="nx-n">En la app</span><div><b>Avisos a tu hora</b><span>Eliges la hora y los días.</span></div></li>
     <li><span class="nx-n">En la app</span><div><b>Qué estaba pasando</b><span>Un toque opcional al registrar.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Fotos de la piel</b><span>Compara cómo se cura tu piel. Nunca salen de tu teléfono.</span></div></li>
+    <li><span class="nx-n">En la app</span><div><b>Fotos de la piel</b><span>Para comparar cómo se cura. Quedan en tu teléfono.</span></div></li>
     <li><span class="nx-n">En la app</span><div><b>Qué ayudó</b><span>Cuando pasa un impulso, toca qué ayudó.</span></div></li>
-    <li><span class="nx-n">En la app</span><div><b>Tu ola, tu duración</b><span>De 15 a 90 segundos, y cuántas burbujas reventar.</span></div></li>
+    <li><span class="nx-n">En la app</span><div><b>Duración de la ola</b><span>De 15 a 90 segundos, y cuántas burbujas reventar.</span></div></li>
   </ul>
 </section>
 </main>
@@ -366,8 +364,7 @@ ct: web_next
   ask();
 
   // 3 · calendar: the last two weeks, ending today. Each day's colour comes
-  // from its log; tap a day to see which log gave it. Today starts empty and
-  // the buttons log into it.
+  // from its log; tap a day to see which log gave it.
   var ICON = {
     clear: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     noticed: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>',
@@ -376,7 +373,7 @@ ct: web_next
   };
   $("nx-key").innerHTML = [["k1", "clear", "Sin pellizcos"], ["k2", "noticed", "Frenado a mitad"], ["k3", "tried", "Pasó un impulso"], ["k4", "picked", "Hubo pellizcos"]]
     .map(function (k) { return '<span class="' + k[0] + '">' + ICON[k[1]] + k[2] + "</span>"; }).join("");
-  // what the sample fortnight logged, oldest first; today (last) is yours
+  // what the sample fortnight logged, oldest first; today is the last
   var LOGS = [
     { picks: 0 }, { picks: 4 }, { picks: 2, stopped: 1 }, { picks: 0 }, { picks: 0 }, { picks: 3, urges: 1 }, { picks: 6 },
     { picks: 1, stopped: 1 }, { picks: 0 }, { picks: 5 }, { picks: 0 }, { picks: 2, urges: 2 }, { picks: 1, stopped: 1 }, { picks: 0 }
@@ -389,7 +386,6 @@ ct: web_next
   };
   var why = function (i) {
     var l = LOGS[i], k = kind(l), bits = [];
-    if (i === TODAY && !l.picks && !l.stopped && !l.urges) return "Nada registrado todavía.";
     if (k === "clear") return "Sin pellizcos.";
     if (l.urges) bits.push((l.urges === 1 ? "Pasó un impulso." : "Pasaron " + l.urges + " impulsos."));
     if (l.stopped) bits.push("Un pellizco frenado a mitad.");
@@ -416,14 +412,6 @@ ct: web_next
     var b = e.target.closest("button"); if (!b) return;
     sel = +b.dataset.i; drawCal(); tried("calendar");
   };
-  [["picks", "Un pellizco"], ["stopped", "Frenado a mitad"], ["urges", "Pasó el impulso"], ["reset", "Borrar"]].forEach(function (m) {
-    chip($("nx-marks"), m[1], function () {
-      var t = LOGS[TODAY];
-      if (m[0] === "reset") LOGS[TODAY] = { picks: 0 };
-      else { t[m[0]] = (t[m[0]] || 0) + 1; if (m[0] === "stopped") t.picks = (t.picks || 0) + 1; }
-      sel = TODAY; drawCal(); tried("calendar");
-    });
-  });
   drawCal();
 
   // 1 · colouring, ported from the app (ColouringActivity / PaintRender):

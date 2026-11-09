@@ -1,5 +1,5 @@
 title: What should Gentleskin build next? | Gentleskin
-description: Four ideas for the Gentleskin skin picking app, working in your browser: colouring that stays inside the lines, feelings and tips, a calendar of progress and a notebook. Try them, then vote for up to two.
+description: Four ideas for Gentleskin, the skin picking app: colouring, feelings and tips, a progress calendar and a notebook. Try them in your browser and vote for up to two.
 path: next/
 alt: es/siguiente/
 image: img/next-og.jpg
@@ -176,7 +176,6 @@ ct: web_next
 <section class="nx-intro">
   <a class="nx-lang" href="../es/siguiente/">Español</a>
   <h1>What should I build <em>next?</em></h1>
-  <p>Four ideas from people who pick. Each one works here.</p>
   <div class="nx-steps"><span><i>1</i>Try them</span><span><i>2</i>Vote for up to two</span><span><i>3</i>Tell me anything</span></div>
 </section>
 <p class="nx-left" id="nx-left">You have 2 votes.</p>
@@ -184,11 +183,11 @@ ct: web_next
 <div class="nx-grid">
   <article class="nx-card" data-f="colour">
     <div class="nx-top"><span class="nx-n">Idea 1</span><h2>Colour it in, <em>inside the lines</em></h2>
-      <p>For the minutes when your hands need something to do.</p>
+      <p>Something for your hands to do.</p>
       <ul class="nx-points">
-        <li>Paint with your finger. The colour stays in the shape you start in, so it never goes over a line, however you scribble.</li>
-        <li>Or tap, tap, tap, and each shape fills in.</li>
-        <li>Every page you colour is kept in a gallery. Each one opens a new colour.</li>
+        <li>Paint with your finger. The colour stays inside the shape you started in, even if you scribble over a line.</li>
+        <li>Or tap a shape to fill it.</li>
+        <li>Finished pages go in a gallery, and each one unlocks a new colour.</li>
       </ul></div>
     <div class="nx-play nx-cplay">
       <div class="nx-cleft">
@@ -212,8 +211,8 @@ ct: web_next
   </article>
 
   <article class="nx-card" data-f="feelings">
-    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>How you <em>felt</em>, and what helps</h2>
-      <p>Right after you log a pick: how you felt before, how you feel now, and one small thing to try.</p></div>
+    <div class="nx-top"><span class="nx-n">Idea 2</span><h2>How you <em>felt</em>, and a tip</h2>
+      <p>After you log a pick, tap how you felt before and after. Then you get a tip for it.</p></div>
     <div class="nx-play">
       <div class="nx-phone">
         <div class="nx-fhead"><span class="nx-flog">✓ Logged · 3 picks, face</span><span class="nx-fdots" id="nx-fdots" aria-hidden="true"><i></i><i></i></span></div>
@@ -233,23 +232,22 @@ ct: web_next
   </article>
 
   <article class="nx-card" data-f="calendar">
-    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>A calendar of <em>progress</em></h2>
-      <p>Each day takes its colour from what you log. Stopping partway counts, and so does an urge you rode out.</p></div>
+    <div class="nx-top"><span class="nx-n">Idea 3</span><h2>A progress <em>calendar</em></h2>
+      <p>Each day gets a colour from what you logged. Stopping partway and riding out an urge both count.</p></div>
     <div class="nx-play">
       <p class="nx-sum" id="nx-calsum"></p>
       <div class="nx-week"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
       <div class="nx-cal" id="nx-cal"></div>
       <div class="nx-key" id="nx-key"></div>
       <div class="nx-why" id="nx-why"></div>
-      <p class="nx-label">Log today</p>
-      <div class="nx-chips" id="nx-marks"></div>
+      <p class="nx-hint">Tap a day to see what was logged.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
 
   <article class="nx-card" data-f="notebook">
     <div class="nx-top"><span class="nx-n">Idea 4</span><h2>A <em>notebook</em> to write it out</h2>
-      <p>When the urge is a thought that won't stop, write it out. Two lines is enough.</p></div>
+      <p>For a thought that keeps coming back. Write it down and keep the page.</p></div>
     <div class="nx-play">
       <div class="nx-ruled"><textarea class="nx-note" id="nx-note" maxlength="4000" placeholder="What's on your mind? Two lines is enough." aria-label="Write a page"></textarea></div>
       <div class="nx-nrow"><button class="nx-trash" id="nx-trash" type="button" hidden aria-label="Delete this page"></button><button class="nx-keepbtn" id="nx-keep" type="button" disabled>Keep it</button></div>
@@ -258,7 +256,7 @@ ct: web_next
         <div class="nx-bookhead"><span>Notebook</span><small id="nx-npages"></small></div>
         <div id="nx-kept"></div>
       </div>
-      <p class="nx-hint">Kept in this browser only. Nothing here is sent anywhere.</p>
+      <p class="nx-hint">Only saved in this browser.</p>
     </div>
     <div class="nx-vote-bar"><span>Want this one?</span><button class="nx-vote" type="button">Vote</button></div>
   </article>
@@ -270,22 +268,22 @@ ct: web_next
 
 <form class="nx-say" id="nx-say">
   <h2>Anything else?</h2>
-  <p>Something missing, something that bugs you. I read every one.</p>
+  <p>Something missing, or something that bugs you.</p>
   <textarea id="nx-text" maxlength="2000" placeholder="Write anything" aria-label="Your message"></textarea>
   <div class="nx-say-row"><small>Anonymous.</small><button class="nx-send" id="nx-send" disabled>Send</button></div>
 </form>
 
 <section class="nx-section">
-  <h2>New in the app, and <em>coming next</em></h2>
+  <h2>In the app, and <em>next</em></h2>
   <ul class="nx-list">
-    <li class="soon"><span class="nx-n">Next update</span><div><b>Sounds for the wave</b><span>The sea, rain or brown noise while you ride it out. Off unless you turn it on.</span>
+    <li class="soon"><span class="nx-n">Next update</span><div><b>Sounds for the wave</b><span>Sea, rain or brown noise during the wave. Off by default.</span>
       <div class="nx-chips nx-sounds" id="nx-sounds"></div></div></li>
-    <li><span class="nx-n">In the app</span><div><b>Log from the Lock Screen</b><span>One tap on the widget logs it, without unlocking.</span></div></li>
-    <li><span class="nx-n">In the app</span><div><b>Check-ins at your time</b><span>You choose the hour and the days.</span></div></li>
+    <li><span class="nx-n">In the app</span><div><b>Log from the Lock Screen</b><span>One tap on the widget, without unlocking.</span></div></li>
+    <li><span class="nx-n">In the app</span><div><b>Check-ins at your time</b><span>Pick the hour and the days.</span></div></li>
     <li><span class="nx-n">In the app</span><div><b>What was going on</b><span>One optional tap when you log.</span></div></li>
-    <li><span class="nx-n">In the app</span><div><b>Skin photos</b><span>Compare how your skin heals. They never leave your phone.</span></div></li>
+    <li><span class="nx-n">In the app</span><div><b>Skin photos</b><span>To compare how it heals. They stay on your phone.</span></div></li>
     <li><span class="nx-n">In the app</span><div><b>What helped</b><span>When an urge passes, tap what helped.</span></div></li>
-    <li><span class="nx-n">In the app</span><div><b>Your wave, your length</b><span>15 to 90 seconds, and how many bubbles to pop.</span></div></li>
+    <li><span class="nx-n">In the app</span><div><b>Wave length</b><span>15 to 90 seconds, and how many bubbles to pop.</span></div></li>
   </ul>
 </section>
 </main>
@@ -364,8 +362,7 @@ ct: web_next
   ask();
 
   // 3 · calendar: the last two weeks, ending today. Each day's colour comes
-  // from its log; tap a day to see which log gave it. Today starts empty and
-  // the buttons log into it.
+  // from its log; tap a day to see which log gave it.
   var ICON = {
     clear: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     noticed: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>',
@@ -374,7 +371,7 @@ ct: web_next
   };
   $("nx-key").innerHTML = [["k1", "clear", "No picks"], ["k2", "noticed", "Stopped partway"], ["k3", "tried", "Rode out an urge"], ["k4", "picked", "Picked"]]
     .map(function (k) { return '<span class="' + k[0] + '">' + ICON[k[1]] + k[2] + "</span>"; }).join("");
-  // what the sample fortnight logged, oldest first; today (last) is yours
+  // what the sample fortnight logged, oldest first; today is the last
   var LOGS = [
     { picks: 0 }, { picks: 4 }, { picks: 2, stopped: 1 }, { picks: 0 }, { picks: 0 }, { picks: 3, urges: 1 }, { picks: 6 },
     { picks: 1, stopped: 1 }, { picks: 0 }, { picks: 5 }, { picks: 0 }, { picks: 2, urges: 2 }, { picks: 1, stopped: 1 }, { picks: 0 }
@@ -387,7 +384,6 @@ ct: web_next
   };
   var why = function (i) {
     var l = LOGS[i], k = kind(l), bits = [];
-    if (i === TODAY && !l.picks && !l.stopped && !l.urges) return "Nothing logged yet.";
     if (k === "clear") return "No picks.";
     if (l.urges) bits.push((l.urges === 1 ? "An urge" : l.urges + " urges") + " passed.");
     if (l.stopped) bits.push("A pick stopped partway.");
@@ -414,14 +410,6 @@ ct: web_next
     var b = e.target.closest("button"); if (!b) return;
     sel = +b.dataset.i; drawCal(); tried("calendar");
   };
-  [["picks", "A pick"], ["stopped", "Stopped partway"], ["urges", "Urge passed"], ["reset", "Clear"]].forEach(function (m) {
-    chip($("nx-marks"), m[1], function () {
-      var t = LOGS[TODAY];
-      if (m[0] === "reset") LOGS[TODAY] = { picks: 0 };
-      else { t[m[0]] = (t[m[0]] || 0) + 1; if (m[0] === "stopped") t.picks = (t.picks || 0) + 1; }
-      sel = TODAY; drawCal(); tried("calendar");
-    });
-  });
   drawCal();
 
   // 1 · colouring, ported from the app (ColouringActivity / PaintRender):
