@@ -921,13 +921,22 @@ document.addEventListener("click", function (e) {
   });
   mark();
 
-  // Open feedback, anonymous, goes to PostHog as next_feedback
+  // Open feedback, anonymous: to PostHog as next_feedback, and emailed to
+  // gentleskinapp@gmail.com by an Apps Script web app ("Gentleskin next
+  // answers to email", Tomas's Google account; at most 30 emails an hour).
+  var MAIL = "https://script.google.com/macros/s/AKfycbx5FFmQNxbqSZ55uJkv7wM7KQaqhf747fK4VAC6R--mrVrTrjJMEicLmvQ31OlL0XoJDg/exec";
   var say = $("nx-say"), text = $("nx-text"), send = $("nx-send");
   text.oninput = function () { send.disabled = !text.value.trim(); };
   say.onsubmit = function (e) {
     e.preventDefault();
     var t = text.value.trim(); if (!t) return;
     if (window.posthog) posthog.capture("next_feedback", { text: t, votes: mine, round: ROUND });
+    try {
+      var q = new URLSearchParams(location.search);
+      fetch(MAIL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, keepalive: true,
+        body: JSON.stringify({ text: t, votes: mine.join(", "), round: ROUND, page: location.pathname,
+          from: (q.get("from") || document.referrer || "direct") + " · " + (navigator.userAgent.match(/Android|iPhone|iPad|Windows|Mac OS X|Linux/) || ["?"])[0] }) });
+    } catch (err) {}
     say.innerHTML = '<p class="nx-sent">Recibido. Gracias.</p><button type="button" class="nx-link" id="nx-more">Escribir otro</button>';
     $("nx-more").onclick = function () { location.reload(); };
   };
