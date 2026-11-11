@@ -924,7 +924,7 @@ function fit(cv, aspect){
 }
 function local(cv, e){ const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
 function buzz(ms){ try { navigator.vibrate && navigator.vibrate(ms); } catch(_){} }
-function toast(id, text){ const t = $(id); if (!t) return; t.textContent = text; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 1300); }
+function toast(id, text){ try { if (window.posthog) posthog.capture("next_game_moment", { game: id.replace("toast-", ""), what: text, round: "2026-11c" }); } catch(_){} const t = $(id); if (!t) return; t.textContent = text; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 1300); }
 function rr(x, X, Y, W, H, r){ x.beginPath(); if (x.roundRect) x.roundRect(X, Y, W, H, r); else x.rect(X, Y, W, H); }
 function paper(x, w, h){ rr(x, .9, .9, w - 1.8, h - 1.8, 22); x.fillStyle = PAPER; x.fill(); x.lineWidth = 1.8; x.strokeStyle = INK; x.stroke(); }
 function sparkle(x, cx, cy, r){ x.beginPath(); for (let i = 0; i < 8; i++){ const a = i * Math.PI/4 - Math.PI/2, q = i % 2 ? r*.3 : r; x.lineTo(cx + Math.cos(a)*q, cy + Math.sin(a)*q); } x.closePath(); x.fill(); }
@@ -1754,7 +1754,18 @@ function markSound(){
     (Snd.on ? '<path d="M15.5 9a4.2 4.2 0 010 6M18 6.5a7.8 7.8 0 010 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'
             : '<path d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>') + '</svg>';
 }
+// How long each game was open and how many touches it got, sent when it closes
+// (a tab switch or leaving the page), with its own counter ("3 lines", "Board 2").
+let openedAt = Date.now(), touches = 0;
+function flushGame(how){
+  if (!cur) return;
+  const secs = Math.round((Date.now() - openedAt) / 1000), n = $("n-" + cur);
+  if (secs >= 1 && window.posthog) posthog.capture("next_game_session", { game: cur, seconds: secs, touches: touches, counter: n ? n.textContent : null, how: how, round: HG_ROUND }, how === "switch" ? undefined : { transport: "sendBeacon" });
+  openedAt = Date.now(); touches = 0;
+}
 function showGame(g){
+  if (cur && cur !== g) flushGame("switch");
+  if (cur !== g){ openedAt = Date.now(); touches = 0; }
   cur = g;
   tabs.forEach(t => t.setAttribute("aria-selected", t.dataset.g === g));
   panels.forEach(p => { p.hidden = p.dataset.g !== g; });
@@ -1773,9 +1784,12 @@ pickBtn.onclick = () => {
   markPicks();
 };
 document.querySelector(".hg-stage").addEventListener("pointerdown", () => {
+  touches++;
   if (window.posthog && !seenGame["_tried_" + cur]){ seenGame["_tried_" + cur] = true; posthog.capture("next_tried", { feature: "hands", game: cur, round: HG_ROUND }); }
 }, true);
 try { new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(document.querySelector(".hg-stage")); } catch(_){}
+window.addEventListener("pagehide", () => flushGame("leave"));
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushGame("hidden"); });
 markSound();
 showGame(location.hash && games[location.hash.slice(1)] ? location.hash.slice(1) : "colour");
 let last = 0;
