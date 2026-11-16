@@ -4,7 +4,7 @@ name: IndexNow
 # changed to IndexNow. Run it by hand to send every page in the sitemap.
 on:
   workflow_run:
-    workflows: ["pages build and deployment"]
+    workflows: ["pages-build-deployment"]
     types: [completed]
   workflow_dispatch:
 

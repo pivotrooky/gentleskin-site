@@ -19,7 +19,7 @@ Castoro + Albert Sans).
 
 ## IndexNow (`.github/workflows/indexnow.yml`)
 
-When the Pages deploy of a push to main finishes (`workflow_run` on "pages build and deployment"),
+When the Pages deploy of a push to main finishes (`workflow_run` on `pages-build-deployment`),
 the workflow diffs that deploy's commit against the previous deployed one, maps changed `*/index.html`
 files to URLs, keeps the ones in `sitemap.xml`, and POSTs them to `https://api.indexnow.org/indexnow`
 (Bing, Yandex and the others share submissions; Google doesn't use IndexNow). The key file is
