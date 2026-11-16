@@ -108,6 +108,10 @@ article p, article li { color: var(--body); }
 article li { margin: 6px 0; }
 .callout { background: var(--card); border: 1px solid var(--hair); border-radius: 18px; padding: 22px 24px; margin: 36px 0; }
 .callout p { margin: 0 0 14px; }
+/* Short answer under a guide's title (header field `answer:`) */
+.answer { background: var(--card); border: 1px solid var(--hair); border-left: 3px solid var(--water); border-radius: 14px; padding: 16px 20px; margin: 0 0 32px; }
+.answer p { margin: 0; color: var(--ink); }
+.answer-label { display: block; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--sub); margin-bottom: 4px; }
 .note { font-size: 15px; color: var(--sub); border-top: 1px solid var(--hair); padding-top: 18px; margin-top: 40px; }
 
 /* Footer */

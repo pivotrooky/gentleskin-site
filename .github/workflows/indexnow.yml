@@ -1,0 +1,36 @@
+name: IndexNow
+
+# After GitHub Pages finishes deploying a push to main, send the pages that
+# changed to IndexNow. Run it by hand to send every page in the sitemap.
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - name: Submit changed pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW: ${{ github.event.workflow_run.head_sha }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          if [ -z "$NEW" ]; then python3 .github/indexnow.py; exit; fi
+          # The commit the previous successful deploy published.
+          OLD=$(gh run list -R "$GITHUB_REPOSITORY" --workflow pages-build-deployment --status success \
+                  --limit 10 --json databaseId,headSha \
+                  --jq "[.[] | select(.databaseId != $RUN_ID and .headSha != \"$NEW\")][0].headSha // empty")
+          if [ -n "$OLD" ]; then python3 .github/indexnow.py "$OLD" "$NEW"; else python3 .github/indexnow.py; fi

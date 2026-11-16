@@ -8,7 +8,11 @@ Each content file starts with a header block, then the body HTML:
     title: How to stop picking your skin
     description: One sentence for search results.
     path: guides/how-to-stop-picking-skin/   (index.html is written there)
+    answer: Two or three plain sentences that answer the page's question.
     ---
+
+`answer:` (guides) is shown in a box under the title and goes into the
+Article JSON-LD as `abstract`, so search and AI answers can quote it.
     <h1>...</h1>
 """
 import html, json, os, re
@@ -18,7 +22,7 @@ SITE = "https://gentleskin.app"
 APP_ID = "6789245158"
 # PostHog: the app's project, public client key (it ships in the app too). Site events have $lib = web.
 POSTHOG_KEY = "phc_CfdvY9vZ7tsSTz7Pk83aE6ErFdW7F2CEennZUE8FTcmY"
-UPDATED = "2026-10-27"
+UPDATED = "2026-11-15"
 # Changes with style.css, so browsers never keep an old copy.
 CSS_V = __import__("hashlib").md5(open(os.path.join(ROOT, "style.css"), "rb").read()).hexdigest()[:8]
 
@@ -78,7 +82,19 @@ CHROME = {
 }
 
 
-def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None, lang="en", alt=None):
+# The short answer box under a guide's title (header field `answer:`).
+ANSWER_LABEL = {"en": "In short", "es": "En resumen"}
+
+
+def add_answer(body, answer, lang):
+    box = (f'\n<div class="answer"><p><span class="answer-label">{ANSWER_LABEL[lang]}</span>'
+           f'{html.escape(answer, quote=False)}</p></div>')
+    # After the "Updated ..." line if there is one, otherwise right after the title.
+    m = re.search(r'<p class="meta">.*?</p>', body) or re.search(r"</h1>", body)
+    return body[:m.end()] + box + body[m.end():]
+
+
+def shell(title, description, path, body, depth, kind, image="img/header.jpg", ct=None, lang="en", alt=None, answer=None):
     up = "../" * depth
     url = SITE + "/" + path
     c = CHROME[lang]
@@ -103,6 +119,10 @@ def shell(title, description, path, body, depth, kind, image="img/header.jpg", c
             "description": description, "dateModified": UPDATED, "mainEntityOfPage": url,
             "author": {"@type": "Organization", "name": "Gentleskin"}, "inLanguage": lang,
         })
+        if answer:
+            ld[-1]["abstract"] = answer
+    if answer:
+        body = add_answer(body, answer, lang)
     faq = re.findall(r"<details><summary>(.*?)</summary>\s*<p>(.*?)</p>", body, re.S)
     if faq:
         ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -180,7 +200,7 @@ def main():
         os.makedirs(out_dir, exist_ok=True)
         page = shell(meta["title"], meta["description"], path, body, path.count("/"), kind,
                      meta.get("image", "img/header.jpg"), meta.get("ct"),
-                     meta.get("lang", "en"), meta.get("alt"))
+                     meta.get("lang", "en"), meta.get("alt"), meta.get("answer"))
         open(os.path.join(out_dir, "index.html"), "w").write(page)
         pages.append((path, meta))
         print("wrote", path or "/")
