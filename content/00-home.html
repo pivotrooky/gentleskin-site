@@ -8,7 +8,7 @@ path: /
   <h1>A gentle tracker<br>for skin picking</h1>
   <p class="lede"><strong>Most apps count the picking. Gentleskin helps you not pick.</strong> An iPhone app for dermatillomania and other body-focused repetitive behaviors. You log each pick, ride out urges, and see how it changes over weeks.</p>
   <a class="cta" href="{{store}}">Download on the App Store</a>
-  <p class="fine">iPhone. 7-day free trial. The urge screen is always free.</p>
+  <p class="fine">iPhone. 7-day free trial. The urge screen is always free. <a href="#waitlist">On Android?</a></p>
 </div>
 </section>
 
@@ -53,8 +53,8 @@ path: /
   </div>
 
   <form class="waitlist" id="waitlist">
-    <h2>Want Gentleskin on the web?</h2>
-    <p>It's only on iPhone for now. Leave your email and I'll write to you if a web version happens.</p>
+    <h2>Not on iPhone?</h2>
+    <p>Gentleskin is only on iPhone for now. Leave your email and I'll write to you if an Android or web version happens. I won't use it for anything else.</p>
     <div class="waitlist-row">
       <label for="waitlist-email" class="sr-only">Your email</label>
       <input type="email" id="waitlist-email" required autocomplete="email" placeholder="you@example.com">
@@ -68,21 +68,28 @@ path: /
   <details><summary>Is it only for skin picking?</summary>
   <p>It was made for skin picking, but you can use it for other body-focused repetitive behaviors too, like nail biting, cheek biting or hair pulling. You add your own spots and log them the same way.</p></details>
   <details><summary>Is there an Android version?</summary>
-  <p>Not yet.</p></details>
+  <p>Not yet. <a href="#waitlist">Leave your email</a> and I'll write to you if it happens.</p></details>
   <details><summary>Is Gentleskin a treatment?</summary>
   <p>No. It's a tracking app, not a medical device. If you see a therapist, you can bring them the PDF report.</p></details>
 </div>
 </main>
 <script>
-// Web waitlist: the email goes to PostHog as web_waitlist
+// Android / web waitlist: the email goes only to the Gentleskin inbox; PostHog gets the count (web_waitlist), never the address
 (function () {
+  var MAIL = "https://script.google.com/macros/s/AKfycbx5FFmQNxbqSZ55uJkv7wM7KQaqhf747fK4VAC6R--mrVrTrjJMEicLmvQ31OlL0XoJDg/exec";
   var f = document.getElementById("waitlist");
   f.onsubmit = function (e) {
     e.preventDefault();
     var email = document.getElementById("waitlist-email").value.trim();
     if (!email) return;
-    if (window.posthog) posthog.capture("web_waitlist", { email: email });
-    f.innerHTML = '<h2>Thank you.</h2><p>I\'ll write to you if Gentleskin comes to the web.</p>';
+    var device = ["Android", "iPhone", "iPad", "Windows", "Mac OS X", "Linux"].find(function (d) { return navigator.userAgent.indexOf(d) >= 0; }) || "?";
+    if (window.posthog) posthog.capture("web_waitlist", { device: device });
+    try {
+      fetch(MAIL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, keepalive: true,
+        body: JSON.stringify({ text: "Android/web waitlist: " + email, votes: "", round: "waitlist", page: location.pathname,
+          from: (document.referrer || "direct") + " · " + device }) });
+    } catch (err) {}
+    f.innerHTML = '<h2>Thank you.</h2><p>I\'ll write to you if Gentleskin comes to Android or the web.</p>';
   };
 })();
 </script>
