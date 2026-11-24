@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What should Gentleskin build next? | Gentleskin</title>
-<meta name="description" content="Four ideas for Gentleskin, the skin picking app: something for your hands (colouring and small games), feelings and tips, a progress calendar and a notebook. Try them in your browser, mark the games you&#x27;d play and pick one idea.">
+<meta name="description" content="What Gentleskin, the skin picking app, could build next: small games for your hands, a progress calendar and a notebook. Try them in your browser and vote.">
 <link rel="canonical" href="https://gentleskin.app/next/">
 <link rel="alternate" hreflang="en" href="https://gentleskin.app/next/">
 <link rel="alternate" hreflang="es" href="https://gentleskin.app/es/siguiente/">
 <link rel="alternate" hreflang="x-default" href="https://gentleskin.app/next/">
 <meta name="apple-itunes-app" content="app-id=6789245158">
 <meta property="og:title" content="What should Gentleskin build next? | Gentleskin">
-<meta property="og:description" content="Four ideas for Gentleskin, the skin picking app: something for your hands (colouring and small games), feelings and tips, a progress calendar and a notebook. Try them in your browser, mark the games you&#x27;d play and pick one idea.">
+<meta property="og:description" content="What Gentleskin, the skin picking app, could build next: small games for your hands, a progress calendar and a notebook. Try them in your browser and vote.">
 <meta property="og:image" content="https://gentleskin.app/img/next-og.jpg">
 <meta property="og:url" content="https://gentleskin.app/next/">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,8 +260,7 @@ document.addEventListener("click", function (e) {
 <div class="nx-grid">
   <article class="nx-card nx-hands">
     <div class="hg-shelf" role="tablist" aria-label="Games">
-      <button type="button" role="tab" data-g="colour" aria-selected="true">Colour</button>
-      <button type="button" role="tab" data-g="fit" aria-selected="false">Fit</button>
+      <button type="button" role="tab" data-g="fit" aria-selected="true">Fit</button>
       <button type="button" role="tab" data-g="merge" aria-selected="false">Merge</button>
       <button type="button" role="tab" data-g="slide" aria-selected="false">Slide out</button>
       <button type="button" role="tab" data-g="eels" aria-selected="false">Untangle</button>
@@ -271,28 +270,7 @@ document.addEventListener("click", function (e) {
       <button type="button" class="hg-sound" id="hg-sound" aria-pressed="true" aria-label="Sound on" title="Sound on" hidden></button>
     </div>
     <div class="hg-stage">
-    <div class="hg-panel" data-g="colour">
-    <p class="hg-rule">Paint with your finger. The colour stays inside the shape you started in.</p>
-    <div class="nx-play nx-cplay">
-      <div class="nx-cleft">
-        <div class="nx-page" id="nx-page"><canvas id="nx-paint" role="img" aria-label="A page to colour in with your finger or mouse"></canvas><canvas id="nx-lines" aria-hidden="true"></canvas></div>
-        <p class="nx-hint nx-cfoot" id="nx-cfoot">Try scribbling over a line.</p>
-      </div>
-      <div class="nx-cright">
-        <div class="nx-tools" id="nx-tools" role="group" aria-label="Tools"></div>
-        <div class="nx-trow"><div class="nx-sizes" id="nx-sizes" role="group" aria-label="Brush size"></div>
-          <button type="button" class="nx-undo" id="nx-undo" aria-label="Undo" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 5.5L4 9l3.5 3.5M4.5 9h7a4.5 4.5 0 010 9H9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-        <div class="nx-pal" id="nx-pal" role="group" aria-label="Colours"></div>
-        <button type="button" class="nx-btn" id="nx-keepdraw" disabled>Keep it</button>
-        <p class="nx-label">Pages</p>
-        <div class="nx-pages" id="nx-pages"></div>
-        <p class="nx-label" id="nx-gallery-l" hidden>Your gallery</p>
-        <div class="nx-gallery" id="nx-gallery" aria-label="Your gallery"></div>
-      </div>
-    </div>
-    </div>
-    <div class="hg-panel" data-g="fit" hidden>
+    <div class="hg-panel" data-g="fit">
       <p class="hg-rule">Drag a piece onto the board. A full row or column clears.</p>
       <div class="hg-board"><canvas id="c-fit" aria-label="Block board"></canvas><div class="hg-toast" id="toast-fit"></div></div>
       <div class="hg-foot"><span id="n-fit">0 lines</span><button class="nx-link" id="r-fit" type="button">Start over</button></div>
@@ -332,27 +310,6 @@ document.addEventListener("click", function (e) {
   </article>
 
   <div class="nx-q nx-q2"><span class="nx-qn">2</span><div><h2>And one of <em>these?</em></h2><p>Pick one.</p></div></div>
-  <article class="nx-card" data-f="feelings">
-    <div class="nx-top"><h2>How you <em>felt</em>, and a tip</h2>
-      <p>After you log a pick, tap how you felt before and after. Then you get a tip for it.</p></div>
-    <div class="nx-play">
-      <div class="nx-phone">
-        <div class="nx-fhead"><span class="nx-flog">✓ Logged · 3 picks, face</span><span class="nx-fdots" id="nx-fdots" aria-hidden="true"><i></i><i></i></span></div>
-        <div id="nx-fask">
-          <p class="nx-q" id="nx-q"></p>
-          <div class="nx-chips nx-fchips" id="nx-fchips"></div>
-          <div class="nx-frow"><button type="button" class="nx-quiet" id="nx-fback" hidden>‹ Back</button><button type="button" class="nx-quiet" id="nx-fskip">Skip</button></div>
-        </div>
-        <div id="nx-fclose" hidden>
-          <p class="nx-fpair" id="nx-fpair"></p>
-          <div class="nx-tipcard" id="nx-tipcard"><b>Something to try</b><p id="nx-tip"></p></div>
-          <div class="nx-frow"><button type="button" class="nx-quiet" id="nx-fmore">Another one →</button><button type="button" class="nx-quiet" id="nx-fagain">Start again</button></div>
-        </div>
-      </div>
-    </div>
-    <div class="nx-vote-bar"><span>This one?</span><button class="nx-vote" type="button">Pick</button></div>
-  </article>
-
   <article class="nx-card" data-f="calendar">
     <div class="nx-top"><h2>A progress <em>calendar</em></h2>
       <p>Each day gets a colour from what you logged. Stopping partway and riding out an urge both count.</p></div>
@@ -395,99 +352,13 @@ document.addEventListener("click", function (e) {
   <div class="nx-say-row"><small>Anonymous.</small><button class="nx-send" id="nx-send" disabled>Send</button></div>
 </form>
 
-<section class="nx-section">
-  <h2>In the app, and <em>next</em></h2>
-  <ul class="nx-list">
-    <li class="soon"><span class="nx-n">Next update</span><div><b>Sounds for the wave</b><span>Sea, rain or brown noise during the wave. Off by default.</span>
-      <div class="nx-chips nx-sounds" id="nx-sounds"></div></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>Log from the Lock Screen</b><span>One tap on the widget, without unlocking.</span></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>Check-ins at your time</b><span>Pick the hour and the days.</span></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>What was going on</b><span>One optional tap when you log.</span></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>Skin photos</b><span>To compare how it heals. They stay on your phone.</span></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>What helped</b><span>When an urge passes, tap what helped.</span></div></li>
-    <li class="done"><span class="nx-n">In the app</span><div><b>Wave length</b><span>15 to 90 seconds, and how many bubbles to pop.</span></div></li>
-      <li class="nx-fold"><button type="button" id="nx-fold" aria-expanded="false">Already in the app (6)</button></li>
-  </ul>
-</section>
 </main>
-<script src="../next/drawings.js"></script>
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
   var ROUND = "2026-11c";
-  $("nx-fold").onclick = function () {
-    var list = this.closest(".nx-list"), open = list.classList.toggle("open");
-    this.setAttribute("aria-expanded", open); this.textContent = open ? "Hide" : "Already in the app (6)";
-    if (window.posthog) posthog.capture("next_inapp_toggled", { round: ROUND, open: open });
-  };
   var seen = {};
   var tried = function (f) { if (seen[f]) return; seen[f] = true; if (window.posthog) posthog.capture("next_tried", { feature: f, round: ROUND }); };
-  var chip = function (box, label, onclick) {
-    var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.onclick = function () { onclick(b); }; box.append(b); return b;
-  };
-
-  // 2 · feelings, as the app asks them right after Log: before, then now,
-  // one a screen, a tap moves on (0.32 s, the app's); then the tips that fit
-  // what was felt, before's first. Same feelings, tips and tags as the app
-  // (shared/strings/answers.toml [tips], config.toml [tips] fits).
-  var BEFORE = [["anxious", "Anxious"], ["bored", "Bored"], ["frustrated", "Frustrated"], ["tense", "Tense"], ["restless", "Restless"]];
-  var AFTER = [["guilty", "Guilty"], ["relieved", "Relieved"], ["angry", "Angry at myself"], ["calm", "Calm"]];
-  var TIPS = [
-    ["Breathe out longer than you breathe in. Three times, then decide.", "anxious tense"],
-    ["Give your hands a job for two minutes: a fidget, a pen, an ice cube.", "bored restless"],
-    ["Make a tight fist for ten seconds, then let it go. Twice.", "frustrated tense angry"],
-    ["Drop your shoulders and unclench your jaw. Notice where your hands are.", "tense anxious"],
-    ["Stand up and walk to another room. The urge often stays behind.", "restless bored"],
-    ["One pick doesn't undo the good days. Wash it, cover it, leave it.", "guilty"],
-    ["Notice what led here. Next time you can catch it a little earlier.", "relieved calm"],
-    ["Talk to yourself the way you'd talk to a friend who picks.", "angry guilty"],
-    ["Note what helped, so it's there next time.", "calm relieved"],
-    ["Name five things you can see. It pulls attention out of your fingertips.", "anxious"],
-    ["Wear something with texture: a ring, a hair tie, soft gloves.", "bored restless"],
-    ["Cold water on your hands and face for thirty seconds.", "frustrated anxious angry"],
-    ["Cover the spot with a bandage. Out of sight is easier to leave.", "guilty relieved"],
-    ["Write one line about what came before. Patterns show up later.", "relieved calm"],
-    ["Slow the next ten minutes down: a glass of water, a window, a breath.", "frustrated restless"]
-  ];
-  var QS = ["How were you feeling before?", "And how do you feel now?"];
-  var fstep = 0, felt = [null, null], tipList = [], tipAt = 0, moving = 0;
-  var fade = function (el) { el.classList.remove("nx-fade"); void el.offsetWidth; el.classList.add("nx-fade"); };
-  var nameOf = function (id) { var all = BEFORE.concat(AFTER); for (var i = 0; i < all.length; i++) if (all[i][0] === id) return all[i][1]; return id; };
-  var fdots = function () { [].forEach.call($("nx-fdots").children, function (d, i) { d.classList.toggle("on", i <= fstep); }); };
-  var ask = function () {
-    var box = $("nx-fchips");
-    $("nx-q").textContent = QS[fstep]; box.innerHTML = "";
-    (fstep === 0 ? BEFORE : AFTER).forEach(function (o) {
-      var b = chip(box, o[1], function () {
-        felt[fstep] = o[0];
-        [].forEach.call(box.children, function (x) { x.setAttribute("aria-pressed", x === b); });
-        tried("feelings"); clearTimeout(moving); moving = setTimeout(fnext, 320);
-      });
-      b.setAttribute("aria-pressed", felt[fstep] === o[0]);
-    });
-    $("nx-fback").hidden = fstep === 0;
-    fdots(); fade($("nx-fask"));
-  };
-  var showTip = function () { if (tipList.length) { $("nx-tip").textContent = tipList[tipAt % tipList.length]; fade($("nx-tipcard")); } };
-  var fclose = function () {
-    $("nx-fask").hidden = true; $("nx-fclose").hidden = false; fstep = 2; fdots();
-    var said = felt.filter(Boolean);
-    $("nx-fpair").textContent = said.length ? said.map(function (id) { return nameOf(id).toLowerCase(); }).join(" → ") : "Logged.";
-    tipList = [];
-    said.forEach(function (id) {
-      TIPS.forEach(function (t) { if ((" " + t[1] + " ").indexOf(" " + id + " ") >= 0 && tipList.indexOf(t[0]) < 0) tipList.push(t[0]); });
-    });
-    tipAt = 0;
-    $("nx-tipcard").hidden = !tipList.length; $("nx-fmore").hidden = tipList.length < 2;
-    showTip(); fade($("nx-fclose"));
-    if (window.posthog) posthog.capture("next_feelings_done", { round: ROUND, before: felt[0], after: felt[1] });
-  };
-  var fnext = function () { moving = 0; if (fstep === 0) { fstep = 1; ask(); } else fclose(); };
-  $("nx-fskip").onclick = function () { clearTimeout(moving); felt[fstep] = null; fnext(); };
-  $("nx-fback").onclick = function () { clearTimeout(moving); fstep = 0; ask(); };
-  $("nx-fmore").onclick = function () { tipAt++; showTip(); if (window.posthog) posthog.capture("next_feelings_more", { round: ROUND, n: tipAt }); };
-  $("nx-fagain").onclick = function () { felt = [null, null]; fstep = 0; $("nx-fclose").hidden = true; $("nx-fask").hidden = false; ask(); };
-  ask();
 
   // 3 · calendar: the last two weeks, ending today. Each day's colour comes
   // from its log; tap a day to see which log gave it.
@@ -539,257 +410,6 @@ document.addEventListener("click", function (e) {
     sel = +b.dataset.i; drawCal(); tried("calendar");
   };
   drawCal();
-
-  // 1 · colouring, ported from the app (ColouringActivity / PaintRender):
-  // the app's own five pages (drawings.js). A stroke is clipped to the part
-  // of the shape it started in that nothing sits over, so paint never
-  // crosses a line. A soft brush (a faint halo, the core, a paper grain
-  // multiplied in), the bucket ("tap to fill"), an eraser, undo a gesture
-  // at a time. Keep it puts the page in the gallery and opens a colour.
-  (function () {
-    var ART = window.GS_DRAWINGS; if (!ART) return;
-    var NAMES = { starfish: "Starfish", sea: "The sea", shell: "Shell", plant: "Plant", flower: "Flower" };
-    var PAL = ["#DE8E7C", "#E9C468", "#F0C7D0", "#C5D6CE", "#88AA9B", "#C89AA6", "#D2789B", "#7E6BAE", "#4E79A8", "#4F9E85", "#C68A4E", "#8E4B55"];
-    var INK = "#3E2B29", PAPER = "#FFF9FA", PX = 900, K = PX / 200;
-    var SIZES = [8, 16, 28];
-    var ICONS = {
-      brush: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 2.5l-7.2 8.1 1.6 1.6 7-8.2a1 1 0 00-1.4-1.5z" fill="currentColor"/><path d="M8.2 11.7c-1.9-.2-3.2 1-3.4 2.6-.2 1.3-.9 2-2.3 2.4 2.6 1.3 6.2.9 7.3-1.6.4-1 .1-2.2-.9-2.8z" fill="currentColor"/></svg>',
-      fill: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5s-5 5.6-5 9a5 5 0 0010 0c0-3.4-5-9-5-9z" fill="currentColor"/></svg>',
-      eraser: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M11.6 3.2l5.2 5.2c.5.5.5 1.3 0 1.8L10.4 16.6H6.6l-3.4-3.4c-.5-.5-.5-1.3 0-1.8l6.6-8.2c.5-.5 1.3-.5 1.8 0z" fill="currentColor"/><path d="M10.5 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
-    };
-    var LABELS = { brush: "Brush", fill: "Tap to fill", eraser: "Eraser" };
-    var send = function (el, v) { if (window.posthog) posthog.capture("next_colour_tap", { element: el, value: v, round: ROUND }); };
-
-    ART.forEach(function (a) {
-      a.R = a.r.map(function (d) { return new Path2D(d); });
-      a.C = a.c.map(function (d) { return new Path2D(d); });
-      a.D = a.d.map(function (d) { return new Path2D(d); });
-    });
-    var make = function (n) { var c = document.createElement("canvas"); c.width = c.height = n; return c; };
-    var hit = make(1).getContext("2d");
-    // the paper's tooth, as the app makes it: mostly white, a few grey flecks, 30 units a tile
-    var tile = make(96), tc = tile.getContext("2d"), td = tc.createImageData(96, 96), seed = 0x9E3779B9;
-    for (var q = 0; q < 96 * 96; q++) {
-      seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
-      var u = seed / 4294967296, v = u < 0.82 ? 1 - u * 0.07 : 0.8 + (1 - u) * 0.5, g = Math.round(Math.min(1, v) * 255);
-      td.data[q * 4] = td.data[q * 4 + 1] = td.data[q * 4 + 2] = g; td.data[q * 4 + 3] = 255;
-    }
-    tc.putImageData(td, 0, 0);
-
-    var cnv = $("nx-paint"), lines = $("nx-lines"), pc = cnv.getContext("2d");
-    cnv.width = cnv.height = PX;
-    var grain = pc.createPattern(tile, "repeat");
-    if (grain.setTransform && window.DOMMatrix) grain.setTransform(new DOMMatrix().scale(30 / 96));
-
-    // the finger's points as one smooth line, through the midpoints
-    var line = function (pts) {
-      var p = new Path2D(); p.moveTo(pts[0][0], pts[0][1]);
-      if (pts.length === 1) { p.lineTo(pts[0][0] + 0.01, pts[0][1]); return p; }
-      for (var i = 1; i < pts.length - 1; i++) p.quadraticCurveTo(pts[i][0], pts[i][1], (pts[i][0] + pts[i + 1][0]) / 2, (pts[i][1] + pts[i + 1][1]) / 2);
-      p.lineTo(pts[pts.length - 1][0], pts[pts.length - 1][1]);
-      return p;
-    };
-    var alpha = function (hex, a) { var n = parseInt(hex.slice(1), 16); return "rgba(" + (n >> 16) + "," + (n >> 8 & 255) + "," + (n & 255) + "," + a + ")"; };
-    var draw = function (ctx, s) {
-      var clip = art().C[s.region];
-      ctx.save(); ctx.setTransform(K, 0, 0, K, 0, 0); ctx.clip(clip);
-      ctx.lineCap = ctx.lineJoin = "round";
-      if (s.kind === "fill") {
-        ctx.fillStyle = s.colour; ctx.fill(clip);
-        ctx.globalCompositeOperation = "multiply"; ctx.fillStyle = grain; ctx.fill(clip);
-      } else if (s.kind === "eraser") {
-        ctx.globalCompositeOperation = "destination-out"; ctx.lineWidth = s.width; ctx.stroke(line(s.points));
-      } else {
-        var path = line(s.points);
-        ctx.strokeStyle = alpha(s.colour, 0.3); ctx.lineWidth = s.width * 1.3; ctx.stroke(path);
-        ctx.strokeStyle = s.colour; ctx.lineWidth = s.width; ctx.stroke(path);
-        ctx.globalCompositeOperation = "multiply"; ctx.strokeStyle = grain; ctx.stroke(path);
-      }
-      ctx.restore();
-    };
-
-    // one page per drawing, kept while the page is open; the one in view is on the canvas
-    var pages = ART.map(function (a, i) { return { i: i, paint: null, undo: [], strokes: 0 }; });
-    var cur = 0, tool = "brush", colour = 0, size = 1, open = 6, kept = 0, painting = null, base = make(PX), bc = base.getContext("2d");
-    var art = function () { return ART[cur]; };
-    var regionAt = function (x, y) {
-      var R = art().R;
-      for (var i = R.length - 1; i >= 0; i--) if (hit.isPointInPath(R[i], x, y)) return i;
-      return -1;
-    };
-
-    // the lines on top: each shape's outline, with the outlines under it hidden where it sits over them
-    var drawLines = function () {
-      var side = lines.getBoundingClientRect().width || 300, dpr = Math.min(window.devicePixelRatio || 1, 3);
-      var n = Math.round(side * dpr); if (lines.width !== n) lines.width = lines.height = n;
-      var lc = lines.getContext("2d"), k = n / 200;
-      lc.setTransform(1, 0, 0, 1, 0, 0); lc.clearRect(0, 0, n, n); lc.setTransform(k, 0, 0, k, 0, 0);
-      lineArt(lc, art(), 1.8 * 200 / side);
-    };
-    var lineArt = function (lc, a, w) {
-      lc.lineWidth = w; lc.lineCap = lc.lineJoin = "round"; lc.strokeStyle = INK; lc.fillStyle = "#000";
-      a.R.forEach(function (r) {
-        lc.globalCompositeOperation = "destination-out"; lc.fill(r);
-        lc.globalCompositeOperation = "source-over"; lc.stroke(r);
-      });
-      a.D.forEach(function (d) { lc.stroke(d); });
-    };
-    // a page drawn small: paper, its paint, the lines
-    var thumb = function (into, i, paint) {
-      var n = into.width, c = into.getContext("2d"), k = n / 200;
-      c.setTransform(1, 0, 0, 1, 0, 0); c.fillStyle = PAPER; c.fillRect(0, 0, n, n);
-      if (paint) c.drawImage(paint, 0, 0, n, n);
-      var l = make(n), lc = l.getContext("2d"); lc.setTransform(k, 0, 0, k, 0, 0); lineArt(lc, ART[i], 1.2 * 200 / (n / 2));
-      c.drawImage(l, 0, 0);
-    };
-
-    var pageBtns = ART.map(function (a, i) {
-      var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", NAMES[a.id]);
-      var t = make(104); b.append(t); thumb(t, i, null);
-      b.onclick = function () { if (i !== cur) { show(i); send("page", a.id); } };
-      $("nx-pages").append(b); return b;
-    });
-    var save = function () {
-      var p = pages[cur]; p.paint = p.paint || make(PX);
-      var c = p.paint.getContext("2d"); c.clearRect(0, 0, PX, PX); c.drawImage(cnv, 0, 0);
-      thumb(pageBtns[cur].firstChild, cur, p.strokes ? p.paint : null);
-    };
-    var show = function (i) {
-      if (painting) return;
-      save(); cur = i;
-      pc.clearRect(0, 0, PX, PX); if (pages[i].paint && pages[i].strokes) pc.drawImage(pages[i].paint, 0, 0);
-      pageBtns.forEach(function (b, k) { b.setAttribute("aria-pressed", k === i); });
-      drawLines(); state();
-    };
-    var state = function () {
-      var p = pages[cur];
-      $("nx-undo").disabled = !p.undo.length;
-      $("nx-keepdraw").disabled = !p.strokes;
-    };
-    var snapshot = function () {
-      var c = make(PX); c.getContext("2d").drawImage(cnv, 0, 0);
-      var u = pages[cur].undo; u.push(c); if (u.length > 20) u.shift();
-    };
-
-    // painting: the stroke under the finger is drawn again from its start each frame (over a copy of the page), so its soft edge never builds up
-    var toUnits = function (e) {
-      var r = cnv.getBoundingClientRect();
-      return [(e.clientX - r.left) * 200 / r.width, (e.clientY - r.top) * 200 / r.height];
-    };
-    var frame = 0;
-    var render = function () {
-      frame = 0; if (!painting) return;
-      pc.globalCompositeOperation = "source-over";
-      pc.clearRect(0, 0, PX, PX); pc.drawImage(base, 0, 0); draw(pc, painting.s);
-    };
-    var later = function () { if (!frame) frame = requestAnimationFrame(render); };
-    var done = function () {
-      pages[cur].strokes++; tried("colour"); save(); state();
-      $("nx-cfoot").textContent = "";
-    };
-    cnv.addEventListener("pointerdown", function (e) {
-      if (painting || (e.pointerType === "mouse" && e.button !== 0)) return;
-      e.preventDefault();
-      var p = toUnits(e), k = regionAt(p[0], p[1]);
-      if (k < 0) return;
-      try { cnv.setPointerCapture(e.pointerId); } catch (x) {}
-      painting = { id: e.pointerId, at: [e.clientX, e.clientY], region: k, s: null };
-      if (tool === "fill") return;
-      snapshot();
-      bc.clearRect(0, 0, PX, PX); bc.drawImage(cnv, 0, 0);
-      painting.s = { kind: tool, region: k, colour: PAL[colour], width: SIZES[size], points: [p] };
-      later();
-    });
-    cnv.addEventListener("pointermove", function (e) {
-      if (!painting || e.pointerId !== painting.id || !painting.s) return;
-      var evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e]; if (!evs.length) evs = [e];
-      var pts = painting.s.points;
-      evs.forEach(function (ev) {
-        var p = toUnits(ev), last = pts[pts.length - 1];
-        if (Math.hypot(p[0] - last[0], p[1] - last[1]) > 0.45) pts.push(p);
-      });
-      // a long stroke is put down and carried on, so each frame stays short
-      if (pts.length > 300) { render(); bc.clearRect(0, 0, PX, PX); bc.drawImage(cnv, 0, 0); painting.s.points = [pts[pts.length - 1]]; }
-      later();
-    });
-    var end = function (e) {
-      if (!painting || e.pointerId !== painting.id) return;
-      var was = painting;
-      if (was.s) { render(); painting = null; done(); return; }
-      painting = null;
-      // the bucket: a tap, not a drag that wandered off
-      if (e.type === "pointerup" && Math.hypot(e.clientX - was.at[0], e.clientY - was.at[1]) < 12) {
-        snapshot(); draw(pc, { kind: "fill", region: was.region, colour: PAL[colour] }); done();
-      }
-    };
-    cnv.addEventListener("pointerup", end);
-    cnv.addEventListener("pointercancel", end);
-    // belt and braces for older iOS: a finger on the page never scrolls it
-    cnv.addEventListener("touchmove", function (e) { e.preventDefault(); }, { passive: false });
-
-    $("nx-undo").onclick = function () {
-      var u = pages[cur].undo; if (!u.length || painting) return;
-      pc.globalCompositeOperation = "source-over"; pc.clearRect(0, 0, PX, PX); pc.drawImage(u.pop(), 0, 0);
-      pages[cur].strokes = Math.max(0, pages[cur].strokes - 1);
-      save(); state(); send("undo");
-    };
-
-    var toolBtns = {};
-    ["brush", "fill", "eraser"].forEach(function (t) {
-      var b = document.createElement("button"); b.type = "button"; b.innerHTML = ICONS[t] + "<span>" + LABELS[t] + "</span>";
-      b.onclick = function () { tool = t; drawTools(); send("tool", t); };
-      toolBtns[t] = b; $("nx-tools").append(b);
-    });
-    var sizeBtns = SIZES.map(function (w, i) {
-      var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", ["Thin", "Medium", "Thick"][i] + " brush");
-      var d = document.createElement("i"); d.style.width = d.style.height = (5 + i * 6) + "px"; b.append(d);
-      b.onclick = function () { size = i; if (tool === "fill") tool = "brush"; drawTools(); send("size", w); };
-      $("nx-sizes").append(b); return b;
-    });
-    var drawTools = function () {
-      Object.keys(toolBtns).forEach(function (t) { toolBtns[t].setAttribute("aria-pressed", t === tool); });
-      sizeBtns.forEach(function (b, i) { b.setAttribute("aria-pressed", i === size); b.style.setProperty("--c", tool === "eraser" ? "#D9C2C9" : PAL[colour]); });
-      $("nx-sizes").classList.toggle("off", tool === "fill");
-      drawPal();
-    };
-    var swatches = PAL.map(function (c, i) {
-      var b = document.createElement("button"); b.type = "button"; b.style.setProperty("--c", c);
-      var d = document.createElement("i"); d.style.background = c; b.append(d);
-      b.onclick = function () {
-        if (i >= open) { $("nx-cfoot").textContent = "Each page you keep opens a new colour."; send("swatch_locked", i + 1); return; }
-        colour = i; if (tool === "eraser") tool = "brush"; drawTools(); send("swatch", i + 1);
-      };
-      $("nx-pal").append(b); return b;
-    });
-    var drawPal = function () {
-      swatches.forEach(function (b, i) {
-        b.classList.toggle("locked", i >= open);
-        b.setAttribute("aria-label", i < open ? "Colour " + (i + 1) : "Locked colour");
-        b.setAttribute("aria-pressed", i === colour && i < open && tool !== "eraser");
-      });
-    };
-
-    $("nx-keepdraw").onclick = function () {
-      var p = pages[cur]; if (!p.strokes || painting) return;
-      save();
-      var t = make(156); thumb(t, cur, p.paint);
-      var img = document.createElement("img"); img.src = t.toDataURL(); img.alt = NAMES[art().id] + ", kept";
-      $("nx-gallery").prepend(img); $("nx-gallery-l").hidden = false;
-      kept++;
-      var msg = "Kept in your gallery.";
-      if (open < PAL.length) { open++; msg = "Kept in your gallery. A new colour."; swatches[open - 1].classList.add("opened"); }
-      if (window.posthog) posthog.capture("next_colour_kept", { round: ROUND, n: kept, drawing: art().id, strokes: p.strokes });
-      p.strokes = 0; p.undo = []; p.paint = null;
-      pc.clearRect(0, 0, PX, PX); save();
-      show((cur + 1) % ART.length); drawPal();
-      $("nx-cfoot").textContent = msg;
-    };
-
-    pageBtns.forEach(function (b, k) { b.setAttribute("aria-pressed", k === cur); });
-    drawTools(); drawLines(); state();
-    var rt = 0;
-    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawLines, 120); });
-  })();
 
   // 4 · notebook, the app's: a ruled page and Keep it, then the pages kept,
   // newest first, each under its time. A kept page opens again to change
@@ -854,43 +474,6 @@ document.addEventListener("click", function (e) {
     };
     draw();
   })();
-
-  // Coming next · sounds, made in the browser
-  var ctx = null, playing = null, nodes = [];
-  var noise = function (kind) {
-    var n = ctx.sampleRate * 4, buf = ctx.createBuffer(1, n, ctx.sampleRate), d = buf.getChannelData(0), last = 0;
-    for (var i = 0; i < n; i++) { var w = Math.random() * 2 - 1; if (kind === "brown") { last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; } else d[i] = w; }
-    var src = ctx.createBufferSource(); src.buffer = buf; src.loop = true; return src;
-  };
-  var startSound = function (kind) {
-    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
-    if (ctx.state === "suspended") ctx.resume();
-    var out = ctx.createGain(); out.gain.value = 0; out.connect(ctx.destination);
-    out.gain.linearRampToValueAtTime(kind === "rain" ? 0.22 : 0.5, ctx.currentTime + 0.8);
-    var src = noise(kind), f = ctx.createBiquadFilter();
-    if (kind === "sea") {
-      f.type = "lowpass"; f.frequency.value = 520;
-      var swell = ctx.createGain(); swell.gain.value = 0.55;
-      var lfo = ctx.createOscillator(), depth = ctx.createGain(); lfo.frequency.value = 0.11; depth.gain.value = 0.45;
-      lfo.connect(depth); depth.connect(swell.gain); lfo.start();
-      src.connect(f); f.connect(swell); swell.connect(out); nodes.push(lfo);
-    } else if (kind === "rain") { f.type = "highpass"; f.frequency.value = 1400; src.connect(f); f.connect(out); }
-    else { f.type = "lowpass"; f.frequency.value = 900; src.connect(f); f.connect(out); }
-    src.start(); nodes.push(src); nodes.out = out;
-  };
-  var stopSound = function () {
-    if (nodes.out) { var o = nodes.out, ns = nodes.slice(); o.gain.cancelScheduledValues(ctx.currentTime); o.gain.setValueAtTime(o.gain.value, ctx.currentTime); o.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
-      setTimeout(function () { ns.forEach(function (x) { try { x.stop(); } catch (e) {} }); o.disconnect(); }, 500); }
-    nodes = []; playing = null;
-  };
-  var sbtns = [];
-  [["sea", "▶ The sea"], ["rain", "▶ Rain"], ["brown", "▶ Brown noise"]].forEach(function (s) {
-    var b = chip($("nx-sounds"), s[1], function () {
-      var was = playing; stopSound(); sbtns.forEach(function (x) { x.classList.remove("on"); });
-      if (was !== s[0]) { startSound(s[0]); playing = s[0]; b.classList.add("on"); tried("sounds"); }
-    });
-    sbtns.push(b);
-  });
 
   // Votes: one idea per visitor per round (the games are their own question); picking another moves it
   var KEY = "gs_next_votes_" + ROUND, MAX = 1;
@@ -1774,7 +1357,7 @@ const HG_ROUND = "2026-11c", GKEY = "gs_next_games_" + HG_ROUND, GMAX = 3;
 const games = { fit: Fit, merge: Merge, slide: Slide, eels: Eels, shave: Shave, bumps: Bumps, pour: Pour };
 const tabs = [].slice.call(document.querySelectorAll(".hg-shelf button[data-g]")), panels = [].slice.call(document.querySelectorAll(".hg-panel"));
 const pickBtn = $("hg-pick"), countEl = $("hg-count"), soundBtn = $("hg-sound");
-let cur = "colour", picks = [], seenGame = {}, visible = true;
+let cur = "fit", picks = [], seenGame = {}, visible = true;
 try { picks = JSON.parse(localStorage.getItem(GKEY) || "[]"); if (!Array.isArray(picks)) picks = []; } catch(_){ picks = []; }
 picks = picks.filter(g => tabs.some(t => t.dataset.g === g)).slice(0, GMAX);
 function markPicks(){
@@ -1829,7 +1412,7 @@ try { new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observ
 window.addEventListener("pagehide", () => flushGame("leave"));
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushGame("hidden"); });
 markSound();
-showGame(location.hash && games[location.hash.slice(1)] ? location.hash.slice(1) : "colour");
+showGame(location.hash && games[location.hash.slice(1)] ? location.hash.slice(1) : "fit");
 let last = 0;
 function loop(t){ if (visible && games[cur] && t - last > 14){ last = t; games[cur].tick(); } requestAnimationFrame(loop); }
 requestAnimationFrame(loop);
