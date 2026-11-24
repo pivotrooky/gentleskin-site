@@ -38,6 +38,7 @@ def store(ct):
 # PostHog sees every click. Add a creator here, rebuild, push.
 GO = {
     "tiktok": "tiktok_bio",
+    "tiktok-ad": "tiktok_ad",
     "ig": "ig_bio",
     "yt": "yt",
     "kim": "creator_kimonskin",
