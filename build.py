@@ -39,6 +39,7 @@ def store(ct):
 GO = {
     "tiktok": "tiktok_bio",
     "tiktok-ad": "tiktok_ad",
+    "reddit-ad": "reddit_ad",
     "ig": "ig_bio",
     "yt": "yt",
     "kim": "creator_kimonskin",
